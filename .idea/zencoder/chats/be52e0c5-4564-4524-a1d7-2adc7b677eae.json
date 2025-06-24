@@ -1,0 +1,491 @@
+{
+    "checksum": "592bf9c67475021ce54c9754a7cf5a0120f1064a9a89f1dc0d4c7dd14e116f07",
+    "data": {
+    "id": "be52e0c5-4564-4524-a1d7-2adc7b677eae",
+    "createdAt": 1750581512169,
+    "updatedAt": 1750581520753,
+    "title": "UserDAO Implementation in Java",
+    "messages": [
+        {
+            "id": "a6b08615-3339-485d-8e0b-fea4e4953563",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "gen ra cho viêt cho tôi UserDAo"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                    "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "\r\n\r\npackage com.coffeeshop.coffeeshop.model;\r\n\r\nimport lombok.*;\r\n\r\n@Data\r\n@AllArgsConstructor\r\n@NoArgsConstructor\r\n\r\npublic class User {\r\n    private int id;\r\n    private String username;\r\n    private String password;\r\n    private Role role; // Chứa nameRole, descriptionRole\r\n}\r\n"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/ProductDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/Session.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\Session.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\create-user-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\create-user-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": ".zencoder\\.gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.zencoder\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/Home/mainAdmin-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\mainAdmin-view.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/Home/HomeUser.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\HomeUser.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/module-info.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\module-info.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/DBConnection.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\DBConnection.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/TestDBConnection.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\TestDBConnection.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Role.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/Auth/create-user-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": "\r\n\r\npackage com.coffeeshop.coffeeshop.model;\r\n\r\nimport lombok.*;\r\n\r\n@Data\r\n@AllArgsConstructor\r\n@NoArgsConstructor\r\n\r\npublic class User {\r\n    private int id;\r\n    private String username;\r\n    private String password;\r\n    private Role role; // Chứa nameRole, descriptionRole\r\n}\r\n"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java"
+                    }
+                ]
+            },
+            "createdAt": 1750581512170,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "gen ra cho viêt cho tôi UserDAo"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "855adb84-3dc6-41be-8cd9-f68afe57c529",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Dựa trên thông tin từ tệp `User.java` và đoạn mã đã truy xuất từ `UserDAO.java`, dưới đây là một ví dụ về cách triển khai lớp `UserDAO` trong Java:\n\n```java\npackage com.coffeeshop.coffeeshop.dao;\n\nimport com.coffeeshop.coffeeshop.model.User;\nimport java.sql.Connection;\nimport java.sql.PreparedStatement;\nimport java.sql.ResultSet;\nimport java.sql.SQLException;\n\npublic class UserDAO {\n    private Connection conn;\n\n    public UserDAO(Connection conn) {\n        this.conn = conn;\n    }\n\n    public User login(String username, String password) throws SQLException {\n        String query = \"SELECT * FROM users WHERE username = ? AND password = ?\";\n        try (PreparedStatement ps = conn.prepareStatement(query)) {\n            ps.setString(1, username);\n            ps.setString(2, password);\n            ResultSet rs = ps.executeQuery();\n            if (rs.next()) {\n                User user = new User();\n                user.setId(rs.getInt(\"id\"));\n                user.setUsername(rs.getString(\"username\"));\n                user.setPassword(rs.getString(\"password\"));\n                user.setRole(rs.getString(\"role\"));\n                return user;\n            }\n        }\n        return null;\n    }\n\n    public boolean isUsernameTaken(String username) throws SQLException {\n        String query = \"SELECT COUNT(*) FROM users WHERE username = ?\";\n        try (PreparedStatement ps = conn.prepareStatement(query)) {\n            ps.setString(1, username);\n            ResultSet rs = ps.executeQuery();\n            if (rs.next()) return rs.getInt(1) > 0;\n        }\n        return false;\n    }\n\n    public boolean register(User user) throws SQLException {\n        String query = \"INSERT INTO users (username, password, role) VALUES (?, ?, ?)\";\n        try (PreparedStatement ps = conn.prepareStatement(query)) {\n            ps.setString(1, user.getUsername());\n            ps.setString(2, user.getPassword()); // không mã hóa\n            ps.setString(3, user.getRole().toString());\n            return ps.executeUpdate() > 0;\n        }\n    }\n}\n```\n\n### Giải thích:\n- **login**: Phương thức này kiểm tra thông tin đăng nhập của người dùng. Nếu thông tin đúng, nó trả về một đối tượng `User`.\n- **isUsernameTaken**: Phương thức này kiểm tra xem tên người dùng đã tồn tại trong cơ sở dữ liệu chưa.\n- **register**: Phương thức này thêm một người dùng mới vào cơ sở dữ liệu. Lưu ý rằng mật khẩu không được mã hóa trong ví dụ này, bạn nên mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu để đảm bảo an toàn.\n\nHãy đảm bảo rằng bạn đã thiết lập kết nối cơ sở dữ liệu (`Connection`) trước khi sử dụng `UserDAO`."
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                    "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "\r\n\r\npackage com.coffeeshop.coffeeshop.model;\r\n\r\nimport lombok.*;\r\n\r\n@Data\r\n@AllArgsConstructor\r\n@NoArgsConstructor\r\n\r\npublic class User {\r\n    private int id;\r\n    private String username;\r\n    private String password;\r\n    private Role role; // Chứa nameRole, descriptionRole\r\n}\r\n"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/ProductDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/Session.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\Session.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\create-user-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\create-user-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": ".zencoder\\.gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.zencoder\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/Home/mainAdmin-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\mainAdmin-view.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/Home/HomeUser.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\HomeUser.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/module-info.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\module-info.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/DBConnection.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\DBConnection.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/TestDBConnection.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\TestDBConnection.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Role.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/Auth/create-user-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": "\r\n\r\npackage com.coffeeshop.coffeeshop.model;\r\n\r\nimport lombok.*;\r\n\r\n@Data\r\n@AllArgsConstructor\r\n@NoArgsConstructor\r\n\r\npublic class User {\r\n    private int id;\r\n    private String username;\r\n    private String password;\r\n    private Role role; // Chứa nameRole, descriptionRole\r\n}\r\n"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java"
+                    }
+                ]
+            },
+            "createdAt": 1750581520753,
+            "isInternal": false
+        }
+    ],
+    "isAgent": false,
+    "isNameGenerated": true,
+    "isCustomAgent": false,
+    "isUnitTestsAgent": false,
+    "isE2EAgent": false,
+    "autoApply": false
+}
+}

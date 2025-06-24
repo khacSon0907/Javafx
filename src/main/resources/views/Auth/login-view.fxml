@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           prefWidth="1920" prefHeight="1080"
+           fx:controller="com.coffeeshop.coffeeshop.controller.LoginController"
+           style="-fx-background-color: linear-gradient(to bottom right, #6B4423, #8B4513, #D2691E);">
+
+    <!-- Background overlay -->
+    <Region style="-fx-background-color: rgba(0,0,0,0.3);"/>
+
+    <!-- Main login container -->
+    <VBox alignment="CENTER" spacing="25" maxWidth="400" maxHeight="500">
+
+        <!-- Auth card with shadow effect -->
+        <VBox alignment="CENTER" spacing="20"
+              style="-fx-background-color: white;
+                     -fx-background-radius: 15;
+                     -fx-padding: 40 30 40 30;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 5);">
+
+            <!-- Logo/Icon section -->
+            <VBox alignment="CENTER" spacing="10">
+                <!-- Coffee icon (you can replace with actual logo) -->
+                <Label text="☕" style="-fx-font-size: 48px; -fx-text-fill: #8B4513;"/>
+
+                <!-- App title -->
+                <Label text="COFFEE SHOP "
+                       style="-fx-font-size: 24px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #8B4513;
+                              -fx-font-family: 'Arial Black';">
+                </Label>
+
+                <Label text="Hệ thống quản lý quán cà phê"
+                       style="-fx-font-size: 14px;
+                              -fx-text-fill: #666666;
+                              -fx-font-style: italic;">
+                </Label>
+            </VBox>
+
+            <!-- Input fields section -->
+            <VBox spacing="15" fillWidth="true">
+
+                <!-- Username field with icon -->
+                <VBox spacing="5">
+                    <Label text="Tên đăng nhập"
+                           style="-fx-font-size: 12px;
+                                  -fx-text-fill: #555555;
+                                  -fx-font-weight: bold;"/>
+                    <HBox alignment="CENTER_LEFT" spacing="10"
+                          style="-fx-background-color: #f8f9fa;
+                                 -fx-background-radius: 8;
+                                 -fx-padding: 12 15 12 15;
+                                 -fx-border-color: #e9ecef;
+                                 -fx-border-radius: 8;
+                                 -fx-border-width: 1;">
+                        <Label text="👤" style="-fx-font-size: 16px; -fx-text-fill: #8B4513;"/>
+                        <TextField fx:id="txtUsername"
+                                   promptText="Nhập tên đăng nhập..."
+                                   style="-fx-background-color: transparent;
+                                          -fx-border-color: transparent;
+                                          -fx-font-size: 14px;"
+                                   HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Password field with icon -->
+                <VBox spacing="5">
+                    <Label text="Mật khẩu"
+                           style="-fx-font-size: 12px;
+                                  -fx-text-fill: #555555;
+                                  -fx-font-weight: bold;"/>
+                    <HBox alignment="CENTER_LEFT" spacing="10"
+                          style="-fx-background-color: #f8f9fa;
+                                 -fx-background-radius: 8;
+                                 -fx-padding: 12 15 12 15;
+                                 -fx-border-color: #e9ecef;
+                                 -fx-border-radius: 8;
+                                 -fx-border-width: 1;">
+                        <Label text="🔒" style="-fx-font-size: 16px; -fx-text-fill: #8B4513;"/>
+                        <PasswordField fx:id="txtPassword"
+                                       promptText="Nhập mật khẩu..."
+                                       style="-fx-background-color: transparent;
+                                              -fx-border-color: transparent;
+                                              -fx-font-size: 14px;"
+                                       HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+
+            <!-- Auth button -->
+            <Button text="ĐĂNG NHẬP"
+                    onAction="#handleLogin"
+                    prefWidth="200"
+                    prefHeight="45"
+                    style="-fx-background-color: linear-gradient(to right, #8B4513, #A0522D);
+                           -fx-text-fill: white;
+                           -fx-font-size: 16px;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 25;
+                           -fx-cursor: hand;
+                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);">
+                <font>
+                    <Font name="System Bold" size="16"/>
+                </font>
+            </Button>
+
+            <!-- Message label -->
+            <Label fx:id="lblMessage"
+                   style="-fx-text-fill: #dc3545;
+                          -fx-font-size: 12px;
+                          -fx-font-weight: bold;"
+                   wrapText="true"/>
+
+            <!-- Footer -->
+            <VBox alignment="CENTER" spacing="5">
+                <Separator prefWidth="200" style="-fx-background-color: #e9ecef;"/>
+                <Label text="Phiên bản 1.0 - © 2025 Coffee Shop"
+                       style="-fx-font-size: 10px;
+                              -fx-text-fill: #999999;"/>
+            </VBox>
+
+        </VBox>
+
+    </VBox>
+
+</StackPane>

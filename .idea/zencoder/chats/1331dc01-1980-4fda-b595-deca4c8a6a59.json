@@ -1,0 +1,57 @@
+{
+    "checksum": "abf033de102e85ebf5596b41c2bd019a1a3d4795c16d64c2b592c970a18185a9",
+    "data": {
+    "id": "1331dc01-1980-4fda-b595-deca4c8a6a59",
+    "createdAt": 1750581368739,
+    "updatedAt": 1750581368740,
+    "title": "gen ra cho tôi file UserDao đi ạ",
+    "messages": [
+        {
+            "id": "0a016362-c4ca-41d2-be62-6e17be6dfb18",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "gen ra cho tôi file UserDao đi ạ"
+                }
+            ],
+            "context": {
+                "codebaseEnabled": true
+            },
+            "createdAt": 1750581368740,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "gen ra cho tôi file UserDao đi ạ "
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "7d149b1c-200d-478b-b45c-07c0dfbdc42b",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": ""
+                }
+            ],
+            "createdAt": 1750581369208,
+            "isInternal": false
+        }
+    ],
+    "isAgent": false,
+    "isCustomAgent": false,
+    "isUnitTestsAgent": false,
+    "isE2EAgent": false,
+    "autoApply": false
+}
+}

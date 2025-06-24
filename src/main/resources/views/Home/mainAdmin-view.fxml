@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.effect.DropShadow?>
+
+<BorderPane prefHeight="800" prefWidth="1200" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.coffeeshop.coffeeshop.controller.MainViewController" style="-fx-background-color: linear-gradient(to bottom, #F5F5DC, #DDBEA9);">
+
+    <!-- Top Header -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: linear-gradient(to right, #8B4513, #A0522D); -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);">
+            <padding>
+                <Insets bottom="15" left="20" right="20" top="15" />
+            </padding>
+
+            <Label style="-fx-text-fill: #F5DEB3; -fx-font-size: 24px; -fx-font-weight: bold; -fx-font-family: 'Arial Black';" text="☕ Coffee Shop Manager" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblWelcome" style="-fx-text-fill: #F5DEB3; -fx-font-size: 16px; -fx-font-weight: bold;" />
+            <Button onAction="#handleLogout"
+                    style="-fx-background-color: linear-gradient(to bottom, #F5DEB3, #DEB887);
+                           -fx-text-fill: #8B4513;
+                           -fx-font-weight: bold;
+                           -fx-font-size: 14px;
+                           -fx-background-radius: 25;
+                           -fx-pref-height: 40;
+                           -fx-pref-width: 120;
+                           -fx-cursor: hand;
+                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);"
+                    text="Đăng xuất" />
+        </HBox>
+    </top>
+
+    <!-- Center Content -->
+    <center>
+        <VBox alignment="CENTER" spacing="40">
+            <padding>
+                <Insets bottom="50" left="50" right="50" top="80" />
+            </padding>
+
+            <!-- Welcome Section -->
+            <VBox alignment="CENTER" spacing="20">
+                <Label style="-fx-text-fill: #8B4513; -fx-font-size: 32px; -fx-font-weight: bold; -fx-font-family: 'Arial';"
+                       text="Chào mừng đến với hệ thống quản lý" />
+                <Label style="-fx-text-fill: #A0522D; -fx-font-size: 18px; -fx-font-style: italic;"
+                       text="Chọn chức năng bạn muốn sử dụng" />
+            </VBox>
+
+            <!-- Button Container -->
+            <HBox alignment="CENTER" spacing="30" prefHeight="120.0">
+                <children>
+                    <!-- Product Management Button -->
+                    <VBox alignment="CENTER" spacing="10">
+                        <Button fx:id="btnCreateUsedr" onAction="#handleCreateProduct"
+                                style="-fx-pref-width: 250px;
+                                       -fx-pref-height: 80px;
+                                       -fx-background-color: linear-gradient(to bottom, #CD853F, #A0522D);
+                                       -fx-text-fill: white;
+                                       -fx-font-size: 16px;
+                                       -fx-font-weight: bold;
+                                       -fx-background-radius: 15;
+                                       -fx-cursor: hand;
+                                       -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);"
+                                text="📦 Quản lý sản phẩm" />
+                        <Label style="-fx-text-fill: #8B4513; -fx-font-size: 12px;"
+                               text="Thêm, sửa, xóa sản phẩm" />
+                    </VBox>
+
+                    <!-- Create User Button -->
+                    <VBox alignment="CENTER" spacing="10">
+                        <Button fx:id="btnCreateUser" onAction="#handleCreateUser"
+                                style="-fx-pref-width: 250px;
+                                       -fx-pref-height: 80px;
+                                       -fx-background-color: linear-gradient(to bottom, #D2691E, #A0522D);
+                                       -fx-text-fill: white;
+                                       -fx-font-size: 16px;
+                                       -fx-font-weight: bold;
+                                       -fx-background-radius: 15;
+                                       -fx-cursor: hand;
+                                       -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);"
+                                text="👤 Tạo tài khoản nhân viên" />
+                        <Label style="-fx-text-fill: #8B4513; -fx-font-size: 12px;"
+                               text="Tạo tài khoản cho nhân viên mới" />
+                    </VBox>
+
+                    <!-- View Staff Button -->
+                    <VBox alignment="CENTER" spacing="10">
+                        <Button fx:id="btnViewStaff" onAction="#handleViewStaff"
+                                style="-fx-pref-width: 250px;
+                                       -fx-pref-height: 80px;
+                                       -fx-background-color: linear-gradient(to bottom, #BC8F8F, #8B7355);
+                                       -fx-text-fill: white;
+                                       -fx-font-size: 16px;
+                                       -fx-font-weight: bold;
+                                       -fx-background-radius: 15;
+                                       -fx-cursor: hand;
+                                       -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);"
+                                text="📋 Xem danh sách nhân viên" />
+                        <Label style="-fx-text-fill: #8B4513; -fx-font-size: 12px;"
+                               text="Xem thông tin tất cả nhân viên" />
+                    </VBox>
+                </children>
+            </HBox>
+
+            <!-- Footer Info -->
+            <HBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+                <Label style="-fx-text-fill: #A0522D; -fx-font-size: 14px; -fx-font-style: italic;"
+                       text="Coffee Shop Management System v1.0" />
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>

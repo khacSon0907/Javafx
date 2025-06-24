@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coffeeshop.coffeeshop.controller.HomeUserController">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-background-color: #6F4E37; -fx-padding: 10;">
+            <Label text="☕ Coffee Shop" style="-fx-font-size: 24px; -fx-text-fill: white;" />
+            <Region fx:id="spacer" HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblWelcome" style="-fx-text-fill: white; -fx-font-size: 14px;" />
+            <Button text="Đăng xuất" onAction="#handleLogout" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" alignment="CENTER" style="-fx-padding: 30;">
+            <Button fx:id="btnCheckIn" text="Chấm công" minWidth="200" onAction="#handleCheckIn" />
+            <Button fx:id="btnOrderDrink" text="Order nước" minWidth="200" onAction="#handleOrderDrink" />
+            <Button fx:id="btnCashier" text="Xuất hoá đơn" minWidth="200" onAction="#handleCashier" />
+            <Button fx:id="btnKitchen" text="Pha chế" minWidth="200" onAction="#handleKitchen" />
+        </VBox>
+    </center>
+
+</BorderPane>

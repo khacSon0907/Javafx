@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coffeeshop.coffeeshop.controller.ProductController"
+            style="-fx-background-color: linear-gradient(to bottom, #F5F5DC, #E8D5B7);">
+
+    <!-- Enhanced Header with Modern Design -->
+    <top>
+        <VBox>
+            <HBox alignment="CENTER" spacing="15"
+                  style="-fx-background-color: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
+                         -fx-padding: 25;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0, 0, 3);">
+                <Label text="☕"
+                       style="-fx-font-size: 36px;" />
+                <Label text="QUẢN LÝ SẢN PHẨM COFFEE SHOP"
+                       style="-fx-font-size: 32px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #FFF8DC;
+                              -fx-font-family: 'Segoe UI', 'Arial', 'sans-serif';
+                              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 1, 1);" />
+                <Label text="📦"
+                       style="-fx-font-size: 36px;" />
+            </HBox>
+
+            <!-- Quick Stats Bar -->
+            <HBox alignment="CENTER" spacing="40"
+                  style="-fx-background-color: rgba(139, 69, 19, 0.15);
+                         -fx-padding: 15;">
+                <Label fx:id="lblTotalProducts"
+                       text="📊 Tổng: 0 sản phẩm"
+                       style="-fx-font-size: 16px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #8B4513;" />
+                <Separator orientation="VERTICAL" prefHeight="20" />
+                <Label fx:id="lblActiveProducts"
+                       text="✅ Đang bán: 0"
+                       style="-fx-font-size: 16px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #228B22;" />
+                <Separator orientation="VERTICAL" prefHeight="20" />
+                <Label fx:id="lblInactiveProducts"
+                       text="❌ Ngừng bán: 0"
+                       style="-fx-font-size: 16px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #B22222;" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Enhanced Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true"
+                    style="-fx-background-color: transparent;
+                           -fx-background: transparent;">
+            <HBox spacing="25" style="-fx-padding: 30;">
+
+                <!-- Enhanced Left Side - Product Table Section -->
+                <VBox spacing="20" HBox.hgrow="ALWAYS" prefWidth="750"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 20;
+                             -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 5);
+                             -fx-padding: 30;">
+
+                    <!-- Enhanced Search Section -->
+                    <VBox spacing="15">
+                        <HBox alignment="CENTER_LEFT" spacing="15">
+                            <Label text="📋 DANH SÁCH SẢN PHẨM"
+                                   style="-fx-font-size: 22px;
+                                          -fx-font-weight: bold;
+                                          -fx-text-fill: #8B4513;" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Button text="🔄 Làm mới"
+                                    style="-fx-background-color: linear-gradient(to bottom, #87CEEB, #4682B4);
+                                           -fx-text-fill: white;
+                                           -fx-font-weight: bold;
+                                           -fx-background-radius: 15;
+                                           -fx-pref-width: 120;
+                                           -fx-pref-height: 35;
+                                           -fx-cursor: hand;
+                                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);" />
+                        </HBox>
+
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <TextField fx:id="txtSearch"
+                                       promptText="🔍 Tìm kiếm theo tên, danh mục..."
+                                       prefWidth="300"
+                                       style="-fx-background-radius: 25;
+                                              -fx-border-color: #D2B48C;
+                                              -fx-border-radius: 25;
+                                              -fx-border-width: 2;
+                                              -fx-padding: 12 20 12 20;
+                                              -fx-font-size: 15px;
+                                              -fx-background-color: #FAFAFA;
+                                              -fx-effect: innershadow(gaussian, rgba(0,0,0,0.1), 3, 0, 0, 1);" />
+
+                            <ComboBox fx:id="cbFilterCategory"
+                                      promptText="Lọc theo danh mục"
+                                      prefWidth="180"
+                                      style="-fx-background-radius: 15;
+                                             -fx-border-color: #D2B48C;
+                                             -fx-border-radius: 15;
+                                             -fx-font-size: 14px;" />
+
+                            <ComboBox fx:id="cbFilterStatus"
+                                      promptText="Lọc theo trạng thái"
+                                      prefWidth="160"
+                                      style="-fx-background-radius: 15;
+                                             -fx-border-color: #D2B48C;
+                                             -fx-border-radius: 15;
+                                             -fx-font-size: 14px;" />
+                        </HBox>
+                    </VBox>
+
+                    <!-- Enhanced Table -->
+                    <TableView fx:id="tableProducts"
+                               prefHeight="580"
+                               style="-fx-background-color: #FAFAFA;
+                                      -fx-background-radius: 15;
+                                      -fx-border-color: #D2B48C;
+                                      -fx-border-radius: 15;
+                                      -fx-border-width: 2;
+                                      -fx-effect: innershadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+                        <columns>
+                            <TableColumn fx:id="colId" text="ID" prefWidth="50"
+                                         style="-fx-alignment: CENTER;" />
+                            <TableColumn fx:id="colImage" text="Ảnh" prefWidth="80"
+                                         style="-fx-alignment: CENTER;" />
+                            <TableColumn fx:id="colName" text="Tên sản phẩm" prefWidth="200" />
+                            <TableColumn fx:id="colPrice" text="Giá (VNĐ)" prefWidth="120"
+                                         style="-fx-alignment: CENTER-RIGHT;" />
+                            <TableColumn fx:id="colCategory" text="Danh mục" prefWidth="130"
+                                         style="-fx-alignment: CENTER;" />
+                            <TableColumn fx:id="colDescription" text="Mô tả" prefWidth="180" />
+                            <TableColumn fx:id="colStatus" text="Trạng thái" prefWidth="100"
+                                         style="-fx-alignment: CENTER;" />
+                        </columns>
+                    </TableView>
+
+                    <!-- Enhanced Table Controls -->
+                    <HBox alignment="CENTER_LEFT" spacing="20">
+                        <Label fx:id="lblProductCount"
+                               text="Hiển thị: 0 / 0 sản phẩm"
+                               style="-fx-font-weight: bold;
+                                      -fx-text-fill: #8B4513;
+                                      -fx-font-size: 15px;" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button text="❌ Xóa đã chọn"
+                                style="-fx-background-color: linear-gradient(to bottom, #FF6B6B, #EE5A52);
+                                       -fx-text-fill: white;
+                                       -fx-font-weight: bold;
+                                       -fx-background-radius: 12;
+                                       -fx-pref-width: 140;
+                                       -fx-pref-height: 35;
+                                       -fx-cursor: hand;
+                                       -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);" />
+                    </HBox>
+                </VBox>
+
+                <!-- Enhanced Right Side - Product Form Section -->
+                <VBox spacing="25" prefWidth="480"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 20;
+                             -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 5);
+                             -fx-padding: 30;">
+
+                    <Label text="📝 THÔNG TIN SẢN PHẨM"
+                           style="-fx-font-size: 22px;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #8B4513;" />
+
+                    <!-- Enhanced Product Image Section -->
+                    <VBox alignment="CENTER" spacing="15"
+                          style="-fx-border-color: #D2B48C;
+                                 -fx-border-radius: 15;
+                                 -fx-border-width: 2;
+                                 -fx-background-color: linear-gradient(to bottom, #FAFAFA, #F0F0F0);
+                                 -fx-background-radius: 15;
+                                 -fx-padding: 20;
+                                 -fx-effect: innershadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+                        <Label text="🖼️ ẢNH SẢN PHẨM"
+                               style="-fx-font-weight: bold;
+                                      -fx-text-fill: #8B4513;
+                                      -fx-font-size: 16px;" />
+
+                        <StackPane style="-fx-background-color: white;
+                                          -fx-background-radius: 10;
+                                          -fx-border-color: #E0E0E0;
+                                          -fx-border-radius: 10;
+                                          -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                            <ImageView fx:id="imgPreview"
+                                       fitWidth="140" fitHeight="140"
+                                       preserveRatio="true" />
+                        </StackPane>
+
+                        <HBox spacing="10" alignment="CENTER">
+                            <Button fx:id="btnChooseImage"
+                                    text="📷 Chọn ảnh"
+                                    style="-fx-background-color: linear-gradient(to bottom, #DEB887, #D2B48C);
+                                           -fx-text-fill: #8B4513;
+                                           -fx-font-weight: bold;
+                                           -fx-background-radius: 10;
+                                           -fx-pref-width: 120;
+                                           -fx-pref-height: 35;
+                                           -fx-cursor: hand;
+                                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 2);" />
+
+                            <Button fx:id="btnRemoveImage"
+                                    text="🗑️ Xóa ảnh"
+                                    style="-fx-background-color: linear-gradient(to bottom, #FFB6C1, #FFA0B4);
+                                           -fx-text-fill: #8B0000;
+                                           -fx-font-weight: bold;
+                                           -fx-background-radius: 10;
+                                           -fx-pref-width: 120;
+                                           -fx-pref-height: 35;
+                                           -fx-cursor: hand;
+                                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 2);" />
+                        </HBox>
+                    </VBox>
+
+                    <!-- Enhanced Form Fields -->
+                    <VBox spacing="20">
+                        <!-- Product ID (Hidden when adding new) -->
+                        <VBox spacing="8" fx:id="vboxId" visible="false" managed="false">
+                            <Label text="🆔 ID sản phẩm:"
+                                   style="-fx-font-weight: bold; -fx-text-fill: #8B4513; -fx-font-size: 15px;" />
+                            <TextField fx:id="txtId"
+                                       editable="false"
+                                       style="-fx-background-color: #F5F5F5;
+                                              -fx-background-radius: 10;
+                                              -fx-border-color: #D2B48C;
+                                              -fx-border-radius: 10;
+                                              -fx-padding: 12;
+                                              -fx-font-size: 15px;" />
+                        </VBox>
+
+                        <!-- Product Name -->
+                        <VBox spacing="8">
+                            <Label text="📝 Tên sản phẩm: *"
+                                   style="-fx-font-weight: bold; -fx-text-fill: #8B4513; -fx-font-size: 15px;" />
+                            <TextField fx:id="txtName"
+                                       promptText="Nhập tên sản phẩm (VD: Cà phê đen đá)..."
+                                       style="-fx-background-radius: 10;
+                                              -fx-border-color: #D2B48C;
+                                              -fx-border-radius: 10;
+                                              -fx-border-width: 2;
+                                              -fx-padding: 12;
+                                              -fx-font-size: 15px;
+                                              -fx-background-color: white;" />
+                        </VBox>
+
+                        <!-- Price -->
+                        <VBox spacing="8">
+                            <Label text="💰 Giá tiền: *"
+                                   style="-fx-font-weight: bold; -fx-text-fill: #8B4513; -fx-font-size: 15px;" />
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <TextField fx:id="txtPrice"
+                                           promptText="0"
+                                           prefWidth="300"
+                                           style="-fx-background-radius: 10;
+                                                  -fx-border-color: #D2B48C;
+                                                  -fx-border-radius: 10;
+                                                  -fx-border-width: 2;
+                                                  -fx-padding: 12;
+                                                  -fx-font-size: 15px;
+                                                  -fx-background-color: white;" />
+                                <Label text="VNĐ"
+                                       style="-fx-font-weight: bold; -fx-text-fill: #8B4513; -fx-font-size: 15px;" />
+                            </HBox>
+                        </VBox>
+
+                        <!-- Category -->
+                        <VBox spacing="8">
+                            <Label text="🏷️ Danh mục: *"
+                                   style="-fx-font-weight: bold; -fx-text-fill: #8B4513; -fx-font-size: 15px;" />
+                            <ComboBox fx:id="cbCategory"
+                                      prefWidth="420"
+                                      promptText="Chọn danh mục sản phẩm..."
+                                      style="-fx-background-radius: 10;
+                                             -fx-border-color: #D2B48C;
+                                             -fx-border-radius: 10;
+                                             -fx-border-width: 2;
+                                             -fx-font-size: 15px;
+                                             -fx-background-color: white;" />
+                        </VBox>
+
+                        <!-- Status -->
+                        <VBox spacing="8">
+                            <Label text="📊 Trạng thái:"
+                                   style="-fx-font-weight: bold; -fx-text-fill: #8B4513; -fx-font-size: 15px;" />
+                            <HBox spacing="15" alignment="CENTER_LEFT">
+                                <RadioButton fx:id="rbActive"
+                                             text="✅ Đang bán"
+                                             selected="true"
+                                             style="-fx-font-size: 14px; -fx-text-fill: #228B22; -fx-font-weight: bold;" />
+                                <RadioButton fx:id="rbInactive"
+                                             text="❌ Ngừng bán"
+                                             style="-fx-font-size: 14px; -fx-text-fill: #B22222; -fx-font-weight: bold;" />
+                            </HBox>
+                        </VBox>
+
+                        <!-- Description -->
+                        <VBox spacing="8">
+                            <Label text="📄 Mô tả:"
+                                   style="-fx-font-weight: bold; -fx-text-fill: #8B4513; -fx-font-size: 15px;" />
+                            <TextArea fx:id="txtDescription"
+                                      prefRowCount="4"
+                                      wrapText="true"
+                                      promptText="Nhập mô tả chi tiết về sản phẩm..."
+                                      style="-fx-background-radius: 10;
+                                             -fx-border-color: #D2B48C;
+                                             -fx-border-radius: 10;
+                                             -fx-border-width: 2;
+                                             -fx-font-size: 14px;
+                                             -fx-background-color: white;" />
+                        </VBox>
+                    </VBox>
+
+                    <!-- Enhanced Action Buttons -->
+                    <VBox spacing="15">
+                        <!-- Primary Actions -->
+                        <HBox spacing="12" alignment="CENTER">
+                            <Button fx:id="btnAdd"
+                                    text="➕ THÊM MỚI"
+                                    onAction="#handleAddProduct"
+                                    style="-fx-pref-width: 130;
+                                           -fx-pref-height: 45;
+                                           -fx-background-color: linear-gradient(to bottom, #28a745, #218838);
+                                           -fx-text-fill: white;
+                                           -fx-font-weight: bold;
+                                           -fx-font-size: 14px;
+                                           -fx-background-radius: 15;
+                                           -fx-cursor: hand;
+                                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);" />
+
+                            <Button fx:id="btnEdit"
+                                    text="✏️ CẬP NHẬT"
+                                    onAction="#handleEditProduct"
+                                    style="-fx-pref-width: 130;
+                                           -fx-pref-height: 45;
+                                           -fx-background-color: linear-gradient(to bottom, #ffc107, #e0a800);
+                                           -fx-text-fill: white;
+                                           -fx-font-weight: bold;
+                                           -fx-font-size: 14px;
+                                           -fx-background-radius: 15;
+                                           -fx-cursor: hand;
+                                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);" />
+
+                            <Button fx:id="btnDelete"
+                                    text="🗑️ XÓA"
+                                    onAction="#handleDeleteProduct"
+                                    style="-fx-pref-width: 130;
+                                           -fx-pref-height: 45;
+                                           -fx-background-color: linear-gradient(to bottom, #dc3545, #c82333);
+                                           -fx-text-fill: white;
+                                           -fx-font-weight: bold;
+                                           -fx-font-size: 14px;
+                                           -fx-background-radius: 15;
+                                           -fx-cursor: hand;
+                                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);" />
+                        </HBox>
+
+                        <!-- Secondary Actions -->
+                        <HBox spacing="12" alignment="CENTER">
+                            <Button fx:id="btnClear"
+                                    text="🧹 XÓA FORM"
+                                    style="-fx-pref-width: 190;
+                                           -fx-pref-height: 40;
+                                           -fx-background-color: linear-gradient(to bottom, #17a2b8, #138496);
+                                           -fx-text-fill: white;
+                                           -fx-font-weight: bold;
+                                           -fx-font-size: 14px;
+                                           -fx-background-radius: 12;
+                                           -fx-cursor: hand;
+                                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0, 0, 2);" />
+
+                            <Button fx:id="btnBack"
+                                    text="🔙 QUAY LẠI"
+                                    style="-fx-pref-width: 190;
+                                           -fx-pref-height: 40;
+                                           -fx-background-color: linear-gradient(to bottom, #6c757d, #5a6268);
+                                           -fx-text-fill: white;
+                                           -fx-font-weight: bold;
+                                           -fx-font-size: 14px;
+                                           -fx-background-radius: 12;
+                                           -fx-cursor: hand;
+                                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0, 0, 2);" />
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </HBox>
+        </ScrollPane>
+    </center>
+
+    <!-- Enhanced Bottom Status Bar -->
+    <bottom>
+        <VBox>
+            <!-- Progress Bar (Hidden by default) -->
+            <ProgressBar fx:id="progressBar"
+                         visible="false" managed="false"
+                         prefWidth="Infinity" prefHeight="6"
+                         style="-fx-accent: #8B4513;" />
+
+            <!-- Status Bar -->
+            <HBox alignment="CENTER_LEFT" spacing="20"
+                  style="-fx-background-color: linear-gradient(to right, rgba(139, 69, 19, 0.1), rgba(160, 82, 45, 0.1));
+                         -fx-background-radius: 15;
+                         -fx-padding: 18;
+                         -fx-margin: 15;">
+                <Label text="☕"
+                       style="-fx-font-size: 20px;" />
+                <Label fx:id="lblStatus"
+                       text="Sẵn sàng thao tác"
+                       style="-fx-font-weight: bold;
+                              -fx-text-fill: #8B4513;
+                              -fx-font-size: 15px;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="lblCurrentTime"
+                       text="..."
+                       style="-fx-text-fill: #8B4513;
+                              -fx-font-size: 13px;" />
+                <Separator orientation="VERTICAL" prefHeight="20" />
+                <Label text="Coffee Shop Management System v2.0"
+                       style="-fx-text-fill: #8B4513;
+                              -fx-font-size: 13px;
+                              -fx-font-style: italic;" />
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

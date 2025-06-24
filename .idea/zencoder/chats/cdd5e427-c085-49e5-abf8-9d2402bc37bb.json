@@ -1,0 +1,467 @@
+{
+    "checksum": "2559e802eb3bb0a7ac695edd2a872b3b3eb165de2a243778bf833df7065db61d",
+    "data": {
+    "id": "cdd5e427-c085-49e5-abf8-9d2402bc37bb",
+    "createdAt": 1750613806668,
+    "updatedAt": 1750616791733,
+    "title": "File Update Instructions",
+    "messages": [
+        {
+            "id": "e33b618a-19b5-4c8d-b736-0a2ed310d291",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "update lại file đó cho tôi"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                    "fsPath": "D:/STUDY-HUFLIT/CoffeeShop/coffeeShop/src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                    "sources": [
+                        "opened_tab"
+                    ]
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/ProductDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\products\\Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\com\\coffeeshop\\coffeeshop\\view\\main-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\com\\coffeeshop\\coffeeshop\\view\\main-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".zencoder\\.gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.zencoder\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/ProductDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "pom.xml"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java"
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\products\\Products.fxml",
+                        "fsPath": "src\\main\\resources\\views\\products\\Products.fxml"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:/STUDY-HUFLIT/CoffeeShop/coffeeShop/src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "pom.xml"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java"
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\products\\Products.fxml",
+                        "fsPath": "src\\main\\resources\\views\\products\\Products.fxml"
+                    }
+                ]
+            },
+            "createdAt": 1750613806677,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "update lại file đó cho tôi"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "6fef5829-da42-469d-954c-d2cacb70a935",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "To update the file, please specify what changes or updates you would like to make. The retrieved code snippets include several Java classes and an FXML file related to a coffee shop application. Here are some potential updates you might consider:\n\n1. **ProductDAO.java**:\n   - Add new methods for additional database operations.\n   - Modify existing SQL queries for optimization or additional functionality.\n\n2. **ProductController.java**:\n   - Implement new event handlers for additional UI interactions.\n   - Update existing methods to handle new product attributes or features.\n\n3. **Products.fxml**:\n   - Modify the UI layout or style.\n   - Add new UI components like buttons or fields.\n\n4. **pom.xml**:\n   - Update dependencies to newer versions.\n   - Add new dependencies for additional features.\n\n5. **MainApplication.java**:\n   - Change the initial scene or add new stages.\n\nPlease provide specific instructions on what you would like to update, and I can assist you further with the implementation."
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                    "fsPath": "D:/STUDY-HUFLIT/CoffeeShop/coffeeShop/src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                    "sources": [
+                        "opened_tab"
+                    ]
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/ProductDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\products\\Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\com\\coffeeshop\\coffeeshop\\view\\main-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\com\\coffeeshop\\coffeeshop\\view\\main-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".zencoder\\.gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.zencoder\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/ProductDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "pom.xml"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java"
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\products\\Products.fxml",
+                        "fsPath": "src\\main\\resources\\views\\products\\Products.fxml"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:/STUDY-HUFLIT/CoffeeShop/coffeeShop/src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "pom.xml"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java"
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\products\\Products.fxml",
+                        "fsPath": "src\\main\\resources\\views\\products\\Products.fxml"
+                    }
+                ]
+            },
+            "createdAt": 1750613816668,
+            "isInternal": false
+        },
+        {
+            "id": "73ce9629-906e-45ef-8099-b02fba5f64e9",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "gen kiếm tra produccontroller của tôid dúng ch"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                    "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "package com.coffeeshop.coffeeshop.controller;\r\n\r\nimport com.coffeeshop.coffeeshop.dao.ProductDAO;\r\nimport com.coffeeshop.coffeeshop.model.Categories;\r\nimport com.coffeeshop.coffeeshop.model.Product;\r\nimport com.coffeeshop.coffeeshop.util.DBConnection;\r\nimport javafx.beans.property.SimpleStringProperty;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.scene.image.ImageView;\r\n\r\nimport java.net.URL;\r\nimport java.sql.Connection;\r\nimport java.util.List;\r\nimport java.util.ResourceBundle;\r\n\r\npublic class ProductController implements Initializable {\r\n\r\n    @FXML private TableView<Product> tableProducts;\r\n    @FXML private TableColumn<Product, Integer> colId;\r\n    @FXML private TableColumn<Product, String> colName;\r\n    @FXML private TableColumn<Product, Double> colPrice;\r\n    @FXML private TableColumn<Product, String> colCategory;\r\n    @FXML private TableColumn<Product, String> colDescription;\r\n    @FXML private TableColumn<Product, String> colStatus;\r\n\r\n    @FXML private TextField txtName;\r\n    @FXML private TextField txtPrice;\r\n    @FXML private TextArea txtDescription;\r\n    @FXML private ComboBox<Categories> cbCategory;\r\n    @FXML private ImageView imgPreview;\r\n\r\n    private ProductDAO productDAO;\r\n    private ObservableList<Product> productList;\r\n\r\n    @Override\r\n    public void initialize(URL location, ResourceBundle resources) {\r\n        try (Connection conn = DBConnection.getConnection()) {\r\n            this.productDAO = new ProductDAO(conn);\r\n\r\n            colId.setCellValueFactory(new PropertyValueFactory<>(\"id\"));\r\n            colName.setCellValueFactory(new PropertyValueFactory<>(\"nameProducts\"));\r\n            colPrice.setCellValueFactory(new PropertyValueFactory<>(\"price\"));\r\n            colCategory.setCellValueFactory(new PropertyValueFactory<>(\"categories\")); // cần thêm custom để hiển thị tên\r\n            colDescription.setCellValueFactory(new PropertyValueFactory<>(\"descriptionProducts\"));\r\n            colStatus.setCellValueFactory(new PropertyValueFactory<>(\"active\")); // bạn đặt tên là active, không phải status\r\n            loadProducts();\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n    private void loadProducts() {\r\n        try {\r\n            List<Product> products = productDAO.getAllProducts();\r\n            productList = FXCollections.observableArrayList(products);\r\n            System.out.println(\"Table set with: \" + productList.size() + \" items\");\r\n            tableProducts.setItems(productList);\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleAddProduct() {\r\n        try {\r\n            Product p = new Product();\r\n            p.setNameProducts(txtName.getText());\r\n            p.setDescriptionProducts(txtDescription.getText());\r\n            p.setPrice(Double.parseDouble(txtPrice.getText()));\r\n            p.setCategories(cbCategory.getValue());\r\n            p.setImage_path(\"images/default.png\");\r\n            p.setActive(true);\r\n\r\n            productDAO.insert(p);\r\n            loadProducts();\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleDeleteProduct() {\r\n        Product selected = tableProducts.getSelectionModel().getSelectedItem();\r\n        if (selected != null) {\r\n            try {\r\n                productDAO.delete(selected.getId());\r\n                loadProducts();\r\n            } catch (Exception e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleEditProduct() {\r\n        Product selected = tableProducts.getSelectionModel().getSelectedItem();\r\n        if (selected != null) {\r\n            try {\r\n                selected.setNameProducts(txtName.getText());\r\n                selected.setDescriptionProducts(txtDescription.getText());\r\n                selected.setPrice(Double.parseDouble(txtPrice.getText()));\r\n                selected.setCategories(cbCategory.getValue());\r\n\r\n                productDAO.update(selected);\r\n                loadProducts();\r\n            } catch (Exception e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n}\r\n"
+                },
+                "codebaseEnabled": false,
+                "usedFilePaths": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": "package com.coffeeshop.coffeeshop.controller;\r\n\r\nimport com.coffeeshop.coffeeshop.dao.ProductDAO;\r\nimport com.coffeeshop.coffeeshop.model.Categories;\r\nimport com.coffeeshop.coffeeshop.model.Product;\r\nimport com.coffeeshop.coffeeshop.util.DBConnection;\r\nimport javafx.beans.property.SimpleStringProperty;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.scene.image.ImageView;\r\n\r\nimport java.net.URL;\r\nimport java.sql.Connection;\r\nimport java.util.List;\r\nimport java.util.ResourceBundle;\r\n\r\npublic class ProductController implements Initializable {\r\n\r\n    @FXML private TableView<Product> tableProducts;\r\n    @FXML private TableColumn<Product, Integer> colId;\r\n    @FXML private TableColumn<Product, String> colName;\r\n    @FXML private TableColumn<Product, Double> colPrice;\r\n    @FXML private TableColumn<Product, String> colCategory;\r\n    @FXML private TableColumn<Product, String> colDescription;\r\n    @FXML private TableColumn<Product, String> colStatus;\r\n\r\n    @FXML private TextField txtName;\r\n    @FXML private TextField txtPrice;\r\n    @FXML private TextArea txtDescription;\r\n    @FXML private ComboBox<Categories> cbCategory;\r\n    @FXML private ImageView imgPreview;\r\n\r\n    private ProductDAO productDAO;\r\n    private ObservableList<Product> productList;\r\n\r\n    @Override\r\n    public void initialize(URL location, ResourceBundle resources) {\r\n        try (Connection conn = DBConnection.getConnection()) {\r\n            this.productDAO = new ProductDAO(conn);\r\n\r\n            colId.setCellValueFactory(new PropertyValueFactory<>(\"id\"));\r\n            colName.setCellValueFactory(new PropertyValueFactory<>(\"nameProducts\"));\r\n            colPrice.setCellValueFactory(new PropertyValueFactory<>(\"price\"));\r\n            colCategory.setCellValueFactory(new PropertyValueFactory<>(\"categories\")); // cần thêm custom để hiển thị tên\r\n            colDescription.setCellValueFactory(new PropertyValueFactory<>(\"descriptionProducts\"));\r\n            colStatus.setCellValueFactory(new PropertyValueFactory<>(\"active\")); // bạn đặt tên là active, không phải status\r\n            loadProducts();\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n    private void loadProducts() {\r\n        try {\r\n            List<Product> products = productDAO.getAllProducts();\r\n            productList = FXCollections.observableArrayList(products);\r\n            System.out.println(\"Table set with: \" + productList.size() + \" items\");\r\n            tableProducts.setItems(productList);\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleAddProduct() {\r\n        try {\r\n            Product p = new Product();\r\n            p.setNameProducts(txtName.getText());\r\n            p.setDescriptionProducts(txtDescription.getText());\r\n            p.setPrice(Double.parseDouble(txtPrice.getText()));\r\n            p.setCategories(cbCategory.getValue());\r\n            p.setImage_path(\"images/default.png\");\r\n            p.setActive(true);\r\n\r\n            productDAO.insert(p);\r\n            loadProducts();\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleDeleteProduct() {\r\n        Product selected = tableProducts.getSelectionModel().getSelectedItem();\r\n        if (selected != null) {\r\n            try {\r\n                productDAO.delete(selected.getId());\r\n                loadProducts();\r\n            } catch (Exception e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleEditProduct() {\r\n        Product selected = tableProducts.getSelectionModel().getSelectedItem();\r\n        if (selected != null) {\r\n            try {\r\n                selected.setNameProducts(txtName.getText());\r\n                selected.setDescriptionProducts(txtDescription.getText());\r\n                selected.setPrice(Double.parseDouble(txtPrice.getText()));\r\n                selected.setCategories(cbCategory.getValue());\r\n\r\n                productDAO.update(selected);\r\n                loadProducts();\r\n            } catch (Exception e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n}\r\n"
+                    }
+                ]
+            },
+            "createdAt": 1750616772829,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "gen kiếm tra produccontroller của tôid dúng ch"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "6dfa6a2d-037f-4864-aba6-041b62fc1006",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "To ensure that your `ProductController` is functioning correctly, you can create a set of unit tests. Below is an example of how you might write tests for the `ProductController` using JUnit, a popular testing framework for Java. These tests will focus on verifying the behavior of the methods within the `ProductController`.\n\nFirst, ensure you have JUnit and any necessary testing libraries included in your `pom.xml` or project setup.\n\nHere's a basic example of how you might set up tests for the `ProductController`:\n\n```java\nimport com.coffeeshop.coffeeshop.controller.ProductController;\nimport com.coffeeshop.coffeeshop.dao.ProductDAO;\nimport com.coffeeshop.coffeeshop.model.Categories;\nimport com.coffeeshop.coffeeshop.model.Product;\nimport javafx.collections.ObservableList;\nimport javafx.scene.control.ComboBox;\nimport javafx.scene.control.TableView;\nimport javafx.scene.control.TextArea;\nimport javafx.scene.control.TextField;\nimport org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\nimport org.mockito.Mockito;\n\nimport static org.junit.jupiter.api.Assertions.*;\nimport static org.mockito.Mockito.*;\n\npublic class ProductControllerTest {\n\n    private ProductController productController;\n    private ProductDAO productDAO;\n\n    @BeforeEach\n    public void setUp() {\n        productDAO = mock(ProductDAO.class);\n        productController = new ProductController();\n        productController.productDAO = productDAO;\n\n        // Mocking UI components\n        productController.txtName = new TextField();\n        productController.txtPrice = new TextField();\n        productController.txtDescription = new TextArea();\n        productController.cbCategory = new ComboBox<>();\n        productController.tableProducts = new TableView<>();\n    }\n\n    @Test\n    public void testHandleAddProduct() {\n        // Set up test data\n        productController.txtName.setText(\"Coffee\");\n        productController.txtPrice.setText(\"5.0\");\n        productController.txtDescription.setText(\"Delicious coffee\");\n        Categories category = new Categories();\n        category.setNameCategories(\"Beverages\");\n        productController.cbCategory.setValue(category);\n\n        // Call the method\n        productController.handleAddProduct();\n\n        // Verify that the productDAO.insert method was called\n        verify(productDAO, times(1)).insert(any(Product.class));\n    }\n\n    @Test\n    public void testHandleDeleteProduct() {\n        // Set up test data\n        Product product = new Product();\n        product.setId(1);\n        productController.tableProducts.getItems().add(product);\n        productController.tableProducts.getSelectionModel().select(product);\n\n        // Call the method\n        productController.handleDeleteProduct();\n\n        // Verify that the productDAO.delete method was called\n        verify(productDAO, times(1)).delete(product.getId());\n    }\n\n    @Test\n    public void testHandleEditProduct() {\n        // Set up test data\n        Product product = new Product();\n        product.setId(1);\n        productController.tableProducts.getItems().add(product);\n        productController.tableProducts.getSelectionModel().select(product);\n\n        productController.txtName.setText(\"Updated Coffee\");\n        productController.txtPrice.setText(\"6.0\");\n        productController.txtDescription.setText(\"Updated description\");\n        Categories category = new Categories();\n        category.setNameCategories(\"Updated Beverages\");\n        productController.cbCategory.setValue(category);\n\n        // Call the method\n        productController.handleEditProduct();\n\n        // Verify that the productDAO.update method was called\n        verify(productDAO, times(1)).update(any(Product.class));\n    }\n}\n```\n\n### Key Points:\n- **Mocking**: The `ProductDAO` is mocked to isolate the `ProductController` from the database layer.\n- **UI Components**: UI components like `TextField`, `TextArea`, and `ComboBox` are instantiated and set up with test data.\n- **Verification**: The tests verify that the appropriate methods on the `ProductDAO` are called with the expected parameters.\n\n### Running Tests:\n- Ensure you have JUnit and Mockito dependencies in your project.\n- Run the tests using your IDE's test runner or a build tool like Maven or Gradle.\n\nThis setup will help you verify that the `ProductController` methods behave as expected. Adjust the tests as needed to fit your specific application logic and requirements."
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                    "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "package com.coffeeshop.coffeeshop.controller;\r\n\r\nimport com.coffeeshop.coffeeshop.dao.ProductDAO;\r\nimport com.coffeeshop.coffeeshop.model.Categories;\r\nimport com.coffeeshop.coffeeshop.model.Product;\r\nimport com.coffeeshop.coffeeshop.util.DBConnection;\r\nimport javafx.beans.property.SimpleStringProperty;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.scene.image.ImageView;\r\n\r\nimport java.net.URL;\r\nimport java.sql.Connection;\r\nimport java.util.List;\r\nimport java.util.ResourceBundle;\r\n\r\npublic class ProductController implements Initializable {\r\n\r\n    @FXML private TableView<Product> tableProducts;\r\n    @FXML private TableColumn<Product, Integer> colId;\r\n    @FXML private TableColumn<Product, String> colName;\r\n    @FXML private TableColumn<Product, Double> colPrice;\r\n    @FXML private TableColumn<Product, String> colCategory;\r\n    @FXML private TableColumn<Product, String> colDescription;\r\n    @FXML private TableColumn<Product, String> colStatus;\r\n\r\n    @FXML private TextField txtName;\r\n    @FXML private TextField txtPrice;\r\n    @FXML private TextArea txtDescription;\r\n    @FXML private ComboBox<Categories> cbCategory;\r\n    @FXML private ImageView imgPreview;\r\n\r\n    private ProductDAO productDAO;\r\n    private ObservableList<Product> productList;\r\n\r\n    @Override\r\n    public void initialize(URL location, ResourceBundle resources) {\r\n        try (Connection conn = DBConnection.getConnection()) {\r\n            this.productDAO = new ProductDAO(conn);\r\n\r\n            colId.setCellValueFactory(new PropertyValueFactory<>(\"id\"));\r\n            colName.setCellValueFactory(new PropertyValueFactory<>(\"nameProducts\"));\r\n            colPrice.setCellValueFactory(new PropertyValueFactory<>(\"price\"));\r\n            colCategory.setCellValueFactory(new PropertyValueFactory<>(\"categories\")); // cần thêm custom để hiển thị tên\r\n            colDescription.setCellValueFactory(new PropertyValueFactory<>(\"descriptionProducts\"));\r\n            colStatus.setCellValueFactory(new PropertyValueFactory<>(\"active\")); // bạn đặt tên là active, không phải status\r\n            loadProducts();\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n    private void loadProducts() {\r\n        try {\r\n            List<Product> products = productDAO.getAllProducts();\r\n            productList = FXCollections.observableArrayList(products);\r\n            System.out.println(\"Table set with: \" + productList.size() + \" items\");\r\n            tableProducts.setItems(productList);\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleAddProduct() {\r\n        try {\r\n            Product p = new Product();\r\n            p.setNameProducts(txtName.getText());\r\n            p.setDescriptionProducts(txtDescription.getText());\r\n            p.setPrice(Double.parseDouble(txtPrice.getText()));\r\n            p.setCategories(cbCategory.getValue());\r\n            p.setImage_path(\"images/default.png\");\r\n            p.setActive(true);\r\n\r\n            productDAO.insert(p);\r\n            loadProducts();\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleDeleteProduct() {\r\n        Product selected = tableProducts.getSelectionModel().getSelectedItem();\r\n        if (selected != null) {\r\n            try {\r\n                productDAO.delete(selected.getId());\r\n                loadProducts();\r\n            } catch (Exception e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleEditProduct() {\r\n        Product selected = tableProducts.getSelectionModel().getSelectedItem();\r\n        if (selected != null) {\r\n            try {\r\n                selected.setNameProducts(txtName.getText());\r\n                selected.setDescriptionProducts(txtDescription.getText());\r\n                selected.setPrice(Double.parseDouble(txtPrice.getText()));\r\n                selected.setCategories(cbCategory.getValue());\r\n\r\n                productDAO.update(selected);\r\n                loadProducts();\r\n            } catch (Exception e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n}\r\n"
+                },
+                "codebaseEnabled": false,
+                "usedFilePaths": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": "package com.coffeeshop.coffeeshop.controller;\r\n\r\nimport com.coffeeshop.coffeeshop.dao.ProductDAO;\r\nimport com.coffeeshop.coffeeshop.model.Categories;\r\nimport com.coffeeshop.coffeeshop.model.Product;\r\nimport com.coffeeshop.coffeeshop.util.DBConnection;\r\nimport javafx.beans.property.SimpleStringProperty;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.scene.image.ImageView;\r\n\r\nimport java.net.URL;\r\nimport java.sql.Connection;\r\nimport java.util.List;\r\nimport java.util.ResourceBundle;\r\n\r\npublic class ProductController implements Initializable {\r\n\r\n    @FXML private TableView<Product> tableProducts;\r\n    @FXML private TableColumn<Product, Integer> colId;\r\n    @FXML private TableColumn<Product, String> colName;\r\n    @FXML private TableColumn<Product, Double> colPrice;\r\n    @FXML private TableColumn<Product, String> colCategory;\r\n    @FXML private TableColumn<Product, String> colDescription;\r\n    @FXML private TableColumn<Product, String> colStatus;\r\n\r\n    @FXML private TextField txtName;\r\n    @FXML private TextField txtPrice;\r\n    @FXML private TextArea txtDescription;\r\n    @FXML private ComboBox<Categories> cbCategory;\r\n    @FXML private ImageView imgPreview;\r\n\r\n    private ProductDAO productDAO;\r\n    private ObservableList<Product> productList;\r\n\r\n    @Override\r\n    public void initialize(URL location, ResourceBundle resources) {\r\n        try (Connection conn = DBConnection.getConnection()) {\r\n            this.productDAO = new ProductDAO(conn);\r\n\r\n            colId.setCellValueFactory(new PropertyValueFactory<>(\"id\"));\r\n            colName.setCellValueFactory(new PropertyValueFactory<>(\"nameProducts\"));\r\n            colPrice.setCellValueFactory(new PropertyValueFactory<>(\"price\"));\r\n            colCategory.setCellValueFactory(new PropertyValueFactory<>(\"categories\")); // cần thêm custom để hiển thị tên\r\n            colDescription.setCellValueFactory(new PropertyValueFactory<>(\"descriptionProducts\"));\r\n            colStatus.setCellValueFactory(new PropertyValueFactory<>(\"active\")); // bạn đặt tên là active, không phải status\r\n            loadProducts();\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n    private void loadProducts() {\r\n        try {\r\n            List<Product> products = productDAO.getAllProducts();\r\n            productList = FXCollections.observableArrayList(products);\r\n            System.out.println(\"Table set with: \" + productList.size() + \" items\");\r\n            tableProducts.setItems(productList);\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleAddProduct() {\r\n        try {\r\n            Product p = new Product();\r\n            p.setNameProducts(txtName.getText());\r\n            p.setDescriptionProducts(txtDescription.getText());\r\n            p.setPrice(Double.parseDouble(txtPrice.getText()));\r\n            p.setCategories(cbCategory.getValue());\r\n            p.setImage_path(\"images/default.png\");\r\n            p.setActive(true);\r\n\r\n            productDAO.insert(p);\r\n            loadProducts();\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleDeleteProduct() {\r\n        Product selected = tableProducts.getSelectionModel().getSelectedItem();\r\n        if (selected != null) {\r\n            try {\r\n                productDAO.delete(selected.getId());\r\n                loadProducts();\r\n            } catch (Exception e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleEditProduct() {\r\n        Product selected = tableProducts.getSelectionModel().getSelectedItem();\r\n        if (selected != null) {\r\n            try {\r\n                selected.setNameProducts(txtName.getText());\r\n                selected.setDescriptionProducts(txtDescription.getText());\r\n                selected.setPrice(Double.parseDouble(txtPrice.getText()));\r\n                selected.setCategories(cbCategory.getValue());\r\n\r\n                productDAO.update(selected);\r\n                loadProducts();\r\n            } catch (Exception e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n}\r\n"
+                    }
+                ]
+            },
+            "createdAt": 1750616791733,
+            "isInternal": false
+        }
+    ],
+    "isAgent": false,
+    "isNameGenerated": true,
+    "isCustomAgent": false,
+    "isUnitTestsAgent": false,
+    "isE2EAgent": false,
+    "autoApply": false
+}
+}
