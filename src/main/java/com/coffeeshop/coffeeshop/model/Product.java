@@ -15,7 +15,6 @@ public class Product {
     private String nameProducts;
     private  String descriptionProducts;
     private double price;
-    private String image_path;
     private Categories categories;
     private boolean active;
 

@@ -1,0 +1,267 @@
+{
+    "checksum": "1765976d4510f08ab24e78efb7ff2e534d8beab7dab81371d07b9b55a81a8dc6",
+    "data": {
+    "id": "cb2707a2-f67f-4b2b-9996-a7c77d84530e",
+    "createdAt": 1750836549697,
+    "updatedAt": 1750836574451,
+    "title": "FXML File Generation Guidance",
+    "messages": [
+        {
+            "id": "bc74e61a-abf1-49df-88fa-cd7d2740c9b7",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "gen write a file order.fxml dựa scouce của tôi"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                    "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "package com.coffeeshop.coffeeshop.dao;\r\n\r\nimport com.coffeeshop.coffeeshop.model.Categories;\r\nimport com.coffeeshop.coffeeshop.util.DBConnection;\r\n\r\nimport java.sql.*;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class CategoriesDao {\r\n\r\n    // Dùng chung DBConnection (SQL Server)\r\n    private Connection getConnection() throws SQLException {\r\n        return DBConnection.getConnection();\r\n    }\r\n\r\n    // Get all categories\r\n    public List<Categories> getAllCategories() {\r\n        List<Categories> categories = new ArrayList<>();\r\n        String query = \"SELECT * FROM Categories\"; // table C viết hoa đúng SQL Server\r\n\r\n        try (Connection connection = getConnection();\r\n             Statement statement = connection.createStatement();\r\n             ResultSet resultSet = statement.executeQuery(query)) {\r\n\r\n            while (resultSet.next()) {\r\n                int id = resultSet.getInt(\"id\");\r\n                String name = resultSet.getString(\"nameCategories\");\r\n                categories.add(new Categories(id, name));\r\n            }\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return categories;\r\n    }\r\n\r\n    // Add new category\r\n    public boolean addCategory(Categories category) {\r\n        String query = \"INSERT INTO Categories (nameCategories) VALUES (?)\";\r\n\r\n        try (Connection connection = getConnection();\r\n             PreparedStatement preparedStatement = connection.prepareStatement(query)) {\r\n\r\n            preparedStatement.setString(1, category.getNameCategories());\r\n            return preparedStatement.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n\r\n    // Update category\r\n    public boolean updateCategory(Categories category) {\r\n        String query = \"UPDATE Categories SET nameCategories = ? WHERE id = ?\";\r\n\r\n        try (Connection connection = getConnection();\r\n             PreparedStatement preparedStatement = connection.prepareStatement(query)) {\r\n\r\n            preparedStatement.setString(1, category.getNameCategories());\r\n            preparedStatement.setInt(2, category.getId());\r\n            return preparedStatement.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n\r\n    // Delete category\r\n    public boolean deleteCategory(int categoryId) {\r\n        String query = \"DELETE FROM Categories WHERE id = ?\";\r\n\r\n        try (Connection connection = getConnection();\r\n             PreparedStatement preparedStatement = connection.prepareStatement(query)) {\r\n\r\n            preparedStatement.setInt(1, categoryId);\r\n            return preparedStatement.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n}\r\n"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Home\\HomeUser.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\HomeUser.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\products\\Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/resources/views/products/Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/CategoriesDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/ProductDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/DBConnection.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\DBConnection.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [],
+                "usedFilePaths": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": "package com.coffeeshop.coffeeshop.dao;\r\n\r\nimport com.coffeeshop.coffeeshop.model.Categories;\r\nimport com.coffeeshop.coffeeshop.util.DBConnection;\r\n\r\nimport java.sql.*;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class CategoriesDao {\r\n\r\n    // Dùng chung DBConnection (SQL Server)\r\n    private Connection getConnection() throws SQLException {\r\n        return DBConnection.getConnection();\r\n    }\r\n\r\n    // Get all categories\r\n    public List<Categories> getAllCategories() {\r\n        List<Categories> categories = new ArrayList<>();\r\n        String query = \"SELECT * FROM Categories\"; // table C viết hoa đúng SQL Server\r\n\r\n        try (Connection connection = getConnection();\r\n             Statement statement = connection.createStatement();\r\n             ResultSet resultSet = statement.executeQuery(query)) {\r\n\r\n            while (resultSet.next()) {\r\n                int id = resultSet.getInt(\"id\");\r\n                String name = resultSet.getString(\"nameCategories\");\r\n                categories.add(new Categories(id, name));\r\n            }\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return categories;\r\n    }\r\n\r\n    // Add new category\r\n    public boolean addCategory(Categories category) {\r\n        String query = \"INSERT INTO Categories (nameCategories) VALUES (?)\";\r\n\r\n        try (Connection connection = getConnection();\r\n             PreparedStatement preparedStatement = connection.prepareStatement(query)) {\r\n\r\n            preparedStatement.setString(1, category.getNameCategories());\r\n            return preparedStatement.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n\r\n    // Update category\r\n    public boolean updateCategory(Categories category) {\r\n        String query = \"UPDATE Categories SET nameCategories = ? WHERE id = ?\";\r\n\r\n        try (Connection connection = getConnection();\r\n             PreparedStatement preparedStatement = connection.prepareStatement(query)) {\r\n\r\n            preparedStatement.setString(1, category.getNameCategories());\r\n            preparedStatement.setInt(2, category.getId());\r\n            return preparedStatement.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n\r\n    // Delete category\r\n    public boolean deleteCategory(int categoryId) {\r\n        String query = \"DELETE FROM Categories WHERE id = ?\";\r\n\r\n        try (Connection connection = getConnection();\r\n             PreparedStatement preparedStatement = connection.prepareStatement(query)) {\r\n\r\n            preparedStatement.setInt(1, categoryId);\r\n            return preparedStatement.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n}\r\n"
+                    }
+                ]
+            },
+            "createdAt": 1750836549708,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "gen write a file order.fxml dựa scouce của tôi  "
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "e2018bdc-0752-43de-bdb8-0374b87038aa",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "To create an `order.fxml` file based on your Java source code, we need to design a user interface that reflects the operations and data structures present in your `CategoriesDao` class. Since your class deals with categories, the FXML file will likely include elements for displaying, adding, updating, and deleting categories.\n\nHere's a basic example of what the `order.fxml` file might look like:\n\n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.scene.control.*?>\n<?import javafx.scene.layout.*?>\n\n<VBox xmlns=\"http://javafx.com/javafx/8\" xmlns:fx=\"http://javafx.com/fxml/1\" spacing=\"10\" alignment=\"CENTER\">\n    <Label text=\"Categories Management\" style=\"-fx-font-size: 16px; -fx-font-weight: bold;\" />\n\n    <TableView fx:id=\"categoriesTable\" prefWidth=\"300\">\n        <columns>\n            <TableColumn fx:id=\"idColumn\" text=\"ID\" prefWidth=\"100\"/>\n            <TableColumn fx:id=\"nameColumn\" text=\"Category Name\" prefWidth=\"200\"/>\n        </columns>\n    </TableView>\n\n    <HBox spacing=\"10\" alignment=\"CENTER\">\n        <Button text=\"Add\" onAction=\"#handleAddCategory\"/>\n        <Button text=\"Update\" onAction=\"#handleUpdateCategory\"/>\n        <Button text=\"Delete\" onAction=\"#handleDeleteCategory\"/>\n    </HBox>\n\n    <HBox spacing=\"10\" alignment=\"CENTER\">\n        <Label text=\"Category Name:\"/>\n        <TextField fx:id=\"categoryNameField\" prefWidth=\"200\"/>\n    </HBox>\n</VBox>\n```\n\n### Explanation:\n\n- **VBox**: A vertical box layout to arrange elements vertically.\n- **Label**: Displays the title \"Categories Management\".\n- **TableView**: Displays the list of categories with two columns: ID and Category Name.\n- **HBox**: Horizontal box layouts for arranging buttons and input fields.\n- **Buttons**: For adding, updating, and deleting categories, with event handlers (`handleAddCategory`, `handleUpdateCategory`, `handleDeleteCategory`) that you will need to implement in your controller class.\n- **TextField**: For entering the name of a new or updated category.\n\n### Next Steps:\n\n1. **Controller Class**: Implement a JavaFX controller class to handle the actions for the buttons and manage the data displayed in the `TableView`.\n2. **Event Handlers**: Implement the methods `handleAddCategory`, `handleUpdateCategory`, and `handleDeleteCategory` in your controller class to interact with the `CategoriesDao` methods.\n3. **FXML Loading**: Ensure your JavaFX application loads this FXML file and sets the controller properly.\n\nThis FXML file provides a basic structure. You can expand it with additional features or styling as needed for your application."
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                    "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "package com.coffeeshop.coffeeshop.dao;\r\n\r\nimport com.coffeeshop.coffeeshop.model.Categories;\r\nimport com.coffeeshop.coffeeshop.util.DBConnection;\r\n\r\nimport java.sql.*;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class CategoriesDao {\r\n\r\n    // Dùng chung DBConnection (SQL Server)\r\n    private Connection getConnection() throws SQLException {\r\n        return DBConnection.getConnection();\r\n    }\r\n\r\n    // Get all categories\r\n    public List<Categories> getAllCategories() {\r\n        List<Categories> categories = new ArrayList<>();\r\n        String query = \"SELECT * FROM Categories\"; // table C viết hoa đúng SQL Server\r\n\r\n        try (Connection connection = getConnection();\r\n             Statement statement = connection.createStatement();\r\n             ResultSet resultSet = statement.executeQuery(query)) {\r\n\r\n            while (resultSet.next()) {\r\n                int id = resultSet.getInt(\"id\");\r\n                String name = resultSet.getString(\"nameCategories\");\r\n                categories.add(new Categories(id, name));\r\n            }\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return categories;\r\n    }\r\n\r\n    // Add new category\r\n    public boolean addCategory(Categories category) {\r\n        String query = \"INSERT INTO Categories (nameCategories) VALUES (?)\";\r\n\r\n        try (Connection connection = getConnection();\r\n             PreparedStatement preparedStatement = connection.prepareStatement(query)) {\r\n\r\n            preparedStatement.setString(1, category.getNameCategories());\r\n            return preparedStatement.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n\r\n    // Update category\r\n    public boolean updateCategory(Categories category) {\r\n        String query = \"UPDATE Categories SET nameCategories = ? WHERE id = ?\";\r\n\r\n        try (Connection connection = getConnection();\r\n             PreparedStatement preparedStatement = connection.prepareStatement(query)) {\r\n\r\n            preparedStatement.setString(1, category.getNameCategories());\r\n            preparedStatement.setInt(2, category.getId());\r\n            return preparedStatement.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n\r\n    // Delete category\r\n    public boolean deleteCategory(int categoryId) {\r\n        String query = \"DELETE FROM Categories WHERE id = ?\";\r\n\r\n        try (Connection connection = getConnection();\r\n             PreparedStatement preparedStatement = connection.prepareStatement(query)) {\r\n\r\n            preparedStatement.setInt(1, categoryId);\r\n            return preparedStatement.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n}\r\n"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Home\\HomeUser.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\HomeUser.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\products\\Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/resources/views/products/Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/CategoriesDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/ProductDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/DBConnection.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\DBConnection.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [],
+                "usedFilePaths": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": "package com.coffeeshop.coffeeshop.dao;\r\n\r\nimport com.coffeeshop.coffeeshop.model.Categories;\r\nimport com.coffeeshop.coffeeshop.util.DBConnection;\r\n\r\nimport java.sql.*;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class CategoriesDao {\r\n\r\n    // Dùng chung DBConnection (SQL Server)\r\n    private Connection getConnection() throws SQLException {\r\n        return DBConnection.getConnection();\r\n    }\r\n\r\n    // Get all categories\r\n    public List<Categories> getAllCategories() {\r\n        List<Categories> categories = new ArrayList<>();\r\n        String query = \"SELECT * FROM Categories\"; // table C viết hoa đúng SQL Server\r\n\r\n        try (Connection connection = getConnection();\r\n             Statement statement = connection.createStatement();\r\n             ResultSet resultSet = statement.executeQuery(query)) {\r\n\r\n            while (resultSet.next()) {\r\n                int id = resultSet.getInt(\"id\");\r\n                String name = resultSet.getString(\"nameCategories\");\r\n                categories.add(new Categories(id, name));\r\n            }\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return categories;\r\n    }\r\n\r\n    // Add new category\r\n    public boolean addCategory(Categories category) {\r\n        String query = \"INSERT INTO Categories (nameCategories) VALUES (?)\";\r\n\r\n        try (Connection connection = getConnection();\r\n             PreparedStatement preparedStatement = connection.prepareStatement(query)) {\r\n\r\n            preparedStatement.setString(1, category.getNameCategories());\r\n            return preparedStatement.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n\r\n    // Update category\r\n    public boolean updateCategory(Categories category) {\r\n        String query = \"UPDATE Categories SET nameCategories = ? WHERE id = ?\";\r\n\r\n        try (Connection connection = getConnection();\r\n             PreparedStatement preparedStatement = connection.prepareStatement(query)) {\r\n\r\n            preparedStatement.setString(1, category.getNameCategories());\r\n            preparedStatement.setInt(2, category.getId());\r\n            return preparedStatement.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n\r\n    // Delete category\r\n    public boolean deleteCategory(int categoryId) {\r\n        String query = \"DELETE FROM Categories WHERE id = ?\";\r\n\r\n        try (Connection connection = getConnection();\r\n             PreparedStatement preparedStatement = connection.prepareStatement(query)) {\r\n\r\n            preparedStatement.setInt(1, categoryId);\r\n            return preparedStatement.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n}\r\n"
+                    }
+                ]
+            },
+            "createdAt": 1750836574451,
+            "isInternal": false
+        }
+    ],
+    "isAgent": false,
+    "isNameGenerated": true,
+    "isCustomAgent": false,
+    "isUnitTestsAgent": false,
+    "isE2EAgent": false,
+    "autoApply": false
+}
+}

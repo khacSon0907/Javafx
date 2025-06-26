@@ -8,11 +8,17 @@ import com.coffeeshop.coffeeshop.util.DBConnection;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -41,6 +47,10 @@ public class ProductController implements Initializable {
     private ProductDAO productDAO;
     private ObservableList<Product> productList;
     private Connection connection; // Keep connection alive
+
+
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -86,6 +96,32 @@ public class ProductController implements Initializable {
             }
             return new SimpleStringProperty("Unknown");
         });
+    }
+
+    @FXML
+    private void handleBack(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/views/Home/mainAdmin-view.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 1200, 800));
+            stage.setTitle("Trang chính");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleManageCategories(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/views/products/categories.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 1200, 800));
+            stage.setTitle("quản lý danh mục");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -182,9 +218,7 @@ public class ProductController implements Initializable {
             p.setDescriptionProducts(txtDescription.getText().trim());
             p.setPrice(Double.parseDouble(txtPrice.getText().trim()));
             p.setCategories(cbCategory.getValue());
-            p.setImage_path("images/default.png");
             p.setActive(true);
-
             productDAO.insert(p);
             loadProductsInternal();
             clearForm();
@@ -342,6 +376,13 @@ public class ProductController implements Initializable {
         cbCategory.setValue(product.getCategories());
     }
 
+
+
+    @FXML
+    private void handleClearForm() {
+        clearForm();
+    }
+
     private void clearForm() {
         txtName.clear();
         txtDescription.clear();
@@ -370,7 +411,6 @@ public class ProductController implements Initializable {
         alert.showAndWait();
     }
 
-    // Call this when the controller/stage is closing
     public void cleanup() {
         try {
             if (connection != null && !connection.isClosed()) {

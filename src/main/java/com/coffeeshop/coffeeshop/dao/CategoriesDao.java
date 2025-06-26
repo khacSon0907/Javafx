@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoriesDao {
+public class    CategoriesDao {
 
     // Dùng chung DBConnection (SQL Server)
     private Connection getConnection() throws SQLException {
