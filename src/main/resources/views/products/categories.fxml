@@ -15,7 +15,7 @@
     <top>
         <VBox spacing="20.0" BorderPane.alignment="CENTER">
             <children>
-            <Button fx:id="btnUpdate1" onAction="#handleUpdate" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Cập nhật" />
+            <Button fx:id="btnUpdate1" onAction="#handleBack" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Quay Lại" />
                 <!-- Title -->
                 <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Quản Lý Danh Mục" />
 

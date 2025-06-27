@@ -4,10 +4,16 @@ import com.coffeeshop.coffeeshop.dao.CategoriesDao;
 import com.coffeeshop.coffeeshop.model.Categories;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.List;
@@ -207,6 +213,20 @@ public class CategoriesController implements Initializable {
         updateStatus("Đã làm mới form");
     }
 
+
+    @FXML
+    private void handleBack(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/views/products/Products.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 1200, 800));
+            stage.setTitle("Trang chính");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     // Xóa form
     private void clearForm() {
         txtCategoryName.clear();
