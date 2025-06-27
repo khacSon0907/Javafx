@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Categories {
-    private int id;
+    private int categoryId;
     private String nameCategories;
 }

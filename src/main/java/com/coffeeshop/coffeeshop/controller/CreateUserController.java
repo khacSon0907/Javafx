@@ -86,7 +86,7 @@ public class CreateUserController {
             }
 
             User user = new User();
-            user.setUsername(username);
+            user.setUserName(username);
             user.setPassword(password); // ❗ Nên mã hóa sau này
             user.setRole(selectedRole); // ✅ Gán đúng đối tượng Role
 

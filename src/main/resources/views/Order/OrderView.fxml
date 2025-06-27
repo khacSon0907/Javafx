@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.coffeeshop.coffeeshop.controller.OrderController"
+            style="-fx-background-color: linear-gradient(to bottom, #D2B48C, #CD853F);">
+
+    <!-- Header -->
+    <HBox AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+          style="-fx-background-color: rgba(139, 69, 19, 0.9); -fx-padding: 15 30;" alignment="CENTER_LEFT" spacing="20">
+        <Label text="☕ Coffee Shop - Order Nước"
+               style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Label text="Xin chào, staff1"
+               style="-fx-font-size: 16px; -fx-text-fill: #F5DEB3;"/>
+        <Button text="← Quay lại" onAction="#handleBack"
+                style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8 15;"/>
+    </HBox>
+
+    <!-- Main Content -->
+    <HBox AnchorPane.topAnchor="70" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" spacing="20">
+
+        <!-- Left Panel - Menu -->
+        <VBox spacing="15" prefWidth="600" style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-padding: 25;">
+            <effect>
+                <DropShadow color="rgba(0,0,0,0.2)" radius="10" offsetX="0" offsetY="3"/>
+            </effect>
+
+            <!-- Menu Header -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="🍵" style="-fx-font-size: 24px;"/>
+                <Label text="Menu Đồ Uống"
+                       style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+            </HBox>
+
+            <!-- Category Selection -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label text="Danh mục:" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #654321;"/>
+                <ComboBox fx:id="cbCategory" promptText="Cà phê" prefWidth="200"
+                          style="-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+            </HBox>
+
+            <!-- Products Display Area -->
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                        style="-fx-background-color: transparent; -fx-border-color: #E0E0E0; -fx-border-width: 1; -fx-border-radius: 10;">
+                <FlowPane fx:id="productsFlowPane" hgap="15" vgap="15"
+                          style="-fx-padding: 20; -fx-background-color: #FAFAFA;">
+                    <!-- Products will be loaded dynamically here -->
+                </FlowPane>
+            </ScrollPane>
+
+            <!-- Hidden fields for compatibility -->
+            <TextField fx:id="txtOrderID" visible="false" managed="false"/>
+            <ComboBox fx:id="cbUser" visible="false" managed="false"/>
+        </VBox>
+
+        <!-- Right Panel - Order Cart -->
+        <VBox spacing="15" prefWidth="400" style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-padding: 25;">
+            <effect>
+                <DropShadow color="rgba(0,0,0,0.2)" radius="10" offsetX="0" offsetY="3"/>
+            </effect>
+
+            <!-- Order Header -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="🛒" style="-fx-font-size: 24px;"/>
+                <Label text="Order"
+                       style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+            </HBox>
+
+            <!-- Order Details Table -->
+            <TableView fx:id="tblOrderDetails" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-width: 1; -fx-border-radius: 8;">
+                <columns>
+                    <TableColumn fx:id="colProductID" text="Sản phẩm" prefWidth="120"/>
+                    <TableColumn fx:id="colQuantity" text="SL" prefWidth="50"/>
+                    <TableColumn fx:id="colPrice" text="Giá" prefWidth="80"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+
+            <!-- Total Section -->
+            <VBox spacing="10" style="-fx-background-color: #F5F5F5; -fx-padding: 15; -fx-background-radius: 8;">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Tổng:" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTotal" text="0 VND"
+                           style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #B8860B;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Order Actions -->
+            <VBox spacing="12">
+                <HBox spacing="10">
+                    <Label text="Khách hàng:" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #654321;"/>
+                    <ComboBox fx:id="cbCustomer" HBox.hgrow="ALWAYS" promptText="Chọn khách hàng"
+                              style="-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-width: 1; -fx-border-radius: 5;"/>
+                </HBox>
+
+                <Button text="📋 In Hóa Đơn" onAction="#handleSaveOrder" maxWidth="Infinity"
+                        style="-fx-background-color: linear-gradient(to bottom, #8B4513, #654321); -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 12;">
+                    <effect>
+                        <DropShadow color="rgba(0,0,0,0.3)" radius="5" offsetX="0" offsetY="2"/>
+                    </effect>
+                </Button>
+            </VBox>
+        </VBox>
+    </HBox>
+
+    <!-- Status Message -->
+    <Label fx:id="lblMessage" AnchorPane.bottomAnchor="5" AnchorPane.leftAnchor="20"
+           style="-fx-font-size: 12px; -fx-text-fill: #8B4513; -fx-background-color: rgba(255,255,255,0.8); -fx-padding: 5 10; -fx-background-radius: 5;"/>
+
+</AnchorPane>

@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class    CategoriesDao {
+public class CategoriesDao {
 
     // Dùng chung DBConnection (SQL Server)
     private Connection getConnection() throws SQLException {
@@ -17,16 +17,16 @@ public class    CategoriesDao {
     // Get all categories
     public List<Categories> getAllCategories() {
         List<Categories> categories = new ArrayList<>();
-        String query = "SELECT * FROM Categories"; // table C viết hoa đúng SQL Server
+        String query = "SELECT * FROM Categories"; // Tên bảng C viết hoa trong SQL Server
 
         try (Connection connection = getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("nameCategories");
-                categories.add(new Categories(id, name));
+                int categoryId = resultSet.getInt("CategoryID");  // Đổi từ id thành CategoryID
+                String categoryName = resultSet.getString("CategoryName");  // Đổi từ nameCategories thành CategoryName
+                categories.add(new Categories(categoryId, categoryName));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -36,12 +36,12 @@ public class    CategoriesDao {
 
     // Add new category
     public boolean addCategory(Categories category) {
-        String query = "INSERT INTO Categories (nameCategories) VALUES (?)";
+        String query = "INSERT INTO Categories (CategoryName) VALUES (?)";  // Đổi từ nameCategories thành CategoryName
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setString(1, category.getNameCategories());
+            preparedStatement.setString(1, category.getNameCategories());  // Đổi từ getNameCategories thành getCategoryName
             return preparedStatement.executeUpdate() > 0;
 
         } catch (SQLException e) {
@@ -52,13 +52,13 @@ public class    CategoriesDao {
 
     // Update category
     public boolean updateCategory(Categories category) {
-        String query = "UPDATE Categories SET nameCategories = ? WHERE id = ?";
+        String query = "UPDATE Categories SET CategoryName = ? WHERE CategoryID = ?";  // Đổi từ nameCategories thành CategoryName, id thành CategoryID
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setString(1, category.getNameCategories());
-            preparedStatement.setInt(2, category.getId());
+            preparedStatement.setString(1, category.getNameCategories());  // Đổi từ getNameCategories thành getCategoryName
+            preparedStatement.setInt(2, category.getCategoryId());  // Đổi từ getId thành getCategoryId
             return preparedStatement.executeUpdate() > 0;
 
         } catch (SQLException e) {
@@ -69,7 +69,7 @@ public class    CategoriesDao {
 
     // Delete category
     public boolean deleteCategory(int categoryId) {
-        String query = "DELETE FROM Categories WHERE id = ?";
+        String query = "DELETE FROM Categories WHERE CategoryID = ?";  // Đổi từ id thành CategoryID
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {

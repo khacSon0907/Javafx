@@ -24,7 +24,7 @@ public class HomeUserController {
         if (user != null && user.getRole() != null) {
             String roleName = user.getRole().getNameRole().toLowerCase(); // lấy nameRole từ Role
 
-            lblWelcome.setText("Xin chào, " + user.getUsername() + " (" + roleName + ")");
+            lblWelcome.setText("Xin chào, " + user.getUserName() + " (" + roleName + ")");
 
             // Phân quyền hiển thị nút
             btnCheckIn.setVisible(true);
@@ -52,7 +52,17 @@ public class HomeUserController {
 
     @FXML
     private void handleOrderDrink(ActionEvent event) {
-        System.out.println("Thực hiện order nước...");
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/views/order/OrderView.fxml")); // điều chỉnh path nếu khác
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 1200, 800));
+            stage.setTitle("Đặt đồ uống");
+            stage.setResizable(false);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Không thể chuyển hướng sang OrderView.fxlm");
+        }
     }
 
     @FXML

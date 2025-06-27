@@ -141,7 +141,7 @@ public class CategoriesController implements Initializable {
         }
 
         // Kiểm tra trùng tên (trừ chính nó)
-        if (isDuplicateName(categoryName, selectedCategory.getId())) {
+        if (isDuplicateName(categoryName, selectedCategory.getCategoryId())) {
             showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Tên danh mục đã tồn tại!");
             return;
         }
@@ -182,7 +182,7 @@ public class CategoriesController implements Initializable {
         Optional<ButtonType> result = confirmAlert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             try {
-                boolean success = categoriesDao.deleteCategory(selectedCategory.getId());
+                boolean success = categoriesDao.deleteCategory(selectedCategory.getCategoryId());
 
                 if (success) {
                     loadCategories(); // Reload dữ liệu
@@ -226,7 +226,7 @@ public class CategoriesController implements Initializable {
     private boolean isDuplicateName(String name, Integer excludeId) {
         for (Categories category : categoriesList) {
             if (category.getNameCategories().equalsIgnoreCase(name)) {
-                if (excludeId == null || category.getId() == excludeId) {
+                if (excludeId == null || category.getCategoryId() == excludeId) {
                     return true;
                 }
             }
@@ -242,7 +242,6 @@ public class CategoriesController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
     // Cập nhật trạng thái
     private void updateStatus(String message) {
         lblStatus.setText(message);

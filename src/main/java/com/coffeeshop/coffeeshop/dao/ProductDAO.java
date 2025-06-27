@@ -14,20 +14,21 @@ public class ProductDAO {
         this.conn = conn;
     }
 
+    // Lấy tất cả sản phẩm
     public List<Product> getAllProducts() throws SQLException {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT p.*, c.id as c_id, c.nameCategories FROM products p JOIN Categories c ON p.category_id = c.id";
+        String sql = "SELECT p.*, c.CategoryID as c_id, c.CategoryName FROM Products p JOIN Categories c ON p.CategoryID = c.CategoryID";
         try (PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
-                Categories c = new Categories(rs.getInt("c_id"), rs.getString("nameCategories"));
+                Categories c = new Categories(rs.getInt("c_id"), rs.getString("CategoryName"));
                 Product p = new Product(
-                        rs.getInt("id"),
-                        rs.getString("nameProducts"),
-                        rs.getString("descriptionProducts"),
-                        rs.getDouble("price"),
+                        rs.getInt("ProductID"),
+                        rs.getString("ProductName"),
+                        rs.getString("Description"),
+                        rs.getDouble("Price"),
                         c,
-                        rs.getBoolean("is_active")
+                        rs.getBoolean("IsActive")
                 );
                 list.add(p);
             }
@@ -35,34 +36,37 @@ public class ProductDAO {
         return list;
     }
 
+    // Thêm sản phẩm mới
     public void insert(Product p) throws SQLException {
-        String sql = "INSERT INTO products (nameProducts, descriptionProducts, price, category_id, is_active) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Products (ProductName, Description, Price, CategoryID, IsActive) VALUES (?, ?, ?, ?, ?)";
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, p.getNameProducts());
             ps.setString(2, p.getDescriptionProducts());
             ps.setDouble(3, p.getPrice());
-            ps.setInt(4, p.getCategories().getId());      // FIX: Đổi từ 5 thành 4
-            ps.setBoolean(5, p.isActive());               // FIX: Đổi từ 6 thành 5
+            ps.setInt(4, p.getCategories().getCategoryId());  // Chỉnh sửa lại từ CategoryID
+            ps.setBoolean(5, p.isActive());
             ps.executeUpdate();
         }
     }
 
+    // Cập nhật sản phẩm
     public void update(Product p) throws SQLException {
-        String sql = "UPDATE products SET nameProducts=?, descriptionProducts=?, price=?, category_id=?, is_active=? WHERE id=?";
+        String sql = "UPDATE Products SET ProductName=?, Description=?, Price=?, CategoryID=?, IsActive=? WHERE ProductID=?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, p.getNameProducts());
             ps.setString(2, p.getDescriptionProducts());
             ps.setDouble(3, p.getPrice());
-            ps.setInt(4, p.getCategories().getId());      // FIX: Đổi từ 5 thành 4
-            ps.setBoolean(5, p.isActive());               // FIX: Đổi từ 6 thành 5
-            ps.setInt(6, p.getId());                      // FIX: Đổi từ 7 thành 6
+            ps.setInt(4, p.getCategories().getCategoryId());  // Chỉnh sửa lại từ CategoryID
+            ps.setBoolean(5, p.isActive());
+            ps.setInt(6, p.getId());  // Chỉnh sửa lại từ ProductID
             ps.executeUpdate();
         }
     }
 
+    // Xóa sản phẩm
     public void delete(int id) throws SQLException {
-        String sql = "DELETE FROM products WHERE id = ?";
+        String sql = "DELETE FROM Products WHERE ProductID = ?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, id);
             ps.executeUpdate();

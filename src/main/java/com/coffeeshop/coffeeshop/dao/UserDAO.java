@@ -17,11 +17,11 @@ public class UserDAO {
 
     public User login(String username, String password) throws SQLException {
         String query = """
-            SELECT u.id, u.username, u.password,
-                   r.id AS role_id, r.nameRole, r.descriptionRole
+            SELECT u.UserID, u.UserName, u.Password,
+                   r.RoleID, r.RoleName, r.Description
             FROM Users u
-            JOIN Roles r ON u.role_id = r.id
-            WHERE u.username = ? AND u.password = ?
+            JOIN Roles r ON u.RoleID = r.RoleID
+            WHERE u.UserName = ? AND u.Password = ?
         """;
 
         try (PreparedStatement ps = conn.prepareStatement(query)) {
@@ -31,15 +31,15 @@ public class UserDAO {
 
             if (rs.next()) {
                 Role role = new Role(
-                        rs.getInt("role_id"),
-                        rs.getString("nameRole"),
-                        rs.getString("descriptionRole")
+                        rs.getInt("RoleID"),
+                        rs.getString("RoleName"),
+                        rs.getString("Description")
                 );
 
                 User user = new User();
-                user.setId(rs.getInt("id"));
-                user.setUsername(rs.getString("username"));
-                user.setPassword(rs.getString("password"));
+                user.setUserId(rs.getInt("UserID"));
+                user.setUserName(rs.getString("UserName"));
+                user.setPassword(rs.getString("Password"));
                 user.setRole(role);
                 return user;
             }
@@ -48,7 +48,7 @@ public class UserDAO {
     }
 
     public boolean isUsernameTaken(String username) throws SQLException {
-        String query = "SELECT COUNT(*) FROM Users WHERE username = ?";
+        String query = "SELECT COUNT(*) FROM Users WHERE UserName = ?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
@@ -58,11 +58,11 @@ public class UserDAO {
     }
 
     public boolean register(User user) throws SQLException {
-        String query = "INSERT INTO Users (username, password, role_id) VALUES (?, ?, ?)";
+        String query = "INSERT INTO Users (UserName, Password, RoleID) VALUES (?, ?, ?)";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setString(1, user.getUsername());
+            ps.setString(1, user.getUserName());
             ps.setString(2, user.getPassword());
-            ps.setInt(3, user.getRole().getId()); // Lưu role_id
+            ps.setInt(3, user.getRole().getId()); // Lưu RoleID
             return ps.executeUpdate() > 0;
         }
     }

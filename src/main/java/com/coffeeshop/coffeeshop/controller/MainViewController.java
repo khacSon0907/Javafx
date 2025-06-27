@@ -21,7 +21,7 @@ public class MainViewController {
 
         if (user != null && user.getRole() != null) {
             String roleName = user.getRole().getNameRole().toLowerCase(); // "admin", "staff", ...
-            lblWelcome.setText("Xin chào, " + user.getUsername() + " (" + roleName + ")");
+            lblWelcome.setText("Xin chào, " + user.getUserName() + " (" + roleName + ")");
 
             // Chỉ admin mới thấy nút tạo tài khoản
             if (!"admin".equals(roleName)) {
