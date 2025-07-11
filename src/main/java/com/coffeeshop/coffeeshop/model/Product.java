@@ -17,6 +17,6 @@ public class Product {
     private double price;
     private Categories categories;
     private boolean active;
-
-
+    private String image;
+    private float discount;
 }

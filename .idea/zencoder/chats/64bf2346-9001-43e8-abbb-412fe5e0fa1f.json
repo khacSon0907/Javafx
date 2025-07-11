@@ -1,0 +1,309 @@
+{
+    "checksum": "f90559ba1b62efbbde3e90afec2af7b1c9f65d319bc2fcf044738e974ebc966a",
+    "data": {
+    "id": "64bf2346-9001-43e8-abbb-412fe5e0fa1f",
+    "createdAt": 1752081550693,
+    "updatedAt": 1752081564552,
+    "title": "OrderDao Update Method Implementation",
+    "messages": [
+        {
+            "id": "4b97669f-7a3e-4d37-8384-7e9202527de2",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "update tôi thêm cái UpdatOrder trong orderDao đi"
+                }
+            ],
+            "context": {
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/ProductDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/CategoriesDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CategoriesController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/OrderController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/OrderDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDetailDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDetailDAO.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Order.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Order.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\OrderDetail.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\OrderDetail.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/OrderDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java"
+                    }
+                ]
+            },
+            "createdAt": 1752081550699,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "update tôi thêm cái UpdatOrder trong orderDao đi"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "bbb14b20-fda0-44f9-8012-a88f7a84cb88",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "To add an `updateOrder` method in the `OrderDao` class, you need to define a method that updates the details of an existing order in the database. This method should update the order's main details and possibly its associated order details. Here's how you can implement it:\n\n```java\npublic boolean updateOrder(Order order, List<OrderDetail> orderDetails) {\n    String sqlOrder = \"UPDATE Orders SET StaffID = ?, OrderDate = ?, TotalAmount = ?, Status = ?, Note = ? WHERE OrderID = ?\";\n    String sqlDeleteDetails = \"DELETE FROM OrderDetails WHERE OrderID = ?\";\n    String sqlInsertDetail = \"INSERT INTO OrderDetails (OrderID, ProductID, Size, Quantity, UnitPrice) VALUES (?, ?, ?, ?, ?)\";\n\n    PreparedStatement orderStmt = null;\n    PreparedStatement deleteDetailStmt = null;\n    PreparedStatement insertDetailStmt = null;\n\n    try {\n        connection.setAutoCommit(false); // Start transaction\n\n        // Update the main order details\n        orderStmt = connection.prepareStatement(sqlOrder);\n        orderStmt.setInt(1, order.getStaffId());\n        orderStmt.setTimestamp(2, Timestamp.valueOf(order.getOrderDate()));\n        orderStmt.setDouble(3, order.getTotalAmount());\n        orderStmt.setString(4, order.getStatus());\n        orderStmt.setString(5, order.getNote());\n        orderStmt.setInt(6, order.getOrderId());\n        orderStmt.executeUpdate();\n\n        // Delete existing order details\n        deleteDetailStmt = connection.prepareStatement(sqlDeleteDetails);\n        deleteDetailStmt.setInt(1, order.getOrderId());\n        deleteDetailStmt.executeUpdate();\n\n        // Insert new order details\n        insertDetailStmt = connection.prepareStatement(sqlInsertDetail);\n        for (OrderDetail detail : orderDetails) {\n            insertDetailStmt.setInt(1, order.getOrderId());\n            insertDetailStmt.setInt(2, detail.getProductId());\n            insertDetailStmt.setString(3, detail.getSize());\n            insertDetailStmt.setInt(4, detail.getQuantity());\n            insertDetailStmt.setDouble(5, detail.getUnitPrice());\n            insertDetailStmt.addBatch();\n        }\n        insertDetailStmt.executeBatch();\n\n        connection.commit();\n        return true;\n\n    } catch (SQLException e) {\n        e.printStackTrace();\n        try {\n            connection.rollback(); // Rollback if error occurs\n        } catch (SQLException ex) {\n            ex.printStackTrace();\n        }\n        return false;\n\n    } finally {\n        try {\n            if (orderStmt != null) orderStmt.close();\n            if (deleteDetailStmt != null) deleteDetailStmt.close();\n            if (insertDetailStmt != null) insertDetailStmt.close();\n            connection.setAutoCommit(true);\n        } catch (SQLException e) {\n            e.printStackTrace();\n        }\n    }\n}\n```\n\n### Explanation:\n- **Update Main Order**: The `sqlOrder` query updates the main order details in the `Orders` table.\n- **Delete Existing Details**: The `sqlDeleteDetails` query removes all existing order details for the given order ID.\n- **Insert New Details**: The `sqlInsertDetail` query inserts the new order details into the `OrderDetails` table.\n- **Transaction Management**: The method uses transaction management to ensure that all updates are applied atomically. If any part of the update fails, the transaction is rolled back to maintain data integrity.\n\nThis method assumes that you want to completely replace the existing order details with the new ones provided. If you need a different behavior (e.g., updating only changed details), the logic would need to be adjusted accordingly."
+                }
+            ],
+            "context": {
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/ProductDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/CategoriesDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CategoriesController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/OrderController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/OrderDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDetailDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDetailDAO.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Order.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Order.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\OrderDetail.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\OrderDetail.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/OrderDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java"
+                    }
+                ]
+            },
+            "createdAt": 1752081564552,
+            "isInternal": false
+        }
+    ],
+    "isAgent": false,
+    "isNameGenerated": true,
+    "isCustomAgent": false,
+    "isUnitTestsAgent": false,
+    "isE2EAgent": false,
+    "autoApply": false
+}
+}

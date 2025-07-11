@@ -1,0 +1,419 @@
+{
+    "checksum": "340337189103f08ad3e86e2b7b7e39d4211f4a958445b1f7e0165610ab64c497",
+    "data": {
+    "id": "803a98ff-3beb-4f9a-a1e4-536164396ee6",
+    "createdAt": 1751774803121,
+    "updatedAt": 1751774815855,
+    "title": "Understanding PropertyValueFactory Error",
+    "messages": [
+        {
+            "id": "489c6519-400c-4818-a256-1889b773d3f1",
+            "role": "user",
+            "content": [
+                {
+                    "type": "command",
+                    "commandName": "explain"
+                },
+                {
+                    "type": "codeSnippet",
+                    "text": "<PropertyValueFactory property=\"totalPrice\" />",
+                    "language": "xml"
+                },
+                {
+                    "type": "text",
+                    "text": "Cannot resolve symbol 'PropertyValueFactory'"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Order\\OrderView.fxml",
+                    "fsPath": "D:/STUDY-HUFLIT/CoffeeShop/coffeeShop/src/main/resources/views/Order/OrderView.fxml",
+                    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.*?>\n<?import javafx.scene.layout.*?>\n<?import javafx.scene.text.*?>\n<?import javafx.scene.effect.*?>\n\n\n<AnchorPane xmlns:fx=\"http://javafx.com/fxml\"\n            fx:controller=\"com.coffeeshop.coffeeshop.controller.OrderController\"\n            style=\"-fx-background-color: linear-gradient(to bottom, #D2B48C, #CD853F);\">\n\n    <!-- Header -->\n    <HBox AnchorPane.topAnchor=\"0\" AnchorPane.leftAnchor=\"0\" AnchorPane.rightAnchor=\"0\"\n          style=\"-fx-background-color: rgba(139, 69, 19, 0.9); -fx-padding: 15 30;\" alignment=\"CENTER_LEFT\" spacing=\"20\">\n        <Label text=\"☕ Coffee Shop - Order Nước\"\n               style=\"-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;\"/>\n\n        <Region HBox.hgrow=\"ALWAYS\"/>\n\n        <Label text=\"Xin chào, staff1\"\n               style=\"-fx-font-size: 16px; -fx-text-fill: #F5DEB3;\"/>\n        <Button text=\"← Quay lại\" onAction=\"#handleBack\"\n                style=\"-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8 15;\"/>\n    </HBox>\n\n    <!-- Main Content -->\n    <HBox AnchorPane.topAnchor=\"70\" AnchorPane.leftAnchor=\"20\" AnchorPane.rightAnchor=\"20\" AnchorPane.bottomAnchor=\"20\" spacing=\"20\">\n\n        <!-- Left Panel -->\n        <VBox spacing=\"15\" prefWidth=\"600\" style=\"-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-padding: 25;\">\n            <effect>\n                <DropShadow color=\"rgba(0,0,0,0.2)\" radius=\"10\" offsetX=\"0\" offsetY=\"3\"/>\n            </effect>\n\n            <!-- Header -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"🍵\" style=\"-fx-font-size: 24px;\"/>\n                <Label text=\"Menu Đồ Uống\"\n                       style=\"-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n            </HBox>\n\n            <!-- Category -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"Danh mục:\"\n                       style=\"-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #654321;\"/>\n                <ComboBox fx:id=\"cbCategory\" prefWidth=\"200\"\n                          promptText=\"Chọn danh mục\"\n                          style=\"-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-radius: 5;\"/>\n            </HBox>\n\n            <!-- Products -->\n            <ScrollPane fitToWidth=\"true\" VBox.vgrow=\"ALWAYS\"\n                        style=\"-fx-background-color: transparent;\">\n                <FlowPane fx:id=\"productsFlowPane\" hgap=\"15\" vgap=\"15\"\n                          style=\"-fx-padding: 15; -fx-background-color: #FAFAFA;\">\n                    <!-- Product buttons sẽ render tại đây -->\n                </FlowPane>\n            </ScrollPane>\n\n        </VBox>\n\n        <!-- Right Panel -->\n        <VBox spacing=\"15\" prefWidth=\"450\" style=\"-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-padding: 25;\">\n            <effect>\n                <DropShadow color=\"rgba(0,0,0,0.2)\" radius=\"10\" offsetX=\"0\" offsetY=\"3\"/>\n            </effect>\n\n            <!-- Header -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"🛒\" style=\"-fx-font-size: 24px;\"/>\n                <Label text=\"Order Details\"\n                       style=\"-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n            </HBox>\n\n            <!-- Quick Actions Info -->\n            <VBox spacing=\"5\" style=\"-fx-background-color: #E6F3FF; -fx-padding: 10; -fx-background-radius: 8;\">\n                <Label text=\"💡 Thao tác nhanh:\"\n                       style=\"-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #2E8B57;\"/>\n                <Label text=\"• Double-click để chỉnh sửa món\"\n                       style=\"-fx-font-size: 11px; -fx-text-fill: #2E8B57;\"/>\n                <Label text=\"• Right-click để xem menu tùy chọn\"\n                       style=\"-fx-font-size: 11px; -fx-text-fill: #2E8B57;\"/>\n            </VBox>\n\n            <!-- Table -->\n            <TableView fx:id=\"tblOrderDetails\" VBox.vgrow=\"ALWAYS\"\n                       style=\"-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-width: 1; -fx-border-radius: 5;\">\n                <columns>\n                    <TableColumn fx:id=\"colProductName\" text=\"Tên sản phẩm\" prefWidth=\"160\"/>\n                    <TableColumn fx:id=\"colSize\" text=\"Size\" prefWidth=\"50\"/>\n                    <TableColumn fx:id=\"colQuantity\" text=\"SL\" prefWidth=\"35\"/>\n                    <TableColumn fx:id=\"colPrice\" text=\"Giá\" prefWidth=\"80\"/>\n                    <TableColumn text=\"Thành tiền\" prefWidth=\"90\">\n                        <cellValueFactory>\n                            <PropertyValueFactory property=\"totalPrice\" />\n                        </cellValueFactory>\n                    </TableColumn>\n                </columns>\n                <columnResizePolicy>\n                    <TableView fx:constant=\"CONSTRAINED_RESIZE_POLICY\"/>\n                </columnResizePolicy>\n            </TableView>\n\n            <!-- Edit Instructions -->\n            <Label text=\"✏️ Tip: Double-click hoặc right-click vào món để chỉnh sửa\"\n                   style=\"-fx-font-size: 11px; -fx-text-fill: #8B4513; -fx-font-style: italic;\"/>\n\n            <!-- Total -->\n            <VBox spacing=\"10\" style=\"-fx-background-color: #F5F5F5; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #CD853F; -fx-border-width: 1; -fx-border-radius: 8;\">\n                <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                    <Label text=\"Tổng cộng:\"\n                           style=\"-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n                    <Region HBox.hgrow=\"ALWAYS\"/>\n                    <Label fx:id=\"lblTotal\" text=\"0 VND\"\n                           style=\"-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #B8860B;\"/>\n                </HBox>\n                <Separator style=\"-fx-background-color: #CD853F;\"/>\n                <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                    <Label text=\"Số món:\"\n                           style=\"-fx-font-size: 14px; -fx-text-fill: #8B4513;\"/>\n                    <Region HBox.hgrow=\"ALWAYS\"/>\n                    <Label fx:id=\"lblItemCount\" text=\"0\"\n                           style=\"-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n                </HBox>\n            </VBox>\n\n            <!-- Customer -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"Khách hàng:\"\n                       style=\"-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #654321;\"/>\n                <ComboBox fx:id=\"cbCustomer\" promptText=\"Khách vãng lai\" HBox.hgrow=\"ALWAYS\"\n                          style=\"-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-radius: 5;\"/>\n            </HBox>\n\n            <!-- Action Buttons -->\n            <VBox spacing=\"10\">\n                <!-- Row 1: Edit Actions -->\n                <HBox spacing=\"10\">\n                    <Button text=\"✏️ Chỉnh sửa\" onAction=\"#handleEditSelectedItem\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #4682B4, #2E8B57); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                    <Button text=\"🗑️ Xóa món\" onAction=\"#handleDeleteSelectedItem\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #FF6347, #DC143C); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                </HBox>\n\n                <!-- Row 2: Order Actions -->\n                <HBox spacing=\"10\">\n                    <Button text=\"🧹 Xóa tất cả\" onAction=\"#handleClearOrder\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #DC143C, #B22222); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                    <Button text=\"📋 In Hóa Đơn\" onAction=\"#handleSaveOrder\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #8B4513, #654321); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                </HBox>\n            </VBox>\n        </VBox>\n    </HBox>\n\n    <!-- Footer -->\n    <HBox AnchorPane.bottomAnchor=\"5\" AnchorPane.leftAnchor=\"20\" AnchorPane.rightAnchor=\"20\"\n          spacing=\"20\" alignment=\"CENTER_LEFT\">\n        <Label fx:id=\"lblMessage\" HBox.hgrow=\"ALWAYS\"\n               style=\"-fx-font-size: 12px; -fx-text-fill: #8B4513; -fx-background-color: rgba(255,255,255,0.9); -fx-padding: 8 15; -fx-background-radius: 5; -fx-border-color: #CD853F; -fx-border-radius: 5;\"/>\n\n        <Label text=\"💻 Coffee Shop Management System v2.0\"\n               style=\"-fx-font-size: 11px; -fx-text-fill: #8B4513; -fx-background-color: rgba(255,255,255,0.8); -fx-padding: 5 10; -fx-background-radius: 5;\"/>\n    </HBox>\n\n</AnchorPane>",
+                    "language": "xml"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CategoriesController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/OrderController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\products\\Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/resources/views/Order/OrderView.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/OrderDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/OrderDetail.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\OrderDetail.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/OrderController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java"
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "fsPath": "src\\main\\resources\\views\\Order\\OrderView.fxml"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "fsPath": "D:/STUDY-HUFLIT/CoffeeShop/coffeeShop/src/main/resources/views/Order/OrderView.fxml",
+                        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.*?>\n<?import javafx.scene.layout.*?>\n<?import javafx.scene.text.*?>\n<?import javafx.scene.effect.*?>\n\n\n<AnchorPane xmlns:fx=\"http://javafx.com/fxml\"\n            fx:controller=\"com.coffeeshop.coffeeshop.controller.OrderController\"\n            style=\"-fx-background-color: linear-gradient(to bottom, #D2B48C, #CD853F);\">\n\n    <!-- Header -->\n    <HBox AnchorPane.topAnchor=\"0\" AnchorPane.leftAnchor=\"0\" AnchorPane.rightAnchor=\"0\"\n          style=\"-fx-background-color: rgba(139, 69, 19, 0.9); -fx-padding: 15 30;\" alignment=\"CENTER_LEFT\" spacing=\"20\">\n        <Label text=\"☕ Coffee Shop - Order Nước\"\n               style=\"-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;\"/>\n\n        <Region HBox.hgrow=\"ALWAYS\"/>\n\n        <Label text=\"Xin chào, staff1\"\n               style=\"-fx-font-size: 16px; -fx-text-fill: #F5DEB3;\"/>\n        <Button text=\"← Quay lại\" onAction=\"#handleBack\"\n                style=\"-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8 15;\"/>\n    </HBox>\n\n    <!-- Main Content -->\n    <HBox AnchorPane.topAnchor=\"70\" AnchorPane.leftAnchor=\"20\" AnchorPane.rightAnchor=\"20\" AnchorPane.bottomAnchor=\"20\" spacing=\"20\">\n\n        <!-- Left Panel -->\n        <VBox spacing=\"15\" prefWidth=\"600\" style=\"-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-padding: 25;\">\n            <effect>\n                <DropShadow color=\"rgba(0,0,0,0.2)\" radius=\"10\" offsetX=\"0\" offsetY=\"3\"/>\n            </effect>\n\n            <!-- Header -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"🍵\" style=\"-fx-font-size: 24px;\"/>\n                <Label text=\"Menu Đồ Uống\"\n                       style=\"-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n            </HBox>\n\n            <!-- Category -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"Danh mục:\"\n                       style=\"-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #654321;\"/>\n                <ComboBox fx:id=\"cbCategory\" prefWidth=\"200\"\n                          promptText=\"Chọn danh mục\"\n                          style=\"-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-radius: 5;\"/>\n            </HBox>\n\n            <!-- Products -->\n            <ScrollPane fitToWidth=\"true\" VBox.vgrow=\"ALWAYS\"\n                        style=\"-fx-background-color: transparent;\">\n                <FlowPane fx:id=\"productsFlowPane\" hgap=\"15\" vgap=\"15\"\n                          style=\"-fx-padding: 15; -fx-background-color: #FAFAFA;\">\n                    <!-- Product buttons sẽ render tại đây -->\n                </FlowPane>\n            </ScrollPane>\n\n        </VBox>\n\n        <!-- Right Panel -->\n        <VBox spacing=\"15\" prefWidth=\"450\" style=\"-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-padding: 25;\">\n            <effect>\n                <DropShadow color=\"rgba(0,0,0,0.2)\" radius=\"10\" offsetX=\"0\" offsetY=\"3\"/>\n            </effect>\n\n            <!-- Header -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"🛒\" style=\"-fx-font-size: 24px;\"/>\n                <Label text=\"Order Details\"\n                       style=\"-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n            </HBox>\n\n            <!-- Quick Actions Info -->\n            <VBox spacing=\"5\" style=\"-fx-background-color: #E6F3FF; -fx-padding: 10; -fx-background-radius: 8;\">\n                <Label text=\"💡 Thao tác nhanh:\"\n                       style=\"-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #2E8B57;\"/>\n                <Label text=\"• Double-click để chỉnh sửa món\"\n                       style=\"-fx-font-size: 11px; -fx-text-fill: #2E8B57;\"/>\n                <Label text=\"• Right-click để xem menu tùy chọn\"\n                       style=\"-fx-font-size: 11px; -fx-text-fill: #2E8B57;\"/>\n            </VBox>\n\n            <!-- Table -->\n            <TableView fx:id=\"tblOrderDetails\" VBox.vgrow=\"ALWAYS\"\n                       style=\"-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-width: 1; -fx-border-radius: 5;\">\n                <columns>\n                    <TableColumn fx:id=\"colProductName\" text=\"Tên sản phẩm\" prefWidth=\"160\"/>\n                    <TableColumn fx:id=\"colSize\" text=\"Size\" prefWidth=\"50\"/>\n                    <TableColumn fx:id=\"colQuantity\" text=\"SL\" prefWidth=\"35\"/>\n                    <TableColumn fx:id=\"colPrice\" text=\"Giá\" prefWidth=\"80\"/>\n                    <TableColumn text=\"Thành tiền\" prefWidth=\"90\">\n                        <cellValueFactory>\n                            <PropertyValueFactory property=\"totalPrice\" />\n                        </cellValueFactory>\n                    </TableColumn>\n                </columns>\n                <columnResizePolicy>\n                    <TableView fx:constant=\"CONSTRAINED_RESIZE_POLICY\"/>\n                </columnResizePolicy>\n            </TableView>\n\n            <!-- Edit Instructions -->\n            <Label text=\"✏️ Tip: Double-click hoặc right-click vào món để chỉnh sửa\"\n                   style=\"-fx-font-size: 11px; -fx-text-fill: #8B4513; -fx-font-style: italic;\"/>\n\n            <!-- Total -->\n            <VBox spacing=\"10\" style=\"-fx-background-color: #F5F5F5; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #CD853F; -fx-border-width: 1; -fx-border-radius: 8;\">\n                <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                    <Label text=\"Tổng cộng:\"\n                           style=\"-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n                    <Region HBox.hgrow=\"ALWAYS\"/>\n                    <Label fx:id=\"lblTotal\" text=\"0 VND\"\n                           style=\"-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #B8860B;\"/>\n                </HBox>\n                <Separator style=\"-fx-background-color: #CD853F;\"/>\n                <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                    <Label text=\"Số món:\"\n                           style=\"-fx-font-size: 14px; -fx-text-fill: #8B4513;\"/>\n                    <Region HBox.hgrow=\"ALWAYS\"/>\n                    <Label fx:id=\"lblItemCount\" text=\"0\"\n                           style=\"-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n                </HBox>\n            </VBox>\n\n            <!-- Customer -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"Khách hàng:\"\n                       style=\"-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #654321;\"/>\n                <ComboBox fx:id=\"cbCustomer\" promptText=\"Khách vãng lai\" HBox.hgrow=\"ALWAYS\"\n                          style=\"-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-radius: 5;\"/>\n            </HBox>\n\n            <!-- Action Buttons -->\n            <VBox spacing=\"10\">\n                <!-- Row 1: Edit Actions -->\n                <HBox spacing=\"10\">\n                    <Button text=\"✏️ Chỉnh sửa\" onAction=\"#handleEditSelectedItem\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #4682B4, #2E8B57); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                    <Button text=\"🗑️ Xóa món\" onAction=\"#handleDeleteSelectedItem\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #FF6347, #DC143C); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                </HBox>\n\n                <!-- Row 2: Order Actions -->\n                <HBox spacing=\"10\">\n                    <Button text=\"🧹 Xóa tất cả\" onAction=\"#handleClearOrder\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #DC143C, #B22222); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                    <Button text=\"📋 In Hóa Đơn\" onAction=\"#handleSaveOrder\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #8B4513, #654321); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                </HBox>\n            </VBox>\n        </VBox>\n    </HBox>\n\n    <!-- Footer -->\n    <HBox AnchorPane.bottomAnchor=\"5\" AnchorPane.leftAnchor=\"20\" AnchorPane.rightAnchor=\"20\"\n          spacing=\"20\" alignment=\"CENTER_LEFT\">\n        <Label fx:id=\"lblMessage\" HBox.hgrow=\"ALWAYS\"\n               style=\"-fx-font-size: 12px; -fx-text-fill: #8B4513; -fx-background-color: rgba(255,255,255,0.9); -fx-padding: 8 15; -fx-background-radius: 5; -fx-border-color: #CD853F; -fx-border-radius: 5;\"/>\n\n        <Label text=\"💻 Coffee Shop Management System v2.0\"\n               style=\"-fx-font-size: 11px; -fx-text-fill: #8B4513; -fx-background-color: rgba(255,255,255,0.8); -fx-padding: 5 10; -fx-background-radius: 5;\"/>\n    </HBox>\n\n</AnchorPane>",
+                        "language": "xml"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java"
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "fsPath": "src\\main\\resources\\views\\Order\\OrderView.fxml"
+                    }
+                ]
+            },
+            "createdAt": 1751774803129,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "command",
+                                "attrs": {
+                                    "label": "explain"
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "/explain"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "codeBlock",
+                                "attrs": {
+                                    "language": "xml"
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "<PropertyValueFactory property=\"totalPrice\" />"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "text",
+                                "text": "Cannot resolve symbol 'PropertyValueFactory'"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "0cc745dc-ed6e-4044-9e13-739cc2730ed4",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "The terminal message \"Cannot resolve symbol 'PropertyValueFactory'\" indicates a problem in your JavaFX FXML file, specifically with the `<PropertyValueFactory>` element. Let's break down the issue and provide insights on how to resolve it:\n\n### Breakdown of the Issue\n\n1. **`<PropertyValueFactory property=\"totalPrice\" />`**:\n   - This line in your FXML file is attempting to use `PropertyValueFactory` to bind a property named `totalPrice` to a table column in a JavaFX `TableView`.\n   - `PropertyValueFactory` is a class in JavaFX that is used to specify how to extract a value from a given object for a particular table column.\n\n2. **Error Message: \"Cannot resolve symbol 'PropertyValueFactory'\"**:\n   - This error typically occurs when the JavaFX library is not correctly imported or recognized in your project.\n   - It suggests that the FXML loader cannot find the `PropertyValueFactory` class, which is part of the `javafx.scene.control.cell` package.\n\n### Potential Causes\n\n- **Missing Import Statement**: The FXML file might be missing the import statement for `PropertyValueFactory`. Ensure that your FXML file includes the necessary import:\n  ```xml\n  <?import javafx.scene.control.cell.PropertyValueFactory?>\n  ```\n\n- **JavaFX Library Not Included**: Your project might not have the JavaFX library properly configured. Ensure that your build system (e.g., Maven, Gradle, or your IDE's project settings) includes the JavaFX SDK.\n\n- **Incorrect JavaFX Version**: Ensure that the version of JavaFX you are using is compatible with your Java version and that all necessary modules are included.\n\n### Steps to Resolve\n\n1. **Check Imports in FXML**:\n   - Ensure that the FXML file includes the import for `PropertyValueFactory`:\n     ```xml\n     <?import javafx.scene.control.cell.PropertyValueFactory?>\n     ```\n\n2. **Verify JavaFX Setup**:\n   - Make sure that your project is set up to use JavaFX. If you are using a build tool like Maven or Gradle, ensure that the JavaFX dependencies are correctly specified.\n\n3. **IDE Configuration**:\n   - If you are using an IDE like IntelliJ IDEA or Eclipse, check that the JavaFX SDK is added to your project libraries.\n\n4. **Check JavaFX Version**:\n   - Ensure that the JavaFX version matches your Java version. For example, JavaFX 11+ requires Java 11 or later.\n\nBy addressing these points, you should be able to resolve the \"Cannot resolve symbol 'PropertyValueFactory'\" error and ensure that your JavaFX application functions correctly."
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Order\\OrderView.fxml",
+                    "fsPath": "D:/STUDY-HUFLIT/CoffeeShop/coffeeShop/src/main/resources/views/Order/OrderView.fxml",
+                    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.*?>\n<?import javafx.scene.layout.*?>\n<?import javafx.scene.text.*?>\n<?import javafx.scene.effect.*?>\n\n\n<AnchorPane xmlns:fx=\"http://javafx.com/fxml\"\n            fx:controller=\"com.coffeeshop.coffeeshop.controller.OrderController\"\n            style=\"-fx-background-color: linear-gradient(to bottom, #D2B48C, #CD853F);\">\n\n    <!-- Header -->\n    <HBox AnchorPane.topAnchor=\"0\" AnchorPane.leftAnchor=\"0\" AnchorPane.rightAnchor=\"0\"\n          style=\"-fx-background-color: rgba(139, 69, 19, 0.9); -fx-padding: 15 30;\" alignment=\"CENTER_LEFT\" spacing=\"20\">\n        <Label text=\"☕ Coffee Shop - Order Nước\"\n               style=\"-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;\"/>\n\n        <Region HBox.hgrow=\"ALWAYS\"/>\n\n        <Label text=\"Xin chào, staff1\"\n               style=\"-fx-font-size: 16px; -fx-text-fill: #F5DEB3;\"/>\n        <Button text=\"← Quay lại\" onAction=\"#handleBack\"\n                style=\"-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8 15;\"/>\n    </HBox>\n\n    <!-- Main Content -->\n    <HBox AnchorPane.topAnchor=\"70\" AnchorPane.leftAnchor=\"20\" AnchorPane.rightAnchor=\"20\" AnchorPane.bottomAnchor=\"20\" spacing=\"20\">\n\n        <!-- Left Panel -->\n        <VBox spacing=\"15\" prefWidth=\"600\" style=\"-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-padding: 25;\">\n            <effect>\n                <DropShadow color=\"rgba(0,0,0,0.2)\" radius=\"10\" offsetX=\"0\" offsetY=\"3\"/>\n            </effect>\n\n            <!-- Header -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"🍵\" style=\"-fx-font-size: 24px;\"/>\n                <Label text=\"Menu Đồ Uống\"\n                       style=\"-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n            </HBox>\n\n            <!-- Category -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"Danh mục:\"\n                       style=\"-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #654321;\"/>\n                <ComboBox fx:id=\"cbCategory\" prefWidth=\"200\"\n                          promptText=\"Chọn danh mục\"\n                          style=\"-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-radius: 5;\"/>\n            </HBox>\n\n            <!-- Products -->\n            <ScrollPane fitToWidth=\"true\" VBox.vgrow=\"ALWAYS\"\n                        style=\"-fx-background-color: transparent;\">\n                <FlowPane fx:id=\"productsFlowPane\" hgap=\"15\" vgap=\"15\"\n                          style=\"-fx-padding: 15; -fx-background-color: #FAFAFA;\">\n                    <!-- Product buttons sẽ render tại đây -->\n                </FlowPane>\n            </ScrollPane>\n\n        </VBox>\n\n        <!-- Right Panel -->\n        <VBox spacing=\"15\" prefWidth=\"450\" style=\"-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-padding: 25;\">\n            <effect>\n                <DropShadow color=\"rgba(0,0,0,0.2)\" radius=\"10\" offsetX=\"0\" offsetY=\"3\"/>\n            </effect>\n\n            <!-- Header -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"🛒\" style=\"-fx-font-size: 24px;\"/>\n                <Label text=\"Order Details\"\n                       style=\"-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n            </HBox>\n\n            <!-- Quick Actions Info -->\n            <VBox spacing=\"5\" style=\"-fx-background-color: #E6F3FF; -fx-padding: 10; -fx-background-radius: 8;\">\n                <Label text=\"💡 Thao tác nhanh:\"\n                       style=\"-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #2E8B57;\"/>\n                <Label text=\"• Double-click để chỉnh sửa món\"\n                       style=\"-fx-font-size: 11px; -fx-text-fill: #2E8B57;\"/>\n                <Label text=\"• Right-click để xem menu tùy chọn\"\n                       style=\"-fx-font-size: 11px; -fx-text-fill: #2E8B57;\"/>\n            </VBox>\n\n            <!-- Table -->\n            <TableView fx:id=\"tblOrderDetails\" VBox.vgrow=\"ALWAYS\"\n                       style=\"-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-width: 1; -fx-border-radius: 5;\">\n                <columns>\n                    <TableColumn fx:id=\"colProductName\" text=\"Tên sản phẩm\" prefWidth=\"160\"/>\n                    <TableColumn fx:id=\"colSize\" text=\"Size\" prefWidth=\"50\"/>\n                    <TableColumn fx:id=\"colQuantity\" text=\"SL\" prefWidth=\"35\"/>\n                    <TableColumn fx:id=\"colPrice\" text=\"Giá\" prefWidth=\"80\"/>\n                    <TableColumn text=\"Thành tiền\" prefWidth=\"90\">\n                        <cellValueFactory>\n                            <PropertyValueFactory property=\"totalPrice\" />\n                        </cellValueFactory>\n                    </TableColumn>\n                </columns>\n                <columnResizePolicy>\n                    <TableView fx:constant=\"CONSTRAINED_RESIZE_POLICY\"/>\n                </columnResizePolicy>\n            </TableView>\n\n            <!-- Edit Instructions -->\n            <Label text=\"✏️ Tip: Double-click hoặc right-click vào món để chỉnh sửa\"\n                   style=\"-fx-font-size: 11px; -fx-text-fill: #8B4513; -fx-font-style: italic;\"/>\n\n            <!-- Total -->\n            <VBox spacing=\"10\" style=\"-fx-background-color: #F5F5F5; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #CD853F; -fx-border-width: 1; -fx-border-radius: 8;\">\n                <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                    <Label text=\"Tổng cộng:\"\n                           style=\"-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n                    <Region HBox.hgrow=\"ALWAYS\"/>\n                    <Label fx:id=\"lblTotal\" text=\"0 VND\"\n                           style=\"-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #B8860B;\"/>\n                </HBox>\n                <Separator style=\"-fx-background-color: #CD853F;\"/>\n                <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                    <Label text=\"Số món:\"\n                           style=\"-fx-font-size: 14px; -fx-text-fill: #8B4513;\"/>\n                    <Region HBox.hgrow=\"ALWAYS\"/>\n                    <Label fx:id=\"lblItemCount\" text=\"0\"\n                           style=\"-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n                </HBox>\n            </VBox>\n\n            <!-- Customer -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"Khách hàng:\"\n                       style=\"-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #654321;\"/>\n                <ComboBox fx:id=\"cbCustomer\" promptText=\"Khách vãng lai\" HBox.hgrow=\"ALWAYS\"\n                          style=\"-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-radius: 5;\"/>\n            </HBox>\n\n            <!-- Action Buttons -->\n            <VBox spacing=\"10\">\n                <!-- Row 1: Edit Actions -->\n                <HBox spacing=\"10\">\n                    <Button text=\"✏️ Chỉnh sửa\" onAction=\"#handleEditSelectedItem\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #4682B4, #2E8B57); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                    <Button text=\"🗑️ Xóa món\" onAction=\"#handleDeleteSelectedItem\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #FF6347, #DC143C); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                </HBox>\n\n                <!-- Row 2: Order Actions -->\n                <HBox spacing=\"10\">\n                    <Button text=\"🧹 Xóa tất cả\" onAction=\"#handleClearOrder\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #DC143C, #B22222); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                    <Button text=\"📋 In Hóa Đơn\" onAction=\"#handleSaveOrder\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #8B4513, #654321); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                </HBox>\n            </VBox>\n        </VBox>\n    </HBox>\n\n    <!-- Footer -->\n    <HBox AnchorPane.bottomAnchor=\"5\" AnchorPane.leftAnchor=\"20\" AnchorPane.rightAnchor=\"20\"\n          spacing=\"20\" alignment=\"CENTER_LEFT\">\n        <Label fx:id=\"lblMessage\" HBox.hgrow=\"ALWAYS\"\n               style=\"-fx-font-size: 12px; -fx-text-fill: #8B4513; -fx-background-color: rgba(255,255,255,0.9); -fx-padding: 8 15; -fx-background-radius: 5; -fx-border-color: #CD853F; -fx-border-radius: 5;\"/>\n\n        <Label text=\"💻 Coffee Shop Management System v2.0\"\n               style=\"-fx-font-size: 11px; -fx-text-fill: #8B4513; -fx-background-color: rgba(255,255,255,0.8); -fx-padding: 5 10; -fx-background-radius: 5;\"/>\n    </HBox>\n\n</AnchorPane>",
+                    "language": "xml"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CategoriesController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/OrderController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\products\\Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/resources/views/Order/OrderView.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/OrderDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDao.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/OrderDetail.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\OrderDetail.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/OrderController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java"
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "fsPath": "src\\main\\resources\\views\\Order\\OrderView.fxml"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "fsPath": "D:/STUDY-HUFLIT/CoffeeShop/coffeeShop/src/main/resources/views/Order/OrderView.fxml",
+                        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.*?>\n<?import javafx.scene.layout.*?>\n<?import javafx.scene.text.*?>\n<?import javafx.scene.effect.*?>\n\n\n<AnchorPane xmlns:fx=\"http://javafx.com/fxml\"\n            fx:controller=\"com.coffeeshop.coffeeshop.controller.OrderController\"\n            style=\"-fx-background-color: linear-gradient(to bottom, #D2B48C, #CD853F);\">\n\n    <!-- Header -->\n    <HBox AnchorPane.topAnchor=\"0\" AnchorPane.leftAnchor=\"0\" AnchorPane.rightAnchor=\"0\"\n          style=\"-fx-background-color: rgba(139, 69, 19, 0.9); -fx-padding: 15 30;\" alignment=\"CENTER_LEFT\" spacing=\"20\">\n        <Label text=\"☕ Coffee Shop - Order Nước\"\n               style=\"-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;\"/>\n\n        <Region HBox.hgrow=\"ALWAYS\"/>\n\n        <Label text=\"Xin chào, staff1\"\n               style=\"-fx-font-size: 16px; -fx-text-fill: #F5DEB3;\"/>\n        <Button text=\"← Quay lại\" onAction=\"#handleBack\"\n                style=\"-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8 15;\"/>\n    </HBox>\n\n    <!-- Main Content -->\n    <HBox AnchorPane.topAnchor=\"70\" AnchorPane.leftAnchor=\"20\" AnchorPane.rightAnchor=\"20\" AnchorPane.bottomAnchor=\"20\" spacing=\"20\">\n\n        <!-- Left Panel -->\n        <VBox spacing=\"15\" prefWidth=\"600\" style=\"-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-padding: 25;\">\n            <effect>\n                <DropShadow color=\"rgba(0,0,0,0.2)\" radius=\"10\" offsetX=\"0\" offsetY=\"3\"/>\n            </effect>\n\n            <!-- Header -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"🍵\" style=\"-fx-font-size: 24px;\"/>\n                <Label text=\"Menu Đồ Uống\"\n                       style=\"-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n            </HBox>\n\n            <!-- Category -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"Danh mục:\"\n                       style=\"-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #654321;\"/>\n                <ComboBox fx:id=\"cbCategory\" prefWidth=\"200\"\n                          promptText=\"Chọn danh mục\"\n                          style=\"-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-radius: 5;\"/>\n            </HBox>\n\n            <!-- Products -->\n            <ScrollPane fitToWidth=\"true\" VBox.vgrow=\"ALWAYS\"\n                        style=\"-fx-background-color: transparent;\">\n                <FlowPane fx:id=\"productsFlowPane\" hgap=\"15\" vgap=\"15\"\n                          style=\"-fx-padding: 15; -fx-background-color: #FAFAFA;\">\n                    <!-- Product buttons sẽ render tại đây -->\n                </FlowPane>\n            </ScrollPane>\n\n        </VBox>\n\n        <!-- Right Panel -->\n        <VBox spacing=\"15\" prefWidth=\"450\" style=\"-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-padding: 25;\">\n            <effect>\n                <DropShadow color=\"rgba(0,0,0,0.2)\" radius=\"10\" offsetX=\"0\" offsetY=\"3\"/>\n            </effect>\n\n            <!-- Header -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"🛒\" style=\"-fx-font-size: 24px;\"/>\n                <Label text=\"Order Details\"\n                       style=\"-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n            </HBox>\n\n            <!-- Quick Actions Info -->\n            <VBox spacing=\"5\" style=\"-fx-background-color: #E6F3FF; -fx-padding: 10; -fx-background-radius: 8;\">\n                <Label text=\"💡 Thao tác nhanh:\"\n                       style=\"-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #2E8B57;\"/>\n                <Label text=\"• Double-click để chỉnh sửa món\"\n                       style=\"-fx-font-size: 11px; -fx-text-fill: #2E8B57;\"/>\n                <Label text=\"• Right-click để xem menu tùy chọn\"\n                       style=\"-fx-font-size: 11px; -fx-text-fill: #2E8B57;\"/>\n            </VBox>\n\n            <!-- Table -->\n            <TableView fx:id=\"tblOrderDetails\" VBox.vgrow=\"ALWAYS\"\n                       style=\"-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-width: 1; -fx-border-radius: 5;\">\n                <columns>\n                    <TableColumn fx:id=\"colProductName\" text=\"Tên sản phẩm\" prefWidth=\"160\"/>\n                    <TableColumn fx:id=\"colSize\" text=\"Size\" prefWidth=\"50\"/>\n                    <TableColumn fx:id=\"colQuantity\" text=\"SL\" prefWidth=\"35\"/>\n                    <TableColumn fx:id=\"colPrice\" text=\"Giá\" prefWidth=\"80\"/>\n                    <TableColumn text=\"Thành tiền\" prefWidth=\"90\">\n                        <cellValueFactory>\n                            <PropertyValueFactory property=\"totalPrice\" />\n                        </cellValueFactory>\n                    </TableColumn>\n                </columns>\n                <columnResizePolicy>\n                    <TableView fx:constant=\"CONSTRAINED_RESIZE_POLICY\"/>\n                </columnResizePolicy>\n            </TableView>\n\n            <!-- Edit Instructions -->\n            <Label text=\"✏️ Tip: Double-click hoặc right-click vào món để chỉnh sửa\"\n                   style=\"-fx-font-size: 11px; -fx-text-fill: #8B4513; -fx-font-style: italic;\"/>\n\n            <!-- Total -->\n            <VBox spacing=\"10\" style=\"-fx-background-color: #F5F5F5; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #CD853F; -fx-border-width: 1; -fx-border-radius: 8;\">\n                <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                    <Label text=\"Tổng cộng:\"\n                           style=\"-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n                    <Region HBox.hgrow=\"ALWAYS\"/>\n                    <Label fx:id=\"lblTotal\" text=\"0 VND\"\n                           style=\"-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #B8860B;\"/>\n                </HBox>\n                <Separator style=\"-fx-background-color: #CD853F;\"/>\n                <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                    <Label text=\"Số món:\"\n                           style=\"-fx-font-size: 14px; -fx-text-fill: #8B4513;\"/>\n                    <Region HBox.hgrow=\"ALWAYS\"/>\n                    <Label fx:id=\"lblItemCount\" text=\"0\"\n                           style=\"-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #8B4513;\"/>\n                </HBox>\n            </VBox>\n\n            <!-- Customer -->\n            <HBox spacing=\"10\" alignment=\"CENTER_LEFT\">\n                <Label text=\"Khách hàng:\"\n                       style=\"-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #654321;\"/>\n                <ComboBox fx:id=\"cbCustomer\" promptText=\"Khách vãng lai\" HBox.hgrow=\"ALWAYS\"\n                          style=\"-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-radius: 5;\"/>\n            </HBox>\n\n            <!-- Action Buttons -->\n            <VBox spacing=\"10\">\n                <!-- Row 1: Edit Actions -->\n                <HBox spacing=\"10\">\n                    <Button text=\"✏️ Chỉnh sửa\" onAction=\"#handleEditSelectedItem\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #4682B4, #2E8B57); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                    <Button text=\"🗑️ Xóa món\" onAction=\"#handleDeleteSelectedItem\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #FF6347, #DC143C); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                </HBox>\n\n                <!-- Row 2: Order Actions -->\n                <HBox spacing=\"10\">\n                    <Button text=\"🧹 Xóa tất cả\" onAction=\"#handleClearOrder\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #DC143C, #B22222); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                    <Button text=\"📋 In Hóa Đơn\" onAction=\"#handleSaveOrder\" HBox.hgrow=\"ALWAYS\"\n                            style=\"-fx-background-color: linear-gradient(to bottom, #8B4513, #654321); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;\">\n                        <effect>\n                            <DropShadow color=\"rgba(0,0,0,0.3)\" radius=\"5\" offsetX=\"0\" offsetY=\"2\"/>\n                        </effect>\n                    </Button>\n                </HBox>\n            </VBox>\n        </VBox>\n    </HBox>\n\n    <!-- Footer -->\n    <HBox AnchorPane.bottomAnchor=\"5\" AnchorPane.leftAnchor=\"20\" AnchorPane.rightAnchor=\"20\"\n          spacing=\"20\" alignment=\"CENTER_LEFT\">\n        <Label fx:id=\"lblMessage\" HBox.hgrow=\"ALWAYS\"\n               style=\"-fx-font-size: 12px; -fx-text-fill: #8B4513; -fx-background-color: rgba(255,255,255,0.9); -fx-padding: 8 15; -fx-background-radius: 5; -fx-border-color: #CD853F; -fx-border-radius: 5;\"/>\n\n        <Label text=\"💻 Coffee Shop Management System v2.0\"\n               style=\"-fx-font-size: 11px; -fx-text-fill: #8B4513; -fx-background-color: rgba(255,255,255,0.8); -fx-padding: 5 10; -fx-background-radius: 5;\"/>\n    </HBox>\n\n</AnchorPane>",
+                        "language": "xml"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java"
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "fsPath": "src\\main\\resources\\views\\Order\\OrderView.fxml"
+                    }
+                ]
+            },
+            "createdAt": 1751774815855,
+            "isInternal": false
+        }
+    ],
+    "isAgent": false,
+    "isNameGenerated": true,
+    "isCustomAgent": false
+}
+}

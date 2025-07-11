@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDAO {
-    private Connection conn;
+    private final Connection conn;
 
     public UserDAO(Connection conn) {
         this.conn = conn;

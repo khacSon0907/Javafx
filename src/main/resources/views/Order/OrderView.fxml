@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coffeeshop.coffeeshop.controller.OrderController"
+            style="-fx-background-color: linear-gradient(to bottom, #D2B48C, #CD853F);">
+
+    <!-- Header -->
+    <HBox AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+          style="-fx-background-color: rgba(139, 69, 19, 0.9); -fx-padding: 15 30;" alignment="CENTER_LEFT" spacing="20">
+        <Label text="☕ Coffee Shop - Order Nước"
+               style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Label text="Xin chào, staff1"
+               style="-fx-font-size: 16px; -fx-text-fill: #F5DEB3;"/>
+        <Button text="← Quay lại" onAction="#handleBack"
+                style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8 15;"/>
+    </HBox>
+
+    <!-- Main Content -->
+    <HBox AnchorPane.topAnchor="70" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" spacing="20">
+
+        <!-- Left Panel -->
+        <VBox spacing="15" prefWidth="600" style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-padding: 25;">
+            <effect>
+                <DropShadow color="rgba(0,0,0,0.2)" radius="10" offsetX="0" offsetY="3"/>
+            </effect>
+
+            <!-- Header -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="🍵" style="-fx-font-size: 24px;"/>
+                <Label text="Menu Đồ Uống"
+                       style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+            </HBox>
+
+            <!-- Category -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Danh mục:"
+                       style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #654321;"/>
+                <ComboBox fx:id="cbCategory" prefWidth="200"
+                          promptText="Chọn danh mục"
+                          style="-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-radius: 5;"/>
+            </HBox>
+
+            <!-- Products -->
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                        style="-fx-background-color: transparent;">
+                <FlowPane fx:id="productsFlowPane" hgap="15" vgap="15"
+                          style="-fx-padding: 15; -fx-background-color: #FAFAFA;">
+                    <!-- Product buttons sẽ render tại đây -->
+                </FlowPane>
+            </ScrollPane>
+
+        </VBox>
+
+        <!-- Right Panel -->
+        <VBox spacing="15" prefWidth="500" style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-padding: 25;">
+            <effect>
+                <DropShadow color="rgba(0,0,0,0.2)" radius="10" offsetX="0" offsetY="3"/>
+            </effect>
+
+            <!-- Header -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="🛒" style="-fx-font-size: 24px;"/>
+                <Label text="Order Details"
+                       style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+            </HBox>
+
+            <!-- Quick Actions Info -->
+            <VBox spacing="5" style="-fx-background-color: #E6F3FF; -fx-padding: 10; -fx-background-radius: 8;">
+                <Label text="💡 Thao tác nhanh:"
+                       style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #2E8B57;"/>
+                <Label text="• Double-click để chỉnh sửa món"
+                       style="-fx-font-size: 11px; -fx-text-fill: #2E8B57;"/>
+                <Label text="• Right-click để xem menu tùy chọn"
+                       style="-fx-font-size: 11px; -fx-text-fill: #2E8B57;"/>
+            </VBox>
+
+            <!-- Table -->
+            <TableView fx:id="tblOrderDetails" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-width: 1; -fx-border-radius: 5;">
+                <columns>
+                    <!-- CỘT ẢNH MỚI THÊM -->
+                    <TableColumn fx:id="colProductImage" text="Ảnh" prefWidth="70">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="productImageView" />
+                        </cellValueFactory>
+                    </TableColumn>
+
+                    <TableColumn fx:id="colProductName" text="Tên sản phẩm" prefWidth="160"/>
+                    <TableColumn fx:id="colSize" text="Size" prefWidth="50"/>
+                    <TableColumn fx:id="colQuantity" text="SL" prefWidth="35"/>
+
+                    <!-- CỘT GIẢM GIÁ MỚI THÊM -->
+                    <TableColumn fx:id="colDiscount" text="Giảm giá (%)" prefWidth="80">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="discountFormatted" />
+                        </cellValueFactory>
+                    </TableColumn>
+
+                    <TableColumn fx:id="colPrice" text="Giá" prefWidth="80"/>
+                    <TableColumn text="Thành tiền" prefWidth="90">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="totalPrice" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+
+
+            <!-- Edit Instructions -->
+            <Label text="✏️ Tip: Double-click hoặc right-click vào món để chỉnh sửa"
+                   style="-fx-font-size: 11px; -fx-text-fill: #8B4513; -fx-font-style: italic;"/>
+
+            <!-- Total -->
+            <VBox spacing="10" style="-fx-background-color: #F5F5F5; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #CD853F; -fx-border-width: 1; -fx-border-radius: 8;">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Tổng cộng:"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTotal" text="0 VND"
+                           style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #B8860B;"/>
+                </HBox>
+                <Separator style="-fx-background-color: #CD853F;"/>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Số món:"
+                           style="-fx-font-size: 14px; -fx-text-fill: #8B4513;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblItemCount" text="0"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Customer -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Khách hàng:"
+                       style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #654321;"/>
+                <ComboBox fx:id="cbCustomer" promptText="Khách vãng lai" HBox.hgrow="ALWAYS"
+                          style="-fx-background-color: white; -fx-border-color: #CD853F; -fx-border-radius: 5;"/>
+            </HBox>
+
+            <!-- Action Buttons -->
+            <VBox spacing="10">
+                <!-- Row 1: Edit Actions -->
+                <HBox spacing="10">
+                    <Button text="✏️ Chỉnh sửa" onAction="#handleEditSelectedItem" HBox.hgrow="ALWAYS"
+                            style="-fx-background-color: linear-gradient(to bottom, #4682B4, #2E8B57); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;">
+                        <effect>
+                            <DropShadow color="rgba(0,0,0,0.3)" radius="5" offsetX="0" offsetY="2"/>
+                        </effect>
+                    </Button>
+                    <Button text="🗑️ Xóa món" onAction="#handleDeleteSelectedItem" HBox.hgrow="ALWAYS"
+                            style="-fx-background-color: linear-gradient(to bottom, #FF6347, #DC143C); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;">
+                        <effect>
+                            <DropShadow color="rgba(0,0,0,0.3)" radius="5" offsetX="0" offsetY="2"/>
+                        </effect>
+                    </Button>
+                </HBox>
+
+                <!-- Row 2: Order Actions -->
+                <HBox spacing="10">
+                    <Button text="🧹 Xóa tất cả" onAction="#handleClearOrder" HBox.hgrow="ALWAYS"
+                            style="-fx-background-color: linear-gradient(to bottom, #DC143C, #B22222); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;">
+                        <effect>
+                            <DropShadow color="rgba(0,0,0,0.3)" radius="5" offsetX="0" offsetY="2"/>
+                        </effect>
+                    </Button>
+                    <Button text="📋 In Hóa Đơn" onAction="#handleSaveOrder" HBox.hgrow="ALWAYS"
+                            style="-fx-background-color: linear-gradient(to bottom, #8B4513, #654321); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10;">
+                        <effect>
+                            <DropShadow color="rgba(0,0,0,0.3)" radius="5" offsetX="0" offsetY="2"/>
+                        </effect>
+                    </Button>
+                </HBox>
+            </VBox>
+        </VBox>
+    </HBox>
+
+    <!-- Footer -->
+    <HBox AnchorPane.bottomAnchor="5" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20"
+          spacing="20" alignment="CENTER_LEFT">
+        <Label fx:id="lblMessage" HBox.hgrow="ALWAYS"
+               style="-fx-font-size: 12px; -fx-text-fill: #8B4513; -fx-background-color: rgba(255,255,255,0.9); -fx-padding: 8 15; -fx-background-radius: 5; -fx-border-color: #CD853F; -fx-border-radius: 5;"/>
+
+        <Label text="💻 Coffee Shop Management System v2.0"
+               style="-fx-font-size: 11px; -fx-text-fill: #8B4513; -fx-background-color: rgba(255,255,255,0.8); -fx-padding: 5 10; -fx-background-radius: 5;"/>
+    </HBox>
+
+</AnchorPane>

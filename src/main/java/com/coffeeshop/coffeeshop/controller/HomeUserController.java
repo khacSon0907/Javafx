@@ -52,13 +52,36 @@ public class HomeUserController {
 
     @FXML
     private void handleOrderDrink(ActionEvent event) {
-        System.out.println("Thực hiện order nước...");
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/views/Order/OrderView.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 1200, 800));
+            stage.setTitle("Trang chính");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleViewOrder(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/views/Order/OrderUpdate.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 1200, 800));
+            stage.setTitle("Trang chính");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void handleCashier(ActionEvent event) {
         System.out.println("Thực hiện xuất hóa đơn...");
     }
+
+
 
     @FXML
     private void handleKitchen(ActionEvent event) {

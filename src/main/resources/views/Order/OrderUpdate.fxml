@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coffeeshop.coffeeshop.controller.OrderUpdateController"
+            prefWidth="1200" prefHeight="700"
+            style="-fx-background-color: linear-gradient(to bottom, #f8f9fa, #e9ecef);">
+
+    <children>
+        <VBox spacing="20" AnchorPane.topAnchor="20" AnchorPane.bottomAnchor="20"
+              AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+
+            <children>
+                <!-- Tiêu đề -->
+                <Label text="Quản lý và Cập nhật Đơn hàng"
+                       style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 20 0;"/>
+
+                <!-- Phần tìm kiếm và lọc -->
+                <HBox spacing="15" alignment="CENTER_LEFT"
+                      style="-fx-background-color: #f8f9fa; -fx-background-radius: 10; -fx-padding: 15;">
+                    <children>
+                        <Label text="Tìm kiếm:" style="-fx-font-weight: bold; -fx-text-fill: #495057;"/>
+                        <TextField fx:id="searchField" promptText="Tìm theo mã đơn hàng..."
+                                   style="-fx-background-color: white; -fx-background-radius: 8; -fx-border-color: #ced4da; -fx-border-radius: 8; -fx-padding: 8 12; -fx-pref-width: 200;"/>
+
+                        <Label text="Lọc trạng thái:" style="-fx-font-weight: bold; -fx-text-fill: #495057;"/>
+                        <ComboBox fx:id="filterStatusComboBox" promptText="Tất cả"
+                                  style="-fx-background-color: white; -fx-background-radius: 8; -fx-border-color: #ced4da; -fx-border-radius: 8; -fx-pref-width: 150;"/>
+
+                        <Button text="Tìm kiếm" onAction="#handleSearch"
+                                style="-fx-background-color: linear-gradient(to bottom, #007bff, #0056b3); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand; -fx-padding: 8 16;"/>
+
+                        <Button text="Làm mới" onAction="#handleRefresh"
+                                style="-fx-background-color: linear-gradient(to bottom, #17a2b8, #138496); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand; -fx-padding: 8 16;"/>
+                    </children>
+                </HBox>
+
+                <!-- Bảng danh sách đơn hàng -->
+                <VBox spacing="10" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label text="Danh sách đơn hàng:" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+                        <TableView fx:id="ordersTable" VBox.vgrow="ALWAYS"
+                                   style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #dee2e6; -fx-border-radius: 10;">
+                            <columns>
+                                <TableColumn text="Mã ĐH" fx:id="orderIdColumn" prefWidth="80"
+                                             style="-fx-background-color: #f8f9fa; -fx-text-fill: #495057; -fx-font-weight: bold;"/>
+                                <TableColumn text="Nhân viên" fx:id="staffIdColumn" prefWidth="100"
+                                             style="-fx-background-color: #f8f9fa; -fx-text-fill: #495057; -fx-font-weight: bold;"/>
+                                <TableColumn text="Ngày đặt" fx:id="orderDateColumn" prefWidth="150"
+                                             style="-fx-background-color: #f8f9fa; -fx-text-fill: #495057; -fx-font-weight: bold;"/>
+                                <TableColumn text="Tổng tiền" fx:id="totalAmountColumn" prefWidth="120"
+                                             style="-fx-background-color: #f8f9fa; -fx-text-fill: #495057; -fx-font-weight: bold;"/>
+                                <TableColumn text="Trạng thái" fx:id="statusColumn" prefWidth="100"
+                                             style="-fx-background-color: #f8f9fa; -fx-text-fill: #495057; -fx-font-weight: bold;"/>
+                                <TableColumn text="Ghi chú" fx:id="noteColumn" prefWidth="200"
+                                             style="-fx-background-color: #f8f9fa; -fx-text-fill: #495057; -fx-font-weight: bold;"/>
+                                <TableColumn text="Thao tác" fx:id="actionColumn" prefWidth="150"
+                                             style="-fx-background-color: #f8f9fa; -fx-text-fill: #495057; -fx-font-weight: bold;"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+
+                <!-- Phần chi tiết và cập nhật đơn hàng -->
+                <TitledPane fx:id="detailPane" text="Chi tiết và Cập nhật đơn hàng" expanded="false"
+                            style="-fx-background-color: #f8f9fa; -fx-font-weight: bold;">
+                    <content>
+                        <VBox spacing="15" style="-fx-padding: 15;">
+                            <children>
+                                <!-- Form cập nhật thông tin đơn hàng -->
+                                <GridPane hgap="15" vgap="15">
+                                    <children>
+                                        <Label text="Mã đơn hàng:" GridPane.columnIndex="0" GridPane.rowIndex="0"
+                                               style="-fx-font-weight: bold; -fx-text-fill: #495057;"/>
+                                        <TextField fx:id="editOrderIdField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0"
+                                                   style="-fx-background-color: #e9ecef; -fx-background-radius: 8; -fx-border-color: #ced4da; -fx-border-radius: 8; -fx-padding: 8 12;"/>
+
+                                        <Label text="Mã nhân viên:" GridPane.columnIndex="2" GridPane.rowIndex="0"
+                                               style="-fx-font-weight: bold; -fx-text-fill: #495057;"/>
+                                        <TextField fx:id="editStaffIdField" GridPane.columnIndex="3" GridPane.rowIndex="0"
+                                                   style="-fx-background-color: white; -fx-background-radius: 8; -fx-border-color: #ced4da; -fx-border-radius: 8; -fx-padding: 8 12;"/>
+
+                                        <Label text="Ngày đặt:" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                                               style="-fx-font-weight: bold; -fx-text-fill: #495057;"/>
+                                        <DatePicker fx:id="editOrderDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                                                    style="-fx-background-color: white; -fx-background-radius: 8; -fx-border-color: #ced4da; -fx-border-radius: 8;"/>
+
+                                        <Label text="Trạng thái:" GridPane.columnIndex="2" GridPane.rowIndex="1"
+                                               style="-fx-font-weight: bold; -fx-text-fill: #495057;"/>
+                                        <ComboBox fx:id="editStatusComboBox" GridPane.columnIndex="3" GridPane.rowIndex="1"
+                                                  style="-fx-background-color: white; -fx-background-radius: 8; -fx-border-color: #ced4da; -fx-border-radius: 8; -fx-pref-width: 200;"/>
+
+                                        <Label text="Ghi chú:" GridPane.columnIndex="0" GridPane.rowIndex="2"
+                                               style="-fx-font-weight: bold; -fx-text-fill: #495057;"/>
+                                        <TextField fx:id="editNoteField" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.columnSpan="3"
+                                                   style="-fx-background-color: white; -fx-background-radius: 8; -fx-border-color: #ced4da; -fx-border-radius: 8; -fx-padding: 8 12;"/>
+                                    </children>
+                                </GridPane>
+
+                                <!-- Bảng chi tiết đơn hàng -->
+                                <Label text="Chi tiết sản phẩm:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+                                <TableView fx:id="orderDetailsTable" prefHeight="150"
+                                           style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #dee2e6; -fx-border-radius: 10;">
+                                    <columns>
+                                        <TableColumn text="Mã SP" fx:id="productIdColumn" prefWidth="80"/>
+                                        <TableColumn text="Tên SP" fx:id="productNameColumn" prefWidth="200"/>
+                                        <TableColumn text="Loại" fx:id="productTypeColumn" prefWidth="100"/>
+                                        <TableColumn text="Size" fx:id="sizeColumn" prefWidth="80"/>
+                                        <TableColumn text="Số lượng" fx:id="quantityColumn" prefWidth="100"/>
+                                        <TableColumn text="Đơn giá" fx:id="unitPriceColumn" prefWidth="120"/>
+                                        <TableColumn text="Thành tiền" fx:id="subtotalColumn" prefWidth="120"/>
+                                    </columns>
+                                </TableView>
+
+                                <!-- Tổng tiền -->
+                                <HBox alignment="CENTER_RIGHT" spacing="15">
+                                    <children>
+                                        <Label text="Tổng tiền:" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #dc3545;"/>
+                                        <Label fx:id="totalAmountLabel" text="0 VND"
+                                               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #dc3545;"/>
+                                    </children>
+                                </HBox>
+
+                                <!-- Nút hành động -->
+                                <HBox spacing="15" alignment="CENTER">
+                                    <children>
+                                        <Button text="Cập nhật" onAction="#handleUpdateOrder"
+                                                style="-fx-background-color: linear-gradient(to bottom, #28a745, #1e7e34); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-cursor: hand; -fx-padding: 12 24; -fx-font-size: 14px;"/>
+                                        <Button text="Hủy" onAction="#handleCancelEdit"
+                                                style="-fx-background-color: linear-gradient(to bottom, #6c757d, #545b62); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-cursor: hand; -fx-padding: 12 24; -fx-font-size: 14px;"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </content>
+                </TitledPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

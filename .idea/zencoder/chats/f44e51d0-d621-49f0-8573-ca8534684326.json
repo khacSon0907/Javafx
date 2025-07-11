@@ -1,0 +1,1139 @@
+{
+    "checksum": "95ee9676c6c3e7bd5382ce6a9acb1208a4af75c6d41b3816eac7d9b6ebcf214d",
+    "data": {
+    "id": "f44e51d0-d621-49f0-8573-ca8534684326",
+    "createdAt": 1751686849131,
+    "updatedAt": 1751689239299,
+    "title": "XML Parsing Error Resolution",
+    "messages": [
+        {
+            "id": "96700c6f-2109-4176-af7b-6ff71adff290",
+            "role": "user",
+            "content": [
+                {
+                    "type": "command",
+                    "commandName": "explain"
+                },
+                {
+                    "type": "codeSnippet",
+                    "text": "<Label fx:id=\"subtotalLabel\" text=>\n                            <font>\n                                <Font name=\"System Bold\" size=\"12.0\" />\n                            </font>",
+                    "language": "xml"
+                },
+                {
+                    "type": "text",
+                    "text": "Attribute value expected"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\orderStaff\\Order.fxml",
+                    "fsPath": "D:/STUDY-HUFLIT/CoffeeShop/coffeeShop/src/main/resources/views/orderStaff/Order.fxml",
+                    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.*?>\n<?import javafx.scene.control.*?>\n<?import javafx.scene.layout.*?>\n<?import javafx.scene.text.*?>\n\n<AnchorPane xmlns=\"http://javafx.com/javafx/11.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.coffeeshop.coffeeshop.controller.Order\" prefHeight=\"700.0\" prefWidth=\"1000.0\">\n    <children>\n        <!-- Header -->\n        <Label layoutX=\"20.0\" layoutY=\"20.0\" text=\"Coffee Shop - Order Management\">\n            <font>\n                <Font name=\"System Bold\" size=\"24.0\" />\n            </font>\n        </Label>\n\n        <!-- Categories Filter -->\n        <Label layoutX=\"20.0\" layoutY=\"70.0\" text=\"Filter by Category:\">\n            <font>\n                <Font size=\"14.0\" />\n            </font>\n        </Label>\n        <ComboBox fx:id=\"categoryComboBox\" layoutX=\"150.0\" layoutY=\"67.0\" prefWidth=\"150.0\" promptText=\"All Categories\" />\n\n        <!-- Search -->\n        <Label layoutX=\"320.0\" layoutY=\"70.0\" text=\"Search:\">\n            <font>\n                <Font size=\"14.0\" />\n            </font>\n        </Label>\n        <TextField fx:id=\"searchField\" layoutX=\"370.0\" layoutY=\"67.0\" prefWidth=\"200.0\" promptText=\"Search products...\" />\n\n        <!-- Products List -->\n        <Label layoutX=\"20.0\" layoutY=\"120.0\" text=\"Products\">\n            <font>\n                <Font name=\"System Bold\" size=\"16.0\" />\n            </font>\n        </Label>\n\n        <ScrollPane layoutX=\"20.0\" layoutY=\"150.0\" prefHeight=\"400.0\" prefWidth=\"500.0\">\n            <content>\n                <VBox fx:id=\"productsVBox\" spacing=\"10.0\">\n                    <padding>\n                        <Insets bottom=\"10.0\" left=\"10.0\" right=\"10.0\" top=\"10.0\" />\n                    </padding>\n                </VBox>\n            </content>\n        </ScrollPane>\n\n        <!-- Order Details -->\n        <Label layoutX=\"550.0\" layoutY=\"120.0\" text=\"Order Details\">\n            <font>\n                <Font name=\"System Bold\" size=\"16.0\" />\n            </font>\n        </Label>\n\n        <TableView fx:id=\"orderTable\" layoutX=\"550.0\" layoutY=\"150.0\" prefHeight=\"300.0\" prefWidth=\"430.0\">\n            <columns>\n                <TableColumn fx:id=\"orderProductNameColumn\" prefWidth=\"180.0\" text=\"Product Name\" />\n                <TableColumn fx:id=\"orderQuantityColumn\" prefWidth=\"80.0\" text=\"Quantity\" />\n                <TableColumn fx:id=\"orderPriceColumn\" prefWidth=\"80.0\" text=\"Price\" />\n                <TableColumn fx:id=\"orderTotalColumn\" prefWidth=\"90.0\" text=\"Total\" />\n            </columns>\n        </TableView>\n\n        <!-- Order Summary -->\n        <VBox layoutX=\"550.0\" layoutY=\"470.0\" spacing=\"10.0\">\n            <children>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Subtotal:\" />\n                        <Label fx:id=\"subtotalLabel\" text=\"$0.00\">\n                            <font>\n                                <Font name=\"System Bold\" size=\"12.0\" />\n                            </font>\n                        </Label>\n                    </children>\n                </HBox>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Tax (10%):\" />\n                        <Label fx:id=\"taxLabel\" text=\"$0.00\">\n                            <font>\n                                <Font name=\"System Bold\" size=\"12.0\" />\n                            </font>\n                        </Label>\n                    </children>\n                </HBox>\n                <Separator />\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Total:\" />\n                        <Label fx:id=\"totalLabel\" text=\"$0.00\">\n                            <font>\n                                <Font name=\"System Bold\" size=\"16.0\" />\n                            </font>\n                        </Label>\n                    </children>\n                </HBox>\n            </children>\n        </VBox>\n\n        <!-- Action Buttons -->\n        <HBox layoutX=\"550.0\" layoutY=\"580.0\" spacing=\"10.0\">\n            <children>\n                <Button fx:id=\"clearOrderButton\" mnemonicParsing=\"false\" onAction=\"#clearOrder\" prefWidth=\"100.0\" text=\"Clear Order\" />\n                <Button fx:id=\"removeItemButton\" mnemonicParsing=\"false\" onAction=\"#removeSelectedItem\" prefWidth=\"100.0\" text=\"Remove Item\" />\n                <Button fx:id=\"placeOrderButton\" mnemonicParsing=\"false\" onAction=\"#placeOrder\" prefWidth=\"100.0\" style=\"-fx-background-color: #4CAF50; -fx-text-fill: white;\" text=\"Place Order\" />\n            </children>\n        </HBox>\n\n        <!-- Customer Information -->\n        <VBox layoutX=\"20.0\" layoutY=\"570.0\" spacing=\"10.0\">\n            <children>\n                <Label text=\"Customer Information\">\n                    <font>\n                        <Font name=\"System Bold\" size=\"14.0\" />\n                    </font>\n                </Label>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Name:\" />\n                        <TextField fx:id=\"customerNameField\" prefWidth=\"150.0\" />\n                        <Label text=\"Phone:\" />\n                        <TextField fx:id=\"customerPhoneField\" prefWidth=\"120.0\" />\n                    </children>\n                </HBox>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Order Type:\" />\n                        <RadioButton fx:id=\"dineInRadio\" mnemonicParsing=\"false\" selected=\"true\" text=\"Dine In\">\n                            <toggleGroup>\n                                <ToggleGroup fx:id=\"orderTypeGroup\" />\n                            </toggleGroup>\n                        </RadioButton>\n                        <RadioButton fx:id=\"takeAwayRadio\" mnemonicParsing=\"false\" text=\"Take Away\" toggleGroup=\"$orderTypeGroup\" />\n                    </children>\n                </HBox>\n            </children>\n        </VBox>\n\n        <!-- Status Bar -->\n        <Label fx:id=\"statusLabel\" layoutX=\"20.0\" layoutY=\"670.0\" text=\"Ready to take orders...\" textFill=\"#666666\" />\n    </children>\n</AnchorPane>",
+                    "language": "xml"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/Order.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\Order.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\products\\Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Home\\mainAdmin-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\mainAdmin-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\login-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Auth\\login-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/resources/views/products/categories.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\categories.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/CategoriesDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Categories.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Categories.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Product.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Product.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Role.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/ProductDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/products/Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/DBConnection.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\DBConnection.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CategoriesController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/Home/HomeUser.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\HomeUser.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/orderStaff/Order.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\orderStaff\\Order.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/OrderController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/Order.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\Order.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/Home/mainAdmin-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\mainAdmin-view.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [],
+                "usedFilePaths": [
+                    {
+                        "path": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\orderStaff\\Order.fxml",
+                        "fsPath": "D:/STUDY-HUFLIT/CoffeeShop/coffeeShop/src/main/resources/views/orderStaff/Order.fxml",
+                        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.*?>\n<?import javafx.scene.control.*?>\n<?import javafx.scene.layout.*?>\n<?import javafx.scene.text.*?>\n\n<AnchorPane xmlns=\"http://javafx.com/javafx/11.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.coffeeshop.coffeeshop.controller.Order\" prefHeight=\"700.0\" prefWidth=\"1000.0\">\n    <children>\n        <!-- Header -->\n        <Label layoutX=\"20.0\" layoutY=\"20.0\" text=\"Coffee Shop - Order Management\">\n            <font>\n                <Font name=\"System Bold\" size=\"24.0\" />\n            </font>\n        </Label>\n\n        <!-- Categories Filter -->\n        <Label layoutX=\"20.0\" layoutY=\"70.0\" text=\"Filter by Category:\">\n            <font>\n                <Font size=\"14.0\" />\n            </font>\n        </Label>\n        <ComboBox fx:id=\"categoryComboBox\" layoutX=\"150.0\" layoutY=\"67.0\" prefWidth=\"150.0\" promptText=\"All Categories\" />\n\n        <!-- Search -->\n        <Label layoutX=\"320.0\" layoutY=\"70.0\" text=\"Search:\">\n            <font>\n                <Font size=\"14.0\" />\n            </font>\n        </Label>\n        <TextField fx:id=\"searchField\" layoutX=\"370.0\" layoutY=\"67.0\" prefWidth=\"200.0\" promptText=\"Search products...\" />\n\n        <!-- Products List -->\n        <Label layoutX=\"20.0\" layoutY=\"120.0\" text=\"Products\">\n            <font>\n                <Font name=\"System Bold\" size=\"16.0\" />\n            </font>\n        </Label>\n\n        <ScrollPane layoutX=\"20.0\" layoutY=\"150.0\" prefHeight=\"400.0\" prefWidth=\"500.0\">\n            <content>\n                <VBox fx:id=\"productsVBox\" spacing=\"10.0\">\n                    <padding>\n                        <Insets bottom=\"10.0\" left=\"10.0\" right=\"10.0\" top=\"10.0\" />\n                    </padding>\n                </VBox>\n            </content>\n        </ScrollPane>\n\n        <!-- Order Details -->\n        <Label layoutX=\"550.0\" layoutY=\"120.0\" text=\"Order Details\">\n            <font>\n                <Font name=\"System Bold\" size=\"16.0\" />\n            </font>\n        </Label>\n\n        <TableView fx:id=\"orderTable\" layoutX=\"550.0\" layoutY=\"150.0\" prefHeight=\"300.0\" prefWidth=\"430.0\">\n            <columns>\n                <TableColumn fx:id=\"orderProductNameColumn\" prefWidth=\"180.0\" text=\"Product Name\" />\n                <TableColumn fx:id=\"orderQuantityColumn\" prefWidth=\"80.0\" text=\"Quantity\" />\n                <TableColumn fx:id=\"orderPriceColumn\" prefWidth=\"80.0\" text=\"Price\" />\n                <TableColumn fx:id=\"orderTotalColumn\" prefWidth=\"90.0\" text=\"Total\" />\n            </columns>\n        </TableView>\n\n        <!-- Order Summary -->\n        <VBox layoutX=\"550.0\" layoutY=\"470.0\" spacing=\"10.0\">\n            <children>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Subtotal:\" />\n                        <Label fx:id=\"subtotalLabel\" text=\"$0.00\">\n                            <font>\n                                <Font name=\"System Bold\" size=\"12.0\" />\n                            </font>\n                        </Label>\n                    </children>\n                </HBox>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Tax (10%):\" />\n                        <Label fx:id=\"taxLabel\" text=\"$0.00\">\n                            <font>\n                                <Font name=\"System Bold\" size=\"12.0\" />\n                            </font>\n                        </Label>\n                    </children>\n                </HBox>\n                <Separator />\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Total:\" />\n                        <Label fx:id=\"totalLabel\" text=\"$0.00\">\n                            <font>\n                                <Font name=\"System Bold\" size=\"16.0\" />\n                            </font>\n                        </Label>\n                    </children>\n                </HBox>\n            </children>\n        </VBox>\n\n        <!-- Action Buttons -->\n        <HBox layoutX=\"550.0\" layoutY=\"580.0\" spacing=\"10.0\">\n            <children>\n                <Button fx:id=\"clearOrderButton\" mnemonicParsing=\"false\" onAction=\"#clearOrder\" prefWidth=\"100.0\" text=\"Clear Order\" />\n                <Button fx:id=\"removeItemButton\" mnemonicParsing=\"false\" onAction=\"#removeSelectedItem\" prefWidth=\"100.0\" text=\"Remove Item\" />\n                <Button fx:id=\"placeOrderButton\" mnemonicParsing=\"false\" onAction=\"#placeOrder\" prefWidth=\"100.0\" style=\"-fx-background-color: #4CAF50; -fx-text-fill: white;\" text=\"Place Order\" />\n            </children>\n        </HBox>\n\n        <!-- Customer Information -->\n        <VBox layoutX=\"20.0\" layoutY=\"570.0\" spacing=\"10.0\">\n            <children>\n                <Label text=\"Customer Information\">\n                    <font>\n                        <Font name=\"System Bold\" size=\"14.0\" />\n                    </font>\n                </Label>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Name:\" />\n                        <TextField fx:id=\"customerNameField\" prefWidth=\"150.0\" />\n                        <Label text=\"Phone:\" />\n                        <TextField fx:id=\"customerPhoneField\" prefWidth=\"120.0\" />\n                    </children>\n                </HBox>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Order Type:\" />\n                        <RadioButton fx:id=\"dineInRadio\" mnemonicParsing=\"false\" selected=\"true\" text=\"Dine In\">\n                            <toggleGroup>\n                                <ToggleGroup fx:id=\"orderTypeGroup\" />\n                            </toggleGroup>\n                        </RadioButton>\n                        <RadioButton fx:id=\"takeAwayRadio\" mnemonicParsing=\"false\" text=\"Take Away\" toggleGroup=\"$orderTypeGroup\" />\n                    </children>\n                </HBox>\n            </children>\n        </VBox>\n\n        <!-- Status Bar -->\n        <Label fx:id=\"statusLabel\" layoutX=\"20.0\" layoutY=\"670.0\" text=\"Ready to take orders...\" textFill=\"#666666\" />\n    </children>\n</AnchorPane>",
+                        "language": "xml"
+                    }
+                ]
+            },
+            "createdAt": 1751686849137,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "command",
+                                "attrs": {
+                                    "label": "explain"
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "/explain"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "codeBlock",
+                                "attrs": {
+                                    "language": "xml"
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "<Label fx:id=\"subtotalLabel\" text=>\n                            <font>\n                                <Font name=\"System Bold\" size=\"12.0\" />\n                            </font>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "text",
+                                "text": "Attribute value expected"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "844a88c9-302b-458f-975a-441be46211a3",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "The terminal message \"Attribute value expected\" indicates an issue in your XML code, specifically within the FXML file for your JavaFX application. Let's break down the relevant part of the code and the error message:\n\n### Code Snippet\n```xml\n<Label fx:id=\"subtotalLabel\" text=>\n    <font>\n        <Font name=\"System Bold\" size=\"12.0\" />\n    </font>\n```\n\n### Explanation of the Error\n\n1. **Attribute Value Expected**: This error message is pointing out that there is an attribute (`text`) in the `<Label>` element that is missing a value. In XML, attributes must have values, which are typically enclosed in quotes. The `text` attribute is currently empty, which is not valid syntax.\n\n2. **Correct Syntax**: The `text` attribute should have a value, even if it's an empty string. Here is how you can correct it:\n   ```xml\n   <Label fx:id=\"subtotalLabel\" text=\"\">\n       <font>\n           <Font name=\"System Bold\" size=\"12.0\" />\n       </font>\n   </Label>\n   ```\n\n### Context and Resolution\n\n- **System Behavior**: The error prevents the FXML file from being correctly parsed and loaded by the JavaFX application. This means that the UI component associated with this part of the FXML will not be displayed or function as expected.\n\n- **Potential Issues**: If this error is not resolved, the application may fail to start, or the UI may not render correctly, leading to a poor user experience.\n\n- **Necessary Actions**: To resolve this issue, ensure that all attributes in your XML have valid values. In this case, provide a value for the `text` attribute, even if it's just an empty string.\n\nBy correcting the syntax as shown above, the FXML file should be parsed correctly, and the JavaFX application should function as intended."
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\orderStaff\\Order.fxml",
+                    "fsPath": "D:/STUDY-HUFLIT/CoffeeShop/coffeeShop/src/main/resources/views/orderStaff/Order.fxml",
+                    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.*?>\n<?import javafx.scene.control.*?>\n<?import javafx.scene.layout.*?>\n<?import javafx.scene.text.*?>\n\n<AnchorPane xmlns=\"http://javafx.com/javafx/11.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.coffeeshop.coffeeshop.controller.Order\" prefHeight=\"700.0\" prefWidth=\"1000.0\">\n    <children>\n        <!-- Header -->\n        <Label layoutX=\"20.0\" layoutY=\"20.0\" text=\"Coffee Shop - Order Management\">\n            <font>\n                <Font name=\"System Bold\" size=\"24.0\" />\n            </font>\n        </Label>\n\n        <!-- Categories Filter -->\n        <Label layoutX=\"20.0\" layoutY=\"70.0\" text=\"Filter by Category:\">\n            <font>\n                <Font size=\"14.0\" />\n            </font>\n        </Label>\n        <ComboBox fx:id=\"categoryComboBox\" layoutX=\"150.0\" layoutY=\"67.0\" prefWidth=\"150.0\" promptText=\"All Categories\" />\n\n        <!-- Search -->\n        <Label layoutX=\"320.0\" layoutY=\"70.0\" text=\"Search:\">\n            <font>\n                <Font size=\"14.0\" />\n            </font>\n        </Label>\n        <TextField fx:id=\"searchField\" layoutX=\"370.0\" layoutY=\"67.0\" prefWidth=\"200.0\" promptText=\"Search products...\" />\n\n        <!-- Products List -->\n        <Label layoutX=\"20.0\" layoutY=\"120.0\" text=\"Products\">\n            <font>\n                <Font name=\"System Bold\" size=\"16.0\" />\n            </font>\n        </Label>\n\n        <ScrollPane layoutX=\"20.0\" layoutY=\"150.0\" prefHeight=\"400.0\" prefWidth=\"500.0\">\n            <content>\n                <VBox fx:id=\"productsVBox\" spacing=\"10.0\">\n                    <padding>\n                        <Insets bottom=\"10.0\" left=\"10.0\" right=\"10.0\" top=\"10.0\" />\n                    </padding>\n                </VBox>\n            </content>\n        </ScrollPane>\n\n        <!-- Order Details -->\n        <Label layoutX=\"550.0\" layoutY=\"120.0\" text=\"Order Details\">\n            <font>\n                <Font name=\"System Bold\" size=\"16.0\" />\n            </font>\n        </Label>\n\n        <TableView fx:id=\"orderTable\" layoutX=\"550.0\" layoutY=\"150.0\" prefHeight=\"300.0\" prefWidth=\"430.0\">\n            <columns>\n                <TableColumn fx:id=\"orderProductNameColumn\" prefWidth=\"180.0\" text=\"Product Name\" />\n                <TableColumn fx:id=\"orderQuantityColumn\" prefWidth=\"80.0\" text=\"Quantity\" />\n                <TableColumn fx:id=\"orderPriceColumn\" prefWidth=\"80.0\" text=\"Price\" />\n                <TableColumn fx:id=\"orderTotalColumn\" prefWidth=\"90.0\" text=\"Total\" />\n            </columns>\n        </TableView>\n\n        <!-- Order Summary -->\n        <VBox layoutX=\"550.0\" layoutY=\"470.0\" spacing=\"10.0\">\n            <children>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Subtotal:\" />\n                        <Label fx:id=\"subtotalLabel\" text=\"$0.00\">\n                            <font>\n                                <Font name=\"System Bold\" size=\"12.0\" />\n                            </font>\n                        </Label>\n                    </children>\n                </HBox>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Tax (10%):\" />\n                        <Label fx:id=\"taxLabel\" text=\"$0.00\">\n                            <font>\n                                <Font name=\"System Bold\" size=\"12.0\" />\n                            </font>\n                        </Label>\n                    </children>\n                </HBox>\n                <Separator />\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Total:\" />\n                        <Label fx:id=\"totalLabel\" text=\"$0.00\">\n                            <font>\n                                <Font name=\"System Bold\" size=\"16.0\" />\n                            </font>\n                        </Label>\n                    </children>\n                </HBox>\n            </children>\n        </VBox>\n\n        <!-- Action Buttons -->\n        <HBox layoutX=\"550.0\" layoutY=\"580.0\" spacing=\"10.0\">\n            <children>\n                <Button fx:id=\"clearOrderButton\" mnemonicParsing=\"false\" onAction=\"#clearOrder\" prefWidth=\"100.0\" text=\"Clear Order\" />\n                <Button fx:id=\"removeItemButton\" mnemonicParsing=\"false\" onAction=\"#removeSelectedItem\" prefWidth=\"100.0\" text=\"Remove Item\" />\n                <Button fx:id=\"placeOrderButton\" mnemonicParsing=\"false\" onAction=\"#placeOrder\" prefWidth=\"100.0\" style=\"-fx-background-color: #4CAF50; -fx-text-fill: white;\" text=\"Place Order\" />\n            </children>\n        </HBox>\n\n        <!-- Customer Information -->\n        <VBox layoutX=\"20.0\" layoutY=\"570.0\" spacing=\"10.0\">\n            <children>\n                <Label text=\"Customer Information\">\n                    <font>\n                        <Font name=\"System Bold\" size=\"14.0\" />\n                    </font>\n                </Label>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Name:\" />\n                        <TextField fx:id=\"customerNameField\" prefWidth=\"150.0\" />\n                        <Label text=\"Phone:\" />\n                        <TextField fx:id=\"customerPhoneField\" prefWidth=\"120.0\" />\n                    </children>\n                </HBox>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Order Type:\" />\n                        <RadioButton fx:id=\"dineInRadio\" mnemonicParsing=\"false\" selected=\"true\" text=\"Dine In\">\n                            <toggleGroup>\n                                <ToggleGroup fx:id=\"orderTypeGroup\" />\n                            </toggleGroup>\n                        </RadioButton>\n                        <RadioButton fx:id=\"takeAwayRadio\" mnemonicParsing=\"false\" text=\"Take Away\" toggleGroup=\"$orderTypeGroup\" />\n                    </children>\n                </HBox>\n            </children>\n        </VBox>\n\n        <!-- Status Bar -->\n        <Label fx:id=\"statusLabel\" layoutX=\"20.0\" layoutY=\"670.0\" text=\"Ready to take orders...\" textFill=\"#666666\" />\n    </children>\n</AnchorPane>",
+                    "language": "xml"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/Order.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\Order.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\products\\Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Order\\OrderView.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Home\\mainAdmin-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\mainAdmin-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\login-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Auth\\login-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/resources/views/products/categories.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\categories.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/CategoriesDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Categories.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Categories.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Product.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Product.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Role.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/ProductDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\ProductDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/products/Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/DBConnection.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\DBConnection.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CategoriesController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CategoriesController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/Home/HomeUser.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\HomeUser.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/orderStaff/Order.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\orderStaff\\Order.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/OrderController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/Order.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\Order.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/Home/mainAdmin-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\mainAdmin-view.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [],
+                "usedFilePaths": [
+                    {
+                        "path": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\orderStaff\\Order.fxml",
+                        "fsPath": "D:/STUDY-HUFLIT/CoffeeShop/coffeeShop/src/main/resources/views/orderStaff/Order.fxml",
+                        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.*?>\n<?import javafx.scene.control.*?>\n<?import javafx.scene.layout.*?>\n<?import javafx.scene.text.*?>\n\n<AnchorPane xmlns=\"http://javafx.com/javafx/11.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.coffeeshop.coffeeshop.controller.Order\" prefHeight=\"700.0\" prefWidth=\"1000.0\">\n    <children>\n        <!-- Header -->\n        <Label layoutX=\"20.0\" layoutY=\"20.0\" text=\"Coffee Shop - Order Management\">\n            <font>\n                <Font name=\"System Bold\" size=\"24.0\" />\n            </font>\n        </Label>\n\n        <!-- Categories Filter -->\n        <Label layoutX=\"20.0\" layoutY=\"70.0\" text=\"Filter by Category:\">\n            <font>\n                <Font size=\"14.0\" />\n            </font>\n        </Label>\n        <ComboBox fx:id=\"categoryComboBox\" layoutX=\"150.0\" layoutY=\"67.0\" prefWidth=\"150.0\" promptText=\"All Categories\" />\n\n        <!-- Search -->\n        <Label layoutX=\"320.0\" layoutY=\"70.0\" text=\"Search:\">\n            <font>\n                <Font size=\"14.0\" />\n            </font>\n        </Label>\n        <TextField fx:id=\"searchField\" layoutX=\"370.0\" layoutY=\"67.0\" prefWidth=\"200.0\" promptText=\"Search products...\" />\n\n        <!-- Products List -->\n        <Label layoutX=\"20.0\" layoutY=\"120.0\" text=\"Products\">\n            <font>\n                <Font name=\"System Bold\" size=\"16.0\" />\n            </font>\n        </Label>\n\n        <ScrollPane layoutX=\"20.0\" layoutY=\"150.0\" prefHeight=\"400.0\" prefWidth=\"500.0\">\n            <content>\n                <VBox fx:id=\"productsVBox\" spacing=\"10.0\">\n                    <padding>\n                        <Insets bottom=\"10.0\" left=\"10.0\" right=\"10.0\" top=\"10.0\" />\n                    </padding>\n                </VBox>\n            </content>\n        </ScrollPane>\n\n        <!-- Order Details -->\n        <Label layoutX=\"550.0\" layoutY=\"120.0\" text=\"Order Details\">\n            <font>\n                <Font name=\"System Bold\" size=\"16.0\" />\n            </font>\n        </Label>\n\n        <TableView fx:id=\"orderTable\" layoutX=\"550.0\" layoutY=\"150.0\" prefHeight=\"300.0\" prefWidth=\"430.0\">\n            <columns>\n                <TableColumn fx:id=\"orderProductNameColumn\" prefWidth=\"180.0\" text=\"Product Name\" />\n                <TableColumn fx:id=\"orderQuantityColumn\" prefWidth=\"80.0\" text=\"Quantity\" />\n                <TableColumn fx:id=\"orderPriceColumn\" prefWidth=\"80.0\" text=\"Price\" />\n                <TableColumn fx:id=\"orderTotalColumn\" prefWidth=\"90.0\" text=\"Total\" />\n            </columns>\n        </TableView>\n\n        <!-- Order Summary -->\n        <VBox layoutX=\"550.0\" layoutY=\"470.0\" spacing=\"10.0\">\n            <children>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Subtotal:\" />\n                        <Label fx:id=\"subtotalLabel\" text=\"$0.00\">\n                            <font>\n                                <Font name=\"System Bold\" size=\"12.0\" />\n                            </font>\n                        </Label>\n                    </children>\n                </HBox>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Tax (10%):\" />\n                        <Label fx:id=\"taxLabel\" text=\"$0.00\">\n                            <font>\n                                <Font name=\"System Bold\" size=\"12.0\" />\n                            </font>\n                        </Label>\n                    </children>\n                </HBox>\n                <Separator />\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Total:\" />\n                        <Label fx:id=\"totalLabel\" text=\"$0.00\">\n                            <font>\n                                <Font name=\"System Bold\" size=\"16.0\" />\n                            </font>\n                        </Label>\n                    </children>\n                </HBox>\n            </children>\n        </VBox>\n\n        <!-- Action Buttons -->\n        <HBox layoutX=\"550.0\" layoutY=\"580.0\" spacing=\"10.0\">\n            <children>\n                <Button fx:id=\"clearOrderButton\" mnemonicParsing=\"false\" onAction=\"#clearOrder\" prefWidth=\"100.0\" text=\"Clear Order\" />\n                <Button fx:id=\"removeItemButton\" mnemonicParsing=\"false\" onAction=\"#removeSelectedItem\" prefWidth=\"100.0\" text=\"Remove Item\" />\n                <Button fx:id=\"placeOrderButton\" mnemonicParsing=\"false\" onAction=\"#placeOrder\" prefWidth=\"100.0\" style=\"-fx-background-color: #4CAF50; -fx-text-fill: white;\" text=\"Place Order\" />\n            </children>\n        </HBox>\n\n        <!-- Customer Information -->\n        <VBox layoutX=\"20.0\" layoutY=\"570.0\" spacing=\"10.0\">\n            <children>\n                <Label text=\"Customer Information\">\n                    <font>\n                        <Font name=\"System Bold\" size=\"14.0\" />\n                    </font>\n                </Label>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Name:\" />\n                        <TextField fx:id=\"customerNameField\" prefWidth=\"150.0\" />\n                        <Label text=\"Phone:\" />\n                        <TextField fx:id=\"customerPhoneField\" prefWidth=\"120.0\" />\n                    </children>\n                </HBox>\n                <HBox spacing=\"10.0\">\n                    <children>\n                        <Label text=\"Order Type:\" />\n                        <RadioButton fx:id=\"dineInRadio\" mnemonicParsing=\"false\" selected=\"true\" text=\"Dine In\">\n                            <toggleGroup>\n                                <ToggleGroup fx:id=\"orderTypeGroup\" />\n                            </toggleGroup>\n                        </RadioButton>\n                        <RadioButton fx:id=\"takeAwayRadio\" mnemonicParsing=\"false\" text=\"Take Away\" toggleGroup=\"$orderTypeGroup\" />\n                    </children>\n                </HBox>\n            </children>\n        </VBox>\n\n        <!-- Status Bar -->\n        <Label fx:id=\"statusLabel\" layoutX=\"20.0\" layoutY=\"670.0\" text=\"Ready to take orders...\" textFill=\"#666666\" />\n    </children>\n</AnchorPane>",
+                        "language": "xml"
+                    }
+                ]
+            },
+            "createdAt": 1751686857401,
+            "isInternal": false
+        },
+        {
+            "id": "08fb7f86-1f3e-4440-8004-756bd6e89bec",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "fix giúp tôi đi ạ , đọc soucre code fix chô role id ý"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                    "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "package com.coffeeshop.coffeeshop.controller;\r\n\r\nimport com.coffeeshop.coffeeshop.dao.UserDAO;\r\nimport com.coffeeshop.coffeeshop.model.Role;\r\nimport com.coffeeshop.coffeeshop.model.User;\r\nimport com.coffeeshop.coffeeshop.util.DBConnection;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.*;\r\nimport javafx.scene.control.*;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\n\r\npublic class CreateUserController {\r\n\r\n    @FXML private TextField txtUsername;\r\n    @FXML private PasswordField txtPassword;\r\n    @FXML private ComboBox<String> cbRole;\r\n    @FXML private Label lblMessage;\r\n\r\n    // Dùng để map từ tên role sang đối tượng Role (có id)\r\n    private Map<String, Role> roleMap = new HashMap<>();\r\n\r\n    @FXML\r\n    public void initialize() {\r\n        loadRoles();\r\n    }\r\n\r\n    private void loadRoles() {\r\n        try (Connection conn = DBConnection.getConnection()) {\r\n            String sql = \"SELECT id, nameRole FROM Roles\";\r\n            PreparedStatement stmt = conn.prepareStatement(sql);\r\n            ResultSet rs = stmt.executeQuery();\r\n\r\n            ObservableList<String> roleNames = FXCollections.observableArrayList();\r\n            while (rs.next()) {\r\n                int id = rs.getInt(\"id\");\r\n                String name = rs.getString(\"nameRole\");\r\n\r\n                Role role = new Role();\r\n                role.setId(id);\r\n                role.setNameRole(name);\r\n\r\n                roleNames.add(name);\r\n                roleMap.put(name, role);\r\n            }\r\n            cbRole.setItems(roleNames);\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n            lblMessage.setText(\"Lỗi tải danh sách vai trò.\");\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleSaveUser(ActionEvent event) {\r\n        String username = txtUsername.getText().trim();\r\n        String password = txtPassword.getText().trim();\r\n        String selectedRoleName = cbRole.getValue();\r\n\r\n        if (username.isEmpty() || password.isEmpty() || selectedRoleName == null) {\r\n            lblMessage.setText(\"Vui lòng nhập đầy đủ thông tin.\");\r\n            return;\r\n        }\r\n\r\n        Role selectedRole = roleMap.get(selectedRoleName);\r\n        if (selectedRole == null) {\r\n            lblMessage.setText(\"Vai trò không hợp lệ.\");\r\n            return;\r\n        }\r\n\r\n        try (Connection conn = DBConnection.getConnection()) {\r\n            UserDAO dao = new UserDAO(conn);\r\n\r\n            if (dao.isUsernameTaken(username)) {\r\n                lblMessage.setText(\"Tên đăng nhập đã tồn tại.\");\r\n                return;\r\n            }\r\n\r\n            User user = new User();\r\n            user.setUserName(username);\r\n            user.setPassword(password); // ❗ Nên mã hóa sau này\r\n            user.setRole(selectedRole); // ✅ Gán đúng đối tượng Role\r\n\r\n            boolean success = dao.register(user);\r\n            if (success) {\r\n                lblMessage.setStyle(\"-fx-text-fill: green;\");\r\n                lblMessage.setText(\"Tạo tài khoản thành công!\");\r\n                txtUsername.clear();\r\n                txtPassword.clear();\r\n                cbRole.getSelectionModel().clearSelection();\r\n            } else {\r\n                lblMessage.setText(\"Lỗi khi tạo tài khoản.\");\r\n            }\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n            lblMessage.setText(\"Lỗi kết nối cơ sở dữ liệu.\");\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleBack(ActionEvent event) {\r\n        try {\r\n            Parent root = FXMLLoader.load(getClass().getResource(\"/views/Home/mainAdmin-view.fxml\"));\r\n            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();\r\n            stage.setScene(new Scene(root, 1200, 800));\r\n            stage.setTitle(\"Trang chính\");\r\n            stage.show();\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n}\r\n"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/resources/views/products/categories.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\categories.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/CategoriesDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Categories.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Categories.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Product.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Product.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/Home/HomeUser.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\HomeUser.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/MainApplication.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/DBConnection.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\DBConnection.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Role.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/products/Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Order.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Order.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/OrderDetail.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\OrderDetail.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/TestDBConnection.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\TestDBConnection.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/OrderDetailDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDetailDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/OrderDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java"
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "fsPath": "src\\main\\resources\\views\\Auth\\create-user-view.fxml"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": "package com.coffeeshop.coffeeshop.controller;\r\n\r\nimport com.coffeeshop.coffeeshop.dao.UserDAO;\r\nimport com.coffeeshop.coffeeshop.model.Role;\r\nimport com.coffeeshop.coffeeshop.model.User;\r\nimport com.coffeeshop.coffeeshop.util.DBConnection;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.*;\r\nimport javafx.scene.control.*;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\n\r\npublic class CreateUserController {\r\n\r\n    @FXML private TextField txtUsername;\r\n    @FXML private PasswordField txtPassword;\r\n    @FXML private ComboBox<String> cbRole;\r\n    @FXML private Label lblMessage;\r\n\r\n    // Dùng để map từ tên role sang đối tượng Role (có id)\r\n    private Map<String, Role> roleMap = new HashMap<>();\r\n\r\n    @FXML\r\n    public void initialize() {\r\n        loadRoles();\r\n    }\r\n\r\n    private void loadRoles() {\r\n        try (Connection conn = DBConnection.getConnection()) {\r\n            String sql = \"SELECT id, nameRole FROM Roles\";\r\n            PreparedStatement stmt = conn.prepareStatement(sql);\r\n            ResultSet rs = stmt.executeQuery();\r\n\r\n            ObservableList<String> roleNames = FXCollections.observableArrayList();\r\n            while (rs.next()) {\r\n                int id = rs.getInt(\"id\");\r\n                String name = rs.getString(\"nameRole\");\r\n\r\n                Role role = new Role();\r\n                role.setId(id);\r\n                role.setNameRole(name);\r\n\r\n                roleNames.add(name);\r\n                roleMap.put(name, role);\r\n            }\r\n            cbRole.setItems(roleNames);\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n            lblMessage.setText(\"Lỗi tải danh sách vai trò.\");\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleSaveUser(ActionEvent event) {\r\n        String username = txtUsername.getText().trim();\r\n        String password = txtPassword.getText().trim();\r\n        String selectedRoleName = cbRole.getValue();\r\n\r\n        if (username.isEmpty() || password.isEmpty() || selectedRoleName == null) {\r\n            lblMessage.setText(\"Vui lòng nhập đầy đủ thông tin.\");\r\n            return;\r\n        }\r\n\r\n        Role selectedRole = roleMap.get(selectedRoleName);\r\n        if (selectedRole == null) {\r\n            lblMessage.setText(\"Vai trò không hợp lệ.\");\r\n            return;\r\n        }\r\n\r\n        try (Connection conn = DBConnection.getConnection()) {\r\n            UserDAO dao = new UserDAO(conn);\r\n\r\n            if (dao.isUsernameTaken(username)) {\r\n                lblMessage.setText(\"Tên đăng nhập đã tồn tại.\");\r\n                return;\r\n            }\r\n\r\n            User user = new User();\r\n            user.setUserName(username);\r\n            user.setPassword(password); // ❗ Nên mã hóa sau này\r\n            user.setRole(selectedRole); // ✅ Gán đúng đối tượng Role\r\n\r\n            boolean success = dao.register(user);\r\n            if (success) {\r\n                lblMessage.setStyle(\"-fx-text-fill: green;\");\r\n                lblMessage.setText(\"Tạo tài khoản thành công!\");\r\n                txtUsername.clear();\r\n                txtPassword.clear();\r\n                cbRole.getSelectionModel().clearSelection();\r\n            } else {\r\n                lblMessage.setText(\"Lỗi khi tạo tài khoản.\");\r\n            }\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n            lblMessage.setText(\"Lỗi kết nối cơ sở dữ liệu.\");\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleBack(ActionEvent event) {\r\n        try {\r\n            Parent root = FXMLLoader.load(getClass().getResource(\"/views/Home/mainAdmin-view.fxml\"));\r\n            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();\r\n            stage.setScene(new Scene(root, 1200, 800));\r\n            stage.setTitle(\"Trang chính\");\r\n            stage.show();\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n}\r\n"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java"
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "fsPath": "src\\main\\resources\\views\\Auth\\create-user-view.fxml"
+                    }
+                ]
+            },
+            "createdAt": 1751689226137,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "fix giúp tôi đi ạ , đọc soucre code fix chô role id ý"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "7a38f6a7-bf9c-4018-b10c-442351fc667b",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "To address the issue with the role ID in your Java code, let's focus on the `CreateUserController` class and ensure that the role ID is correctly handled when creating a new user. Here's a breakdown of the relevant parts of your code and the necessary fix:\n\n### Current Code Analysis\n\nIn the `CreateUserController` class, you have a method `handleSaveUser` that is responsible for saving a new user. The role is selected from a `ComboBox` and mapped to a `Role` object using a `Map<String, Role> roleMap`.\n\n### Key Points\n\n1. **Role Mapping**: The `roleMap` is used to map the role name (selected from the `ComboBox`) to a `Role` object that contains the role ID and name.\n\n2. **Role Selection**: When a user is saved, the selected role name is retrieved from the `ComboBox`, and the corresponding `Role` object is fetched from the `roleMap`.\n\n3. **Role ID Usage**: The `Role` object is then used to set the role for the `User` object, which includes the role ID.\n\n### Fix and Verification\n\nThe code already correctly maps the role name to a `Role` object and uses the role ID when registering the user. However, ensure the following:\n\n- **Role Mapping**: Verify that the `roleMap` is correctly populated in the `loadRoles` method. This method queries the database for roles and populates the `roleMap` with `Role` objects that include the role ID.\n\n- **Role ID Assignment**: In the `handleSaveUser` method, ensure that the `Role` object retrieved from the `roleMap` is correctly assigned to the `User` object. This is already done with the line `user.setRole(selectedRole);`.\n\n- **Database Interaction**: Ensure that the `UserDAO` class's `register` method correctly uses the role ID when inserting the user into the database. This is done with `user.getRole().getId()`.\n\n### Conclusion\n\nThe current implementation seems correct regarding role ID handling. The `roleMap` is used to map role names to `Role` objects, and the role ID is used when registering the user. If you encounter any issues, ensure that the database contains the correct role data and that the `roleMap` is populated correctly in the `loadRoles` method. If there are specific errors or issues, please provide more details for further assistance."
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                    "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "package com.coffeeshop.coffeeshop.controller;\r\n\r\nimport com.coffeeshop.coffeeshop.dao.UserDAO;\r\nimport com.coffeeshop.coffeeshop.model.Role;\r\nimport com.coffeeshop.coffeeshop.model.User;\r\nimport com.coffeeshop.coffeeshop.util.DBConnection;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.*;\r\nimport javafx.scene.control.*;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\n\r\npublic class CreateUserController {\r\n\r\n    @FXML private TextField txtUsername;\r\n    @FXML private PasswordField txtPassword;\r\n    @FXML private ComboBox<String> cbRole;\r\n    @FXML private Label lblMessage;\r\n\r\n    // Dùng để map từ tên role sang đối tượng Role (có id)\r\n    private Map<String, Role> roleMap = new HashMap<>();\r\n\r\n    @FXML\r\n    public void initialize() {\r\n        loadRoles();\r\n    }\r\n\r\n    private void loadRoles() {\r\n        try (Connection conn = DBConnection.getConnection()) {\r\n            String sql = \"SELECT id, nameRole FROM Roles\";\r\n            PreparedStatement stmt = conn.prepareStatement(sql);\r\n            ResultSet rs = stmt.executeQuery();\r\n\r\n            ObservableList<String> roleNames = FXCollections.observableArrayList();\r\n            while (rs.next()) {\r\n                int id = rs.getInt(\"id\");\r\n                String name = rs.getString(\"nameRole\");\r\n\r\n                Role role = new Role();\r\n                role.setId(id);\r\n                role.setNameRole(name);\r\n\r\n                roleNames.add(name);\r\n                roleMap.put(name, role);\r\n            }\r\n            cbRole.setItems(roleNames);\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n            lblMessage.setText(\"Lỗi tải danh sách vai trò.\");\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleSaveUser(ActionEvent event) {\r\n        String username = txtUsername.getText().trim();\r\n        String password = txtPassword.getText().trim();\r\n        String selectedRoleName = cbRole.getValue();\r\n\r\n        if (username.isEmpty() || password.isEmpty() || selectedRoleName == null) {\r\n            lblMessage.setText(\"Vui lòng nhập đầy đủ thông tin.\");\r\n            return;\r\n        }\r\n\r\n        Role selectedRole = roleMap.get(selectedRoleName);\r\n        if (selectedRole == null) {\r\n            lblMessage.setText(\"Vai trò không hợp lệ.\");\r\n            return;\r\n        }\r\n\r\n        try (Connection conn = DBConnection.getConnection()) {\r\n            UserDAO dao = new UserDAO(conn);\r\n\r\n            if (dao.isUsernameTaken(username)) {\r\n                lblMessage.setText(\"Tên đăng nhập đã tồn tại.\");\r\n                return;\r\n            }\r\n\r\n            User user = new User();\r\n            user.setUserName(username);\r\n            user.setPassword(password); // ❗ Nên mã hóa sau này\r\n            user.setRole(selectedRole); // ✅ Gán đúng đối tượng Role\r\n\r\n            boolean success = dao.register(user);\r\n            if (success) {\r\n                lblMessage.setStyle(\"-fx-text-fill: green;\");\r\n                lblMessage.setText(\"Tạo tài khoản thành công!\");\r\n                txtUsername.clear();\r\n                txtPassword.clear();\r\n                cbRole.getSelectionModel().clearSelection();\r\n            } else {\r\n                lblMessage.setText(\"Lỗi khi tạo tài khoản.\");\r\n            }\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n            lblMessage.setText(\"Lỗi kết nối cơ sở dữ liệu.\");\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleBack(ActionEvent event) {\r\n        try {\r\n            Parent root = FXMLLoader.load(getClass().getResource(\"/views/Home/mainAdmin-view.fxml\"));\r\n            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();\r\n            stage.setScene(new Scene(root, 1200, 800));\r\n            stage.setTitle(\"Trang chính\");\r\n            stage.show();\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n}\r\n"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "sources": []
+                    },
+                    {
+                        "path": ".mvn\\wrapper\\maven-wrapper.properties",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.mvn\\wrapper\\maven-wrapper.properties",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "pom.xml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\pom.xml",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": []
+                    },
+                    {
+                        "path": "src/main/resources/views/products/categories.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\categories.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/CategoriesDao.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\CategoriesDao.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Categories.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Categories.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Product.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Product.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/Home/HomeUser.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\Home\\HomeUser.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/ProductController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\ProductController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/MainViewController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/LoginController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/MainApplication.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\MainApplication.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/DBConnection.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\DBConnection.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Role.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/User.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\User.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/resources/views/products/Products.fxml",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\resources\\views\\products\\Products.fxml",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/Order.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Order.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/model/OrderDetail.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\OrderDetail.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/util/TestDBConnection.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\util\\TestDBConnection.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/controller/HomeUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/OrderDetailDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDetailDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/OrderDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "src/main/java/com/coffeeshop/coffeeshop/dao/UserDAO.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java"
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "fsPath": "src\\main\\resources\\views\\Auth\\create-user-view.fxml"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "fsPath": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\CreateUserController.java",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": "package com.coffeeshop.coffeeshop.controller;\r\n\r\nimport com.coffeeshop.coffeeshop.dao.UserDAO;\r\nimport com.coffeeshop.coffeeshop.model.Role;\r\nimport com.coffeeshop.coffeeshop.model.User;\r\nimport com.coffeeshop.coffeeshop.util.DBConnection;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.*;\r\nimport javafx.scene.control.*;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\n\r\npublic class CreateUserController {\r\n\r\n    @FXML private TextField txtUsername;\r\n    @FXML private PasswordField txtPassword;\r\n    @FXML private ComboBox<String> cbRole;\r\n    @FXML private Label lblMessage;\r\n\r\n    // Dùng để map từ tên role sang đối tượng Role (có id)\r\n    private Map<String, Role> roleMap = new HashMap<>();\r\n\r\n    @FXML\r\n    public void initialize() {\r\n        loadRoles();\r\n    }\r\n\r\n    private void loadRoles() {\r\n        try (Connection conn = DBConnection.getConnection()) {\r\n            String sql = \"SELECT id, nameRole FROM Roles\";\r\n            PreparedStatement stmt = conn.prepareStatement(sql);\r\n            ResultSet rs = stmt.executeQuery();\r\n\r\n            ObservableList<String> roleNames = FXCollections.observableArrayList();\r\n            while (rs.next()) {\r\n                int id = rs.getInt(\"id\");\r\n                String name = rs.getString(\"nameRole\");\r\n\r\n                Role role = new Role();\r\n                role.setId(id);\r\n                role.setNameRole(name);\r\n\r\n                roleNames.add(name);\r\n                roleMap.put(name, role);\r\n            }\r\n            cbRole.setItems(roleNames);\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n            lblMessage.setText(\"Lỗi tải danh sách vai trò.\");\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleSaveUser(ActionEvent event) {\r\n        String username = txtUsername.getText().trim();\r\n        String password = txtPassword.getText().trim();\r\n        String selectedRoleName = cbRole.getValue();\r\n\r\n        if (username.isEmpty() || password.isEmpty() || selectedRoleName == null) {\r\n            lblMessage.setText(\"Vui lòng nhập đầy đủ thông tin.\");\r\n            return;\r\n        }\r\n\r\n        Role selectedRole = roleMap.get(selectedRoleName);\r\n        if (selectedRole == null) {\r\n            lblMessage.setText(\"Vai trò không hợp lệ.\");\r\n            return;\r\n        }\r\n\r\n        try (Connection conn = DBConnection.getConnection()) {\r\n            UserDAO dao = new UserDAO(conn);\r\n\r\n            if (dao.isUsernameTaken(username)) {\r\n                lblMessage.setText(\"Tên đăng nhập đã tồn tại.\");\r\n                return;\r\n            }\r\n\r\n            User user = new User();\r\n            user.setUserName(username);\r\n            user.setPassword(password); // ❗ Nên mã hóa sau này\r\n            user.setRole(selectedRole); // ✅ Gán đúng đối tượng Role\r\n\r\n            boolean success = dao.register(user);\r\n            if (success) {\r\n                lblMessage.setStyle(\"-fx-text-fill: green;\");\r\n                lblMessage.setText(\"Tạo tài khoản thành công!\");\r\n                txtUsername.clear();\r\n                txtPassword.clear();\r\n                cbRole.getSelectionModel().clearSelection();\r\n            } else {\r\n                lblMessage.setText(\"Lỗi khi tạo tài khoản.\");\r\n            }\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n            lblMessage.setText(\"Lỗi kết nối cơ sở dữ liệu.\");\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleBack(ActionEvent event) {\r\n        try {\r\n            Parent root = FXMLLoader.load(getClass().getResource(\"/views/Home/mainAdmin-view.fxml\"));\r\n            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();\r\n            stage.setScene(new Scene(root, 1200, 800));\r\n            stage.setTitle(\"Trang chính\");\r\n            stage.show();\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n}\r\n"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\HomeUserController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\LoginController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\MainViewController.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\OrderDAO.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\dao\\UserDAO.java"
+                    },
+                    {
+                        "path": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java",
+                        "fsPath": "src\\main\\java\\com\\coffeeshop\\coffeeshop\\model\\Role.java"
+                    },
+                    {
+                        "path": "src\\main\\resources\\views\\Auth\\create-user-view.fxml",
+                        "fsPath": "src\\main\\resources\\views\\Auth\\create-user-view.fxml"
+                    }
+                ]
+            },
+            "createdAt": 1751689239299,
+            "isInternal": false
+        }
+    ],
+    "isAgent": false,
+    "isNameGenerated": true,
+    "isCustomAgent": false
+}
+}

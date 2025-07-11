@@ -1,0 +1,100 @@
+{
+    "checksum": "98f56e999a24210490ebd5b25e04ceffc54e799f3dfd97a46d6f27208268eee9",
+    "data": {
+    "id": "bef5d1cc-ddcf-46b0-a4ad-ca6cd3249151",
+    "createdAt": 1751711509129,
+    "updatedAt": 1751711509797,
+    "title": "/fix this.categoriesDAO = new CategoriesDao(con...",
+    "messages": [
+        {
+            "id": "e4517390-f6ac-489f-ab27-7cf827ec5726",
+            "role": "user",
+            "content": [
+                {
+                    "type": "command",
+                    "commandName": "fix"
+                },
+                {
+                    "type": "codeSnippet",
+                    "text": "this.categoriesDAO = new CategoriesDao(connection);",
+                    "language": "java"
+                },
+                {
+                    "type": "text",
+                    "text": "'CategoriesDao()' cannot be applied to '(java.sql.Connection)'"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "D:\\STUDY-HUFLIT\\CoffeeShop\\coffeeShop\\src\\main\\java\\com\\coffeeshop\\coffeeshop\\controller\\OrderController.java",
+                    "fsPath": "D:/STUDY-HUFLIT/CoffeeShop/coffeeShop/src/main/java/com/coffeeshop/coffeeshop/controller/OrderController.java",
+                    "content": "package com.coffeeshop.coffeeshop.controller;\n\nimport com.coffeeshop.coffeeshop.dao.OrderDao;\nimport com.coffeeshop.coffeeshop.dao.ProductDAO;\nimport com.coffeeshop.coffeeshop.dao.CategoriesDao;\nimport com.coffeeshop.coffeeshop.model.Order;\nimport com.coffeeshop.coffeeshop.model.OrderDetail;\nimport com.coffeeshop.coffeeshop.model.Product;\nimport com.coffeeshop.coffeeshop.model.Categories;\nimport javafx.collections.FXCollections;\nimport javafx.collections.ObservableList;\nimport javafx.fxml.FXML;\nimport javafx.scene.control.*;\nimport javafx.scene.control.cell.PropertyValueFactory;\nimport javafx.scene.layout.FlowPane;\nimport javafx.scene.layout.VBox;\nimport javafx.scene.layout.HBox;\nimport javafx.scene.layout.Region;\nimport javafx.geometry.Insets;\nimport javafx.geometry.Pos;\n\nimport java.sql.Connection;\nimport java.sql.SQLException;\nimport java.time.LocalDateTime;\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic class OrderController {\n\n    @FXML private ComboBox<String> cbCategory;\n    @FXML private FlowPane productsFlowPane;\n\n    @FXML private TableView<OrderDetail> tblOrderDetails;\n    @FXML private TableColumn<OrderDetail, Integer> colProductID;\n    @FXML private TableColumn<OrderDetail, Integer> colQuantity;\n    @FXML private TableColumn<OrderDetail, Double> colPrice;\n\n    @FXML private ComboBox<String> cbCustomer;\n    @FXML private Label lblTotal;\n    @FXML private Label lblMessage;\n\n    private ObservableList<OrderDetail> orderDetailList = FXCollections.observableArrayList();\n    private OrderDao orderDao;\n    private ProductDAO productDAO;\n    private CategoriesDao categoriesDAO;\n    private Connection connection;\n\n    private List<Product> allProducts = new ArrayList<>();\n    private List<Categories> allCategories = new ArrayList<>();\n\n    public void setConnection(Connection connection) {\n        this.connection = connection;\n        this.orderDao = new OrderDao(connection);\n        this.productDAO = new ProductDAO(connection);\n        this.categoriesDAO = new CategoriesDao(connection);\n    }\n\n    @FXML\n    public void initialize() {\n        setupTable();\n        setupCustomerComboBox();\n\n        // Load dữ liệu và render sản phẩm\n        loadData();\n\n        updateTotal();\n    }\n\n    private void setupTable() {\n        colProductID.setCellValueFactory(new PropertyValueFactory<>(\"productId\"));\n        colQuantity.setCellValueFactory(new PropertyValueFactory<>(\"quantity\"));\n        colPrice.setCellValueFactory(new PropertyValueFactory<>(\"unitPrice\"));\n        tblOrderDetails.setItems(orderDetailList);\n    }\n\n    private void setupCustomerComboBox() {\n        cbCustomer.setItems(FXCollections.observableArrayList(\"Khách lẻ\", \"Thẻ thành viên\", \"Khách VIP\"));\n        cbCustomer.getSelectionModel().selectFirst();\n    }\n\n    private void loadData() {\n        try {\n            // Load categories\n            allCategories = categoriesDAO.getAllCategories();\n            ObservableList<String> categoryNames = FXCollections.observableArrayList();\n            categoryNames.add(\"Tất cả\");\n            for (Categories cat : allCategories) {\n                categoryNames.add(cat.getNameCategories());\n            }\n            cbCategory.setItems(categoryNames);\n            cbCategory.getSelectionModel().selectFirst();\n\n            // Load products\n            allProducts = productDAO.getAllProducts();\n\n            // Setup category filter\n            cbCategory.setOnAction(e -> filterAndRenderProducts());\n\n            // Initial render\n            filterAndRenderProducts();\n\n        } catch (SQLException e) {\n            lblMessage.setText(\"❌ Lỗi khi tải dữ liệu: \" + e.getMessage());\n            e.printStackTrace();\n        }\n    }\n\n    private void filterAndRenderProducts() {\n        String selectedCategory = cbCategory.getSelectionModel().getSelectedItem();\n        List<Product> filteredProducts = new ArrayList<>();\n\n        if (\"Tất cả\".equals(selectedCategory)) {\n            filteredProducts = allProducts;\n        } else {\n            for (Product product : allProducts) {\n                if (product.getCategories().getNameCategories().equals(selectedCategory)) {\n                    filteredProducts.add(product);\n                }\n            }\n        }\n\n        renderProducts(filteredProducts);\n    }\n\n    private void renderProducts(List<Product> products) {\n        productsFlowPane.getChildren().clear();\n\n        for (Product product : products) {\n            if (product.isActive()) { // Chỉ hiển thị sản phẩm active\n                Button productButton = createProductButton(product);\n                productsFlowPane.getChildren().add(productButton);\n            }\n        }\n    }\n\n    private Button createProductButton(Product product) {\n        Button button = new Button();\n        button.setPrefSize(150, 100);\n        button.setMaxSize(150, 100);\n        button.setMinSize(150, 100);\n\n        // Create content for button\n        VBox content = new VBox(5);\n        content.setAlignment(Pos.CENTER);\n\n        // Product name\n        Label nameLabel = new Label(product.getNameProducts());\n        nameLabel.setStyle(\"-fx-font-weight: bold; -fx-font-size: 12px; -fx-text-fill: #8B4513;\");\n        nameLabel.setWrapText(true);\n        nameLabel.setMaxWidth(140);\n\n        // Product price\n        Label priceLabel = new Label(String.format(\"%,.0f VND\", product.getPrice()));\n        priceLabel.setStyle(\"-fx-font-size: 11px; -fx-text-fill: #B8860B; -fx-font-weight: bold;\");\n\n        // Category\n        Label categoryLabel = new Label(product.getCategories().getNameCategories());\n        categoryLabel.setStyle(\"-fx-font-size: 10px; -fx-text-fill: #666666;\");\n\n        content.getChildren().addAll(nameLabel, priceLabel, categoryLabel);\n\n        // Button styling\n        button.setStyle(\n                \"-fx-background-color: linear-gradient(to bottom, #FFFFFF, #F5F5F5); \" +\n                        \"-fx-border-color: #CD853F; \" +\n                        \"-fx-border-radius: 8; \" +\n                        \"-fx-background-radius: 8; \" +\n                        \"-fx-padding: 8; \" +\n                        \"-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);\"\n        );\n\n        // Hover effect\n        button.setOnMouseEntered(e -> button.setStyle(\n                \"-fx-background-color: linear-gradient(to bottom, #F0F8FF, #E6F3FF); \" +\n                        \"-fx-border-color: #8B4513; \" +\n                        \"-fx-border-radius: 8; \" +\n                        \"-fx-background-radius: 8; \" +\n                        \"-fx-padding: 8; \" +\n                        \"-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);\"\n        ));\n\n        button.setOnMouseExited(e -> button.setStyle(\n                \"-fx-background-color: linear-gradient(to bottom, #FFFFFF, #F5F5F5); \" +\n                        \"-fx-border-color: #CD853F; \" +\n                        \"-fx-border-radius: 8; \" +\n                        \"-fx-background-radius: 8; \" +\n                        \"-fx-padding: 8; \" +\n                        \"-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);\"\n        ));\n\n        // Set content\n        button.setGraphic(content);\n\n        // Click handler\n        button.setOnAction(e -> handleProductClick(product));\n\n        return button;\n    }\n\n    private void handleProductClick(Product product) {\n        // Tạo dialog để chọn số lượng và size\n        Dialog<ButtonType> dialog = new Dialog<>();\n        dialog.setTitle(\"Thêm vào đơn hàng\");\n        dialog.setHeaderText(\"Sản phẩm: \" + product.getNameProducts());\n\n        // Create dialog content\n        VBox dialogContent = new VBox(10);\n        dialogContent.setPadding(new Insets(20));\n\n        // Quantity\n        HBox quantityBox = new HBox(10);\n        quantityBox.setAlignment(Pos.CENTER_LEFT);\n        Label quantityLabel = new Label(\"Số lượng:\");\n        quantityLabel.setPrefWidth(80);\n        Spinner<Integer> quantitySpinner = new Spinner<>(1, 99, 1);\n        quantitySpinner.setPrefWidth(100);\n        quantityBox.getChildren().addAll(quantityLabel, quantitySpinner);\n\n        // Size\n        HBox sizeBox = new HBox(10);\n        sizeBox.setAlignment(Pos.CENTER_LEFT);\n        Label sizeLabel = new Label(\"Size:\");\n        sizeLabel.setPrefWidth(80);\n        ComboBox<String> sizeComboBox = new ComboBox<>();\n        sizeComboBox.getItems().addAll(\"S\", \"M\", \"L\");\n        sizeComboBox.getSelectionModel().selectFirst();\n        sizeComboBox.setPrefWidth(100);\n        sizeBox.getChildren().addAll(sizeLabel, sizeComboBox);\n\n        // Price info\n        Label priceInfo = new Label(\"Giá: \" + String.format(\"%,.0f VND\", product.getPrice()));\n        priceInfo.setStyle(\"-fx-font-weight: bold; -fx-text-fill: #8B4513;\");\n\n        dialogContent.getChildren().addAll(quantityBox, sizeBox, priceInfo);\n        dialog.getDialogPane().setContent(dialogContent);\n\n        // Add buttons\n        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);\n\n        // Show dialog and handle result\n        dialog.showAndWait().ifPresent(result -> {\n            if (result == ButtonType.OK) {\n                int quantity = quantitySpinner.getValue();\n                String size = sizeComboBox.getValue();\n                addProductToOrder(product.getId(), quantity, size, product.getPrice());\n\n                lblMessage.setText(\"✅ Đã thêm \" + product.getNameProducts() + \" x\" + quantity + \" vào đơn hàng\");\n            }\n        });\n    }\n\n    /** Gọi khi người dùng bấm nút \"📋 In Hóa Đơn\" */\n    @FXML\n    private void handleSaveOrder() {\n        if (orderDetailList.isEmpty()) {\n            lblMessage.setText(\"Chưa có món nào trong đơn.\");\n            return;\n        }\n\n        Order order = new Order();\n        order.setStaffId(1); // Tạm thời cố định\n        order.setOrderDate(LocalDateTime.now());\n        order.setStatus(\"Chờ xử lý\");\n        order.setNote(cbCustomer.getValue());\n\n        List<OrderDetail> details = new ArrayList<>(orderDetailList);\n\n        boolean success = orderDao.addOrder(order, details);\n        if (success) {\n            lblMessage.setText(\"✅ Đơn hàng đã được tạo! Mã: \" + order.getOrderId());\n            orderDetailList.clear();\n            updateTotal();\n        } else {\n            lblMessage.setText(\"❌ Lỗi khi tạo đơn hàng.\");\n        }\n    }\n\n    /** Hàm dùng khi bạn nhấn vào 1 sản phẩm để thêm vào đơn */\n    public void addProductToOrder(int productId, int quantity, String size, double price) {\n        // Tìm xem sản phẩm đã có trong đơn chưa\n        OrderDetail existingDetail = null;\n        for (OrderDetail detail : orderDetailList) {\n            if (detail.getProductId() == productId && size.equals(detail.getSize())) {\n                existingDetail = detail;\n                break;\n            }\n        }\n\n        if (existingDetail != null) {\n            // Nếu đã có, tăng số lượng\n            existingDetail.setQuantity(existingDetail.getQuantity() + quantity);\n        } else {\n            // Nếu chưa có, tạo mới\n            OrderDetail d = new OrderDetail();\n            d.setProductId(productId);\n            d.setQuantity(quantity);\n            d.setSize(size);\n            d.setUnitPrice(price);\n            orderDetailList.add(d);\n        }\n\n        updateTotal();\n\n        // Refresh table\n        tblOrderDetails.refresh();\n    }\n\n    private void updateTotal() {\n        double total = orderDetailList.stream()\n                .mapToDouble(d -> d.getQuantity() * d.getUnitPrice())\n                .sum();\n        lblTotal.setText(String.format(\"%,.0f VND\", total));\n    }\n\n    /** Quay lại (nếu có chức năng) */\n    @FXML\n    private void handleBack() {\n        System.out.println(\"Quay lại màn hình chính\");\n    }\n}",
+                    "language": "java"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1751711509129,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "command",
+                                "attrs": {
+                                    "label": "fix"
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "/fix"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "codeBlock",
+                                "attrs": {
+                                    "language": "java"
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "this.categoriesDAO = new CategoriesDao(connection);"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "text",
+                                "text": "'CategoriesDao()' cannot be applied to '(java.sql.Connection)'"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1f3ad3bb-5550-4a09-ac9d-61a9e43bcd8b",
+            "role": "system",
+            "content": [
+                {
+                    "type": "errorText",
+                    "text": "Rate limit exceeded. You can try again on July 06 at 15:56.",
+                    "allowRegenerate": true,
+                    "actions": [
+                        {
+                            "type": "upgradePlan",
+                            "waitSeconds": 80674
+                        }
+                    ]
+                }
+            ],
+            "createdAt": 1751711509796,
+            "isInternal": false
+        }
+    ],
+    "isAgent": true,
+    "isCustomAgent": false
+}
+}
